@@ -4,7 +4,7 @@ $gitlab_ips = array('192.168.2.31', '172.31.3.8', '172.31.3.48', '127.0.0.1');
 if (!in_array($_SERVER['REMOTE_ADDR'], $gitlab_ips)) {
     throw new Exception("Isto não parece uma requisição válida do Gitlab.\n");
 }
-$log_filepath = '/tmp/debug-webhook-obsturismo.log';
+$log_filepath = '/tmp/debug-webhook-observatorio-do-turismo.log';
 $arquivo = fopen($log_filepath, 'w');
 fwrite($arquivo, file_get_contents('php://input'));
 fclose($arquivo);
@@ -33,7 +33,7 @@ if ($payload = file_get_contents('php://input')) {
     
     //put the branch you want here, as well as the directory your site is in
     $op = array();
-    exec("cd /var/www/obsturismo && git fetch origin && git reset --hard origin/{$branch} && git merge origin/{$branch}", $op);
+    exec("cd /var/www/observatorio-do-turismo && git fetch origin && git reset --hard origin/{$branch} && git merge origin/{$branch}", $op);
 
     $arquivo = fopen($log_filepath, 'a+');
     fwrite($arquivo, "\n-------\n");
