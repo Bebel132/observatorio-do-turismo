@@ -1,0 +1,38 @@
+RewriteEngine On
+
+RewriteCond %{SCRIPT_FILENAME} !-f
+RewriteCond %{SCRIPT_FILENAME} !-d
+RewriteRule ^(.*)$ index.php [L]
+RewriteRule ^/?$ index.php [L]
+ 
+#RewriteRule ^(.*)$ index.php?%{QUERY_STRING} [NC,L]
+
+### Otimizacao de cache ###
+### Nao Remover ###
+<IfModule mod_expires.c>
+	ExpiresActive On
+	ExpiresDefault "access plus 1 month"
+	ExpiresByType application/javascript "access plus 2 month"
+	ExpiresByType application/x-javascript "access plus 2 month"
+	ExpiresByType text/javascript A900
+	ExpiresByType text/html A90
+	ExpiresByType text/xml A90
+	ExpiresByType text/css A900
+	ExpiresByType text/plain A62
+	ExpiresByType image/gif "access plus 2 month"
+	ExpiresByType image/jpg "access plus 2 month"
+	ExpiresByType image/jpeg "access plus 2 month"
+	ExpiresByType image/png "access plus 2 month"
+	ExpiresByType image/bmp "access plus 2 month"
+	ExpiresByType application/x-shockwave-flash A3600
+	ExpiresByType font/truetype "access plus 2 month"
+	ExpiresByType font/opentype "access plus 2 month"
+	ExpiresByType application/x-font-woff   "access plus 2 month"
+	ExpiresByType image/svg+xml "access plus 2 month"
+	ExpiresByType application/vnd.ms-fontobject "access plus 2 month"
+</IfModule>
+
+<IfModule mod_security.c>
+  SecFilterEngine Off
+  SecFilterScanPOST Off
+</IfModule>
