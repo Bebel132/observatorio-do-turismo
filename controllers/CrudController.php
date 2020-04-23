@@ -6,16 +6,12 @@ class CrudController extends Controller
 {
 
 	public $alerts = [];
-	
 
 	public function request($Entity,$nametoken=null)
 	{
 		$anon = $Entity->getAnnotation();
-
 		$tb = DaoSI::getTableObj($Entity)['name'];
-
 		if(!$nametoken) $nametoken = get_class($Entity);
-
 		$csrf_token = getSession('csrf_token_'.$nametoken);
 		if(!isset($_POST['csrf_token']) || $_POST['csrf_token'] != $csrf_token) return;
 

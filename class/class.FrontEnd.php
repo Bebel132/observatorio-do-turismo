@@ -30,30 +30,14 @@ class FrontEnd
 
 		// badges
 
-
 		$itens = [
 
 			 ['href' => 'inicio'		,'name'=>'Início' 			, 'icon'=>'home' 	, 'class' => 'showloading']
-			
 			,['href' => 'banners'		,'name'=>'Banners'	 		, 'icon'=>'image' , 'class' => 'showloading']
 			,['href' => 'pesquisas'		,'name'=>'Pesquisas' 		, 'icon'=>'list-alt' , 'class' => 'showloading']
 			,['href' => 'indicadores'	,'name'=>'Indicadores' 		, 'icon'=>'chart-line' , 'class' => 'showloading']
 			,['href' => 'noticias'		,'name'=>'Notícias' 		, 'icon'=>'newspaper' , 'class' => 'showloading']
 			,['href' => 'usuarios'		,'name'=>'Usuários' 		, 'icon'=>'user' , 'class' => 'showloading']
-
-			// ,['href' => 'navegar'		,'name'=>'Banners' 		, 'icon'=>'folder-open' , 'class' => 'showloading']
-			
-			// ,['href' => 'nao-indexados'	,'name'=>'Não Indexados' 	, 'icon'=>'indent' 	, 'class' => 'showloading' , 'badge' => 1]
-
-			// ,['href' => 'historico'		,'name'=>'Histórico' 		, 'icon'=>'history' , 'class' => 'showloading' , 'badge' => 2]
-			
-			// ,['href' => 'cadastro'			,'name'=>'Cadastros' 	, 'icon'=>'database' , 'class' =>'' , 'subitens' => [
-			// 	['href' => 'categorias'		,'name'=>'Categorias' 		, 'icon'=>'server' 	, 'class' => 'showloading']
-			// 	,['href' => 'fontes'			,'name'=>'Fontes' 			, 'icon'=>'server' 	, 'class' => 'showloading']
-			// 	,['href' => 'locais'			,'name'=>'Locais' 			, 'icon'=>'server' 	, 'class' => 'showloading']
-			// 	,['href' => 'temas'			,'name'=>'Temas' 				, 'icon'=>'server' 	, 'class' => 'showloading']
-			// 	,['href' => 'tipo-documentos','name'=>'Tipos Documentos' 	, 'icon'=>'server' 	, 'class' => 'showloading']
-			// ]]
 
 		];
 
@@ -287,10 +271,3 @@ class FrontEnd
 
 }
 
-// set_error_handler('errorHandler');
-// function errorHandler ($errno, $errstr, $errfile, $errline, $errcontext)
-// {
-// 	if($errno!=8) FrontEnd::error($errstr);
-// }
-
-?>

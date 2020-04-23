@@ -31,8 +31,8 @@ class Utils
 		}
 	}
 
-	public static function redirect($url=false,$time=0)
-	{
+	public static function redirect($url=false,$time=0){
+
 		$timeJs = $time*1000;
 		if($url){
 			$urlPhp = ';url='.$url;
@@ -44,13 +44,18 @@ class Utils
 		}
 
 		if (!headers_sent()) {
-			header ('Refresh:'.$time.' '.$urlPhp,true,303);
-			// header ('Location: '.$url);
+			if($time>0)
+				header ('Refresh:'.$time.' '.$urlPhp,true,303);
+			else{
+				header ('Location: '.$url);
+				exit();
+			}
 		}else{
 			echo "<div style='display:none'> Redirecting to {$urlJs} ";
 			echo "<script> setTimeout(function(){document.location.href='".$urlJs."'},$timeJs); </script>";
 			echo "</div>";
 		}
+		
 	}
 
 	public static function back($time=0)
