@@ -13,38 +13,45 @@ class DatabaseSi
 	static function create($drop=false)
 	{
 
+
+		$sqls = self::getSqls($drop);
+
+		foreach ($sqls as $sql) {
+			echo $sql;
+			$ok = DaoSi::execute($sql);
+			echo "-- response [{$ok}]
+			";
+		}
+
+
+	}
+
+	static function getSqls($drop=false)
+	{
+
 		$entities = self::listEntities();
 
-		echo "<pre>";
+		$sqls = [];
 
 		foreach ($entities as $k => $EntityName) {
 
 			$Entity = new $EntityName();
 			$anotations = PhpAnnotation::get($Entity);
-
 			$table = $anotations['class']['Table']['name'];
 
-			echo '-- '.$EntityName." 
-			";
+			// $sqls[] = '-- '.$EntityName." 
+			// ";
 
 			if($drop){
-				echo "DROP TABLE {$table}
-				";
-				DaoSi::execute("DROP TABLE IF EXISTS {$table}");
+				$sqls[] = "DROP TABLE IF EXISTS {$table}";
 			}
 
-			$sql = self::getSqlByEntity($Entity);
-
-			$ok = DaoSi::execute($sql);
-
-			echo "-- [{$ok}]
-			";
-			
-			echo $sql;
+			$sqls[] = self::getSqlByEntity($Entity);
 
 		}
 
-		echo "</pre>";
+		return $sqls;
+
 
 	}
 
@@ -54,6 +61,8 @@ class DatabaseSi
 		$anotations = PhpAnnotation::get($Entity);
 
 		$table = $anotations['class']['Table']['name'];
+
+		$primary_key = '';
 
 		$SQL = "CREATE TABLE IF NOT EXISTS {$table} (";
 
@@ -68,19 +77,39 @@ class DatabaseSi
 				$$kkk = $vvv;
 			}
 
+			if($type=='serial'){
+				$primary_key = $name;
+			}
+
 			
 			if($size)
-			$size = '('.str_replace(['(',')'], '', $size).')';
+				$size = '('.str_replace(['(',')'], '', $size).')';
 			$SQL .= "
 			{$vv['Column']['name']} {$type}{$size} $index,";
 		}
 		$SQL = substr($SQL, 0,-1);
 
-		$SQL .=", PRIMARY KEY (id)" ;
+
+		if($primary_key){
+
+			$SQL .=",
+			";
+
+			if($GLOBALS['db']['default']['dbdriver'] == 'pgsql'){
+				$SQL .=" CONSTRAINT {$table}_pkey" ;
+			}
+
+			$SQL .=" PRIMARY KEY ({$primary_key})" ;
+		}
+
+
+
 		$SQL .="
 		);
 
 		";
+
+		self::toDriver($SQL);
 
 		return $SQL;
 
@@ -111,6 +140,23 @@ class DatabaseSi
 		}
 
 		return $a;
+
+	}
+
+	static function toDriver(&$sqlStr)
+	{
+
+		// Postgres
+		if($GLOBALS['db']['default']['dbdriver'] == 'pgsql'){
+
+			$sqlStr = str_replace('varchar', 'character varying', $sqlStr);
+
+		// MySQL
+		}else{
+
+			$sqlStr = str_replace('character varying', 'varchar', $sqlStr);
+
+		}
 
 	}
 

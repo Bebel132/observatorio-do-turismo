@@ -8,7 +8,7 @@
 	<div class="row">
 		<?php 
 		$pesquisa = new Pesquisa();
-		$pesquisa->status = 1;
+		$pesquisa->flstatus = 1;
 		$pesquisas = DaoSI::getList($pesquisa);
 		foreach ($pesquisas as $kk => $pesquisa)
 		{

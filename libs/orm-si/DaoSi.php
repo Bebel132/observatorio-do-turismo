@@ -47,6 +47,7 @@ class DaoSi {
 	static function conecta()
 	{
 
+		if(self::$CONN) return self::$CONN;
 
 		$db = $GLOBALS['db'];
 
@@ -65,6 +66,7 @@ class DaoSi {
 		if(self::$config['dbdriver']!='pgsql'){
 			$dsn .= ';charset='.self::$config['char_set'];
 		}
+
 
 		try{
 			
@@ -410,7 +412,7 @@ class DaoSi {
 		return false;
 	}
 
-	public function getObjById(Object $obj,Int $id)
+	public function getObjById($obj,$id)
 	{
 
 		$properties = $obj->getAnnotation()['properties'];
@@ -419,19 +421,16 @@ class DaoSi {
 
 		$result = self::querySelect("SELECT * FROM {$tableName} WHERE id={$id} LIMIT 1");
 
+		foreach ($properties as $attr => $column) {
+			$columns[ $column['Column']['name'] ] = $attr;
+		}
+
 		if($result)
 		{
 			foreach ($result[0] as $k => $v) {
 
-				foreach ($properties as $kk => $vv) {
-					if($vv['Column']['name']==$k)
-					{
-						$i = $kk;
-						break;
-					}
-				}
+				$obj->{$columns[$k]} = $v;
 
-				$obj->{$i} = $v;
 			}
 		}
 
@@ -439,23 +438,52 @@ class DaoSi {
 
 	}
 
-	public function getList($obj)
+	public function getList($obj,$orderby=null,$limit=false)
 	{
+
+		$properties = $obj->getAnnotation()['properties'];
+		foreach ($properties as $attr => $column) {
+			$columns[ $column['Column']['name'] ] = $attr;
+		}
+
 		$result = [];
 		$EntityClass = get_class($obj);
 		$tb = self::getTableObj($obj);
-		$where = "(1)";
+		$addSql = "WHERE (true)";
 		foreach ($obj as $attr => $value) {
 			if($value || $value===0 || $value==="0"){
-				$value = (is_numeric($value)) ? (int) $value : '"'.$value.'"';
-				$where .= " AND {$attr} = {$value}";
+				$column = isset($properties[$attr]['Column']['name']) ? $properties[$attr]['Column']['name'] : $attr;
+				$value = (is_numeric($value)) ? (int) $value : "'".$value."'";
+				$addSql .= " AND {$column} = {$value}";
 			}
 		}
 
-		$ids = self::querySelect("SELECT id FROM {$tb['name']} WHERE {$where} ORDER BY id DESC");
-		foreach ($ids as $id) {
-			$result[$id['id']] = new $EntityClass($id['id']); 
+		if(!$orderby) $orderby = "id DESC";
+		$addSql .= " ORDER BY ".$orderby;
+
+		if($limit) 
+			$addSql .= " LIMIT ".$limit;
+
+		// $ids = self::querySelect("SELECT id FROM {$tb['name']} WHERE {$addSql}");
+		// foreach ($ids as $id) {
+		// 	$result[$id['id']] = new $EntityClass($id['id']);
+		// }
+
+		// otimized
+		$data = self::querySelect("SELECT * FROM {$tb['name']} {$addSql}");
+		foreach ($data as $line) {
+			$obj = new $EntityClass();
+			foreach ($line as $k => $v) {
+				$obj->{$columns[$k]} = $v;
+			}
+			$result[$obj->id] = $obj;
 		}
+
+		if($limit==1){
+			if(count($result)==1) return current($result);
+			else return null;
+		}
+
 		return $result;
 	}
 

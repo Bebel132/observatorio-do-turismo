@@ -16,6 +16,11 @@ class Pesquisa extends Entity
 	public $descricao;
 
 	/**
+	* @Column = {"name":"filename" , "type":"varchar" , "size" : "255" , "mask" : "file" , "label":"Imagem"}
+	*/
+	public $filename;
+
+	/**
 	* @Column = {"name":"link_form" , "type":"varchar" , "size" : "255" , "label":"Link Formulário"}
 	*/
 	public $link_form;
@@ -26,13 +31,20 @@ class Pesquisa extends Entity
 	public $link_resultado;
 
 	/**
-	* @Column = {"name":"status" , "type":"integer" , "size" : "" , "label":"Status" , "domain":{"1":"Formulários","2":"Resultados","3":"Inatiivo"} }
+	* @Column = {"name":"file_resultado" , "type":"varchar" , "size" : "255" , "mask" : "file" , "label":"Arquivo Resultado"}
 	*/
-	public $status;
+	public $file_resultado;
 
 	/**
-	* @Column = {"name":"filename" , "type":"varchar" , "size" : "255" , "mask" : "file" , "label":"Imagem"}
+	* @Column = {"name":"tipo" , "type":"integer" , "size" : "" , "label":"Tipo" , "domain":{"1":"Formulários","2":"Resultados"} }
 	*/
-	public $filename;
+	public $tipo;
+
+	/**
+	* @Column = {"name":"flstatus" , "type":"integer" , "size" : "" , "label":"Status" , "domain":{"1":"Ativo","2":"Inativo"} }
+	*/
+	public $flstatus;
+
+	
 
 }

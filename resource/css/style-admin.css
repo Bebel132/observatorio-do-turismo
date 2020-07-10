@@ -55,6 +55,12 @@ a{
   background: #1DB1B1;
 }
 
+.ellipsis{
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
 /*
  * Typography
  */
@@ -190,6 +196,12 @@ h2 a,h2 button{
 .table-striped img{
   max-width: 100%;
   max-height: 40px;
+}
+
+.table-striped .value{
+  max-width: 300px;
+  display: inline-block;
+  overflow: hidden;
 }
 
 .sidebar .logo-iplanfor{
@@ -461,4 +473,27 @@ box-shadow: 0px 0px 50px #CCC;
 
 a i{
   margin-right: 6px;
+}
+
+.paginacao{
+  text-align: center;
+  padding: 20px;
+}
+
+.paginacao a{
+  display: inline-block;
+  background: #EEE;
+  color: #666;
+  min-width: 30px;
+  text-align: center;
+  margin: 2px;
+  font-size: 13px;
+  text-decoration:none;
+  padding-bottom:2px
+}
+
+.paginacao a:hover
+,.paginacao a.active{
+  background: #1DB1B1;
+  color:#FFF;
 }

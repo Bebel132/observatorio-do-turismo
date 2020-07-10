@@ -4,9 +4,9 @@ if(APPLICATION_ENV=='production'){
 
 	$GLOBALS['db']['default'] = array(
 		'dsn'	=> '',
-		'hostname' => '172.31.3.8',
-		'username' => 'postgres',
-		'password' => '@1a2b3c4d*',
+		'hostname' => '172.31.3.48',
+		'username' => 'homolog_user',
+		'password' => 'homolog_user@59753',
 		'database' => 'obsturismo',
 		'schema'   => 'public',
 		'dbdriver' => 'pgsql',
@@ -32,8 +32,8 @@ if(APPLICATION_ENV=='production'){
 	$GLOBALS['db']['default'] = array(
 		'dsn'	=> '',
 		'hostname' => '172.31.3.48',
-		'username' => 'postgres',
-		'password' => '@1a2b3c4d*',
+		'username' => 'homolog_user',
+		'password' => 'homolog_user@59753',
 		'database' => 'obsturismo',
 		'schema'   => 'public',
 		'dbdriver' => 'pgsql',
@@ -59,12 +59,12 @@ if(APPLICATION_ENV=='production'){
 	// development
 	$GLOBALS['db']['default'] = array(
 		'dsn'	=> '',
-		'hostname' => 'localhost',
-		'username' => 'root',
-		'password' => '',
-		'database' => 'iplanfor_obstur',
+		'hostname' => '172.31.3.48',
+		'username' => 'homolog_user',
+		'password' => 'homolog_user@59753',
+		'database' => 'obsturismo',
 		'schema'   => 'public',
-		'dbdriver' => 'mysql',
+		'dbdriver' => 'pgsql',
 		'dbprefix' => '',
 		'pconnect' => FALSE,
 		'db_debug' => true,
