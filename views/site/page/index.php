@@ -10,6 +10,10 @@
 			$a=0;
 			foreach ($banners as $banner)
 			{
+
+				$img1 = $imgm = $banner->getImg('filename');
+				if($banner->filename_m) $imgm = $banner->getImg('filename_m');
+
 				$a++;
 				$active = ($a==1)?'active':'';
 				
@@ -17,7 +21,8 @@
 				<div class="carousel-item <?=$active?>">
 					<?php 
 					if($banner->link) echo "<a target='_blank' href='{$banner->link}'>";
-					echo $banner->getImg('filename');
+					echo "<span class='w-only'>{$img1}</span>";
+					echo "<span class='m-only'>{$imgm}</span>";
 					if($banner->link) echo "</a>"; 
 					?>
 				</div>
@@ -112,6 +117,7 @@
 					<?php 
 					$pesquisa = new Pesquisa();
 					$pesquisa->tipo = 2;
+					$pesquisa->flstatus = 1;
 					$pesquisas = DaoSI::getList($pesquisa);
 					$t = count($pesquisas);
 					$b=$a=0;
@@ -184,6 +190,7 @@
 		$a++;
 		$Indicador = new Indicador();
 		$Indicador->tipo = $k;
+		$Indicador->flstatus = 1;
 		$indicadores = DaoSI::getList($Indicador);
 		?>
 		<div id="carouselIndicadores<?=$k?>" class="carousel azul slide tab tab<?=$k?><?=$hide?>" data-ride="carousel">
@@ -245,6 +252,7 @@
 		<?php 
 		$banner = new Banner();
 		$banner->tipo = 2;
+		$banner->flstatus = 1;
 		$banners = DaoSI::getList($banner);
 		$a=0;
 		foreach ($banners as $banner)
@@ -252,9 +260,14 @@
 			$a++;
 			$active = ($a==1)?'active':'';
 			if($banner->link) echo "<a target='_blank' href='{$banner->link}'>";
+
+			$img1 = $imgm = $banner->getImg('filename');
+			if($banner->filename_m) $imgm = $banner->getImg('filename_m');
+
 			?>
 			<div class="img">
-				<?=$banner->getImg('filename')?>
+				<span class="w-only"><?=$img1?></span>
+				<span class="m-only"><?=$imgm?></span>
 			</div>
 			<?php if($banner->link) echo "</a>"; 
 		} ?>
@@ -263,9 +276,22 @@
 		<h2>Parceiros</h2>
 		<div id="parceiros"></div>
 		<div class="parceiros">
-			<?php for ($i=0; $i < 15; $i++) { ?>
+			<?php
+
+			$banner = new Banner();
+			$banner->tipo = 3;
+			$banner->flstatus = 1;
+			$banners = DaoSI::getList($banner);
+
+			foreach ($banners as $banner){
+
+				$img1 = $imgm = $banner->getImg('filename');
+				if($banner->filename_m) $imgm = $banner->getImg('filename_m');
+
+				?>
 				<span class="u">
-					Lorem ipsum
+					<span class="w-only"><?=$img1?></span>
+					<span class="m-only"><?=$imgm?></span>
 				</span>
 			<?php } ?>
 		</div>
