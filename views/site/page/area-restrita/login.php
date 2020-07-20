@@ -2,8 +2,18 @@
 
 $token = User::getToken();
 
+$banner = new Banner();
+$banner->tipo = 4;
+$banner->flstatus = 1;
+$banner = DaoSI::getList($banner,null,1);
+
+$img = "";
+if($banner){
+	$img = $banner->getImg('filename',true);
+}
+
 ?><div class="temp-caixa">
-	<div class="middle">
+	<div class="middle" style="background-image: url(<?=$img?>);">
 		<div class="caixa">
 			<div class="txt">
 				<b>COLABORE</b> COM A O DESENVOLVIMENTO DE UM <b>CENÁRIO POSITIVO</b> PARA O TURISMO EM FORTLAEZA. <br><br>

@@ -12,12 +12,7 @@ class FrontEnd
 	{
 		if(isset(self::$raiz))
 			return self::$raiz;
-		$vars = Utils::getUrlVars();
-		$raiz = '';
-		for ($i=1; $i < count(Utils::getUrlVars()); $i++) { 
-			$raiz .= '../';
-		}
-
+		$raiz = 'http'.(ISHTTPS?'s':'').'://'.$_SERVER['HTTP_HOST'].PATH_APP;
 		self::$raiz = $raiz;
 		return self::$raiz;
 	}
@@ -30,30 +25,14 @@ class FrontEnd
 
 		// badges
 
-
 		$itens = [
 
 			 ['href' => 'inicio'		,'name'=>'Início' 			, 'icon'=>'home' 	, 'class' => 'showloading']
-			
 			,['href' => 'banners'		,'name'=>'Banners'	 		, 'icon'=>'image' , 'class' => 'showloading']
 			,['href' => 'pesquisas'		,'name'=>'Pesquisas' 		, 'icon'=>'list-alt' , 'class' => 'showloading']
 			,['href' => 'indicadores'	,'name'=>'Indicadores' 		, 'icon'=>'chart-line' , 'class' => 'showloading']
-			,['href' => 'noticias'		,'name'=>'Notícias' 		, 'icon'=>'newspaper' , 'class' => 'showloading']
+			// ,['href' => 'noticias'		,'name'=>'Notícias' 		, 'icon'=>'newspaper' , 'class' => 'showloading']
 			,['href' => 'usuarios'		,'name'=>'Usuários' 		, 'icon'=>'user' , 'class' => 'showloading']
-
-			// ,['href' => 'navegar'		,'name'=>'Banners' 		, 'icon'=>'folder-open' , 'class' => 'showloading']
-			
-			// ,['href' => 'nao-indexados'	,'name'=>'Não Indexados' 	, 'icon'=>'indent' 	, 'class' => 'showloading' , 'badge' => 1]
-
-			// ,['href' => 'historico'		,'name'=>'Histórico' 		, 'icon'=>'history' , 'class' => 'showloading' , 'badge' => 2]
-			
-			// ,['href' => 'cadastro'			,'name'=>'Cadastros' 	, 'icon'=>'database' , 'class' =>'' , 'subitens' => [
-			// 	['href' => 'categorias'		,'name'=>'Categorias' 		, 'icon'=>'server' 	, 'class' => 'showloading']
-			// 	,['href' => 'fontes'			,'name'=>'Fontes' 			, 'icon'=>'server' 	, 'class' => 'showloading']
-			// 	,['href' => 'locais'			,'name'=>'Locais' 			, 'icon'=>'server' 	, 'class' => 'showloading']
-			// 	,['href' => 'temas'			,'name'=>'Temas' 				, 'icon'=>'server' 	, 'class' => 'showloading']
-			// 	,['href' => 'tipo-documentos','name'=>'Tipos Documentos' 	, 'icon'=>'server' 	, 'class' => 'showloading']
-			// ]]
 
 		];
 
@@ -123,7 +102,8 @@ class FrontEnd
 		$i = ($area=='site')?0:1;
 
 		$vars = Utils::getUrlVars();
-		$section = (count($vars)>0 && isset($vars[$i]) && $vars[$i])?$vars[$i]:'inicio';
+		$section = (count($vars)>0 && isset($vars[$i]) && $vars[$i])?$vars[$i]:'index';
+		$section = str_replace(['/','\\'], '', $section);
 		$page = "views/{$area}/page/{$section}.php";
 		if(is_file($page)){
 			require_once($page);
@@ -195,6 +175,7 @@ class FrontEnd
 	{
 		$ext = explode('.', $filename);
 		$ext = $ext[count($ext)-1];
+		$embed = $url = "";
 
 		$atcss = APPLICATION_ENV=='development'?time():date('Ymd');
 
@@ -222,10 +203,7 @@ class FrontEnd
 
 		$inputs = "";
 
-		$csrf_token = md5(Utils::microtimeFloat());
-		setSession('csrf_token_'.$nametoken,$csrf_token);
-
-		$inputs .= self::formInput('hidden','csrf_token',$csrf_token);
+		$inputs .= self::getInputToken($nametoken);
 
 		foreach ($anon['properties'] as $key => $v) {
 
@@ -252,6 +230,13 @@ class FrontEnd
 
 	}
 
+	static function getInputToken($nametoken)
+	{
+		$_token = md5(Utils::microtimeFloat());
+		setSession('_token_'.$nametoken,$_token);
+		return self::formInput('hidden','_token',$_token);
+	}
+
 	static function formInput($inputType,$name,$value='',$domain=NULL,$attrs=array())
 	{
 
@@ -273,7 +258,7 @@ class FrontEnd
 
 		}elseif($inputType=='select'){
 			$html = "<select class='form-control form-control-sm {$addClass}' name='{$name}' data-default='{$value}' {$attrStr}>";
-			$html .= "<option value=''>Selecione</option>";
+			// $html .= "<option value=''>Selecione</option>";
 			foreach ($domain as $k => $v) {
 				$selected = ($k==$value)?'selected':'';
 				$html .= "<option value='{$k}' {$selected}>{$v}</option>";
@@ -287,10 +272,3 @@ class FrontEnd
 
 }
 
-// set_error_handler('errorHandler');
-// function errorHandler ($errno, $errstr, $errfile, $errline, $errcontext)
-// {
-// 	if($errno!=8) FrontEnd::error($errstr);
-// }
-
-?>

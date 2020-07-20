@@ -5,10 +5,15 @@
 			<?php 
 			$banner = new Banner();
 			$banner->tipo = 1;
+			$banner->flstatus = 1;
 			$banners = DaoSI::getList($banner);
 			$a=0;
 			foreach ($banners as $banner)
 			{
+
+				$img1 = $imgm = $banner->getImg('filename');
+				if($banner->filename_m) $imgm = $banner->getImg('filename_m');
+
 				$a++;
 				$active = ($a==1)?'active':'';
 				
@@ -16,7 +21,8 @@
 				<div class="carousel-item <?=$active?>">
 					<?php 
 					if($banner->link) echo "<a target='_blank' href='{$banner->link}'>";
-					echo $banner->getImg('filename');
+					echo "<span class='w-only'>{$img1}</span>";
+					echo "<span class='m-only'>{$imgm}</span>";
 					if($banner->link) echo "</a>"; 
 					?>
 				</div>
@@ -39,18 +45,21 @@
 <div class="container">
 	<h2>O que é o Observatório do Turismo</h2>
 	<div class="txt">
-		Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-		tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-		quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-		consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-		cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-		proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-		Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-		tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-		quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-		consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-		cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-		proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+		<p>
+			O turismo é a atividade do setor terciário que mais cresce no mundo. E é uma fonte relevante de geração de renda e de empregos diretos e indiretos fundamental para a economia de diversos países. Como em outros lugares do mundo, a movimentação turística representa expressivos resultados no PIB da economia de Fortaleza.
+		</p>
+		<p>
+			Para promover a qualidade desta atividade é de extrema importância a constante realização de pesquisas, de forma que possamos conhecer, além do número de entrada e saída de turistas em um destino, o perfil da demanda real, suas necessidades e desejos, bem como detectar a demanda potencial e realizar estudos de posicionamento de mercado desses locais.
+		</p>
+		<p>
+			Atualmente, os dados sobre o turismo no município de Fortaleza são praticamente inexistentes, o que dificulta mensurar a importância desse setor para a economia do município. Daí a relevância do Observatório do Turismo de Fortaleza. Ele tem a finalidade de pesquisar, registrar, informar e gerenciar os resultados como instrumento de planejamento e gestão estratégica.
+		</p>
+		<p>
+			Dessa forma, trata-se de uma ferramenta da Ciência da Informação que, quando devidamente usada, melhora os processos de gestão pública e das organizações do sistema turístico. Isso porque possibilita ao setor turístico estabelecer novas ações e programas, bem como definir políticas públicas que maximizem os resultados e implementem benefícios econômicos à cidade e à região. Serve também para estabelecer padrões de comportamento, relações e tendências que auxiliem na tomada de decisão. Além de fornecer dados da realidade do nosso município, o que possibilita acompanhar a evolução do setor.
+		</p>
+		<p>
+			Enfim, a idealização do Observatório do Turismo de Fortaleza tem por objetivo incrementar o potencial turístico e a competitividade da cidade de Fortaleza. O referido projeto foi desenvolvido pela Secretaria Municipal do Turismo de Fortaleza, através do financiamento do Banco de Desenvolvimento da América Latina (CAF), instrumentalizada por meio do Contrato de Empréstimo nº CFA 10352/10356, e está inserido no Programa Cidade com Futuro, no componente “Transformação Produtiva, subitem 2.4 – Apoio para a preparação de indicadores de monitoramento, controle e plano de promoção”.
+		</p>
 	</div>
 	<div class="institucional">
 		<div class="fleft w33">
@@ -107,7 +116,8 @@
 				<div class="carousel-item active">
 					<?php 
 					$pesquisa = new Pesquisa();
-					$pesquisa->status = 2;
+					$pesquisa->tipo = 2;
+					$pesquisa->flstatus = 1;
 					$pesquisas = DaoSI::getList($pesquisa);
 					$t = count($pesquisas);
 					$b=$a=0;
@@ -118,9 +128,19 @@
 						?>
 						<div class="fleft w33">
 							<?php 
-							if($pesquisa->link_resultado) echo "<a target='_blank' href='{$pesquisa->link_resultado}'>";
+
+							$link = "";
+							if($pesquisa->link_resultado){
+								$link = $pesquisa->link_resultado;
+								if(substr($link, 0,4)!="http") $link = "https://".$link;
+							}
+							elseif($pesquisa->file_resultado){
+								$link = "resource/uploads/pesquisas/".$pesquisa->file_resultado;
+							}
+
+							if($link) echo "<a target='_blank' href='{$link}'>";
 							echo $pesquisa->getImg('filename');
-							if($pesquisa->link_resultado) echo "</a>"; 
+							if($link) echo "</a>"; 
 							?>
 						</div>
 						<?php if($b==3 && $a<$t){echo '</div><div class="carousel-item">'; $b=0; } 
@@ -141,8 +161,16 @@
 	</div>
 
 
+
 	<!-- Indicadores -->
-	<?php $tipos = [1=>"Empregos","Demandas","Sazonalidade","Receita","Prestação de Serviços"]; ?>
+	<?php $tipos = [1=>"Demanda Turística",
+	"Prestadores de Serviço",
+	"Sazonalidade / Ocupação",
+	"Impacto na Economia",
+	"Movimentação Aeroportuária",
+	"Empregos",
+	"Investimento Público",
+	"Receita Turística"]; ?>
 	<h2>Indicadores</h2>
 	<div id="indicadores"></div>
 	<div class="carouselIndicadores">
@@ -162,6 +190,7 @@
 		$a++;
 		$Indicador = new Indicador();
 		$Indicador->tipo = $k;
+		$Indicador->flstatus = 1;
 		$indicadores = DaoSI::getList($Indicador);
 		?>
 		<div id="carouselIndicadores<?=$k?>" class="carousel azul slide tab tab<?=$k?><?=$hide?>" data-ride="carousel">
@@ -173,15 +202,22 @@
 					{
 						$a++;
 						$b++;
+
+						$link = "";
+						if($indicador->link){
+							$link = $indicador->link;
+							if(substr($link, 0,4)!="http") $link = "https://".$link;
+						}
+
 						?>
 						<div class="fleft w33">
 							<?php 
-							if($pesquisa->link_resultado) echo "<a target='_blank' href='{$pesquisa->link_resultado}'>";
+							if($link) echo "<a target='_blank' href='{$link}'>";
 							echo $indicador->getImg('filename');
 							?>
 							<div class="title"><?=$indicador->titulo?></div>
 							<div class="subtitle"><?=$indicador->descricao?></div>
-							<?php if($pesquisa->link_resultado) echo "</a>";  ?>
+							<?php if($link) echo "</a>";  ?>
 						</div>
 						<?php if($b==3 && $a<$t){echo '</div><div class="carousel-item">'; $b=0; } } ?>
 					</div>
@@ -216,6 +252,7 @@
 		<?php 
 		$banner = new Banner();
 		$banner->tipo = 2;
+		$banner->flstatus = 1;
 		$banners = DaoSI::getList($banner);
 		$a=0;
 		foreach ($banners as $banner)
@@ -223,9 +260,14 @@
 			$a++;
 			$active = ($a==1)?'active':'';
 			if($banner->link) echo "<a target='_blank' href='{$banner->link}'>";
+
+			$img1 = $imgm = $banner->getImg('filename');
+			if($banner->filename_m) $imgm = $banner->getImg('filename_m');
+
 			?>
 			<div class="img">
-				<?=$banner->getImg('filename')?>
+				<span class="w-only"><?=$img1?></span>
+				<span class="m-only"><?=$imgm?></span>
 			</div>
 			<?php if($banner->link) echo "</a>"; 
 		} ?>
@@ -234,9 +276,22 @@
 		<h2>Parceiros</h2>
 		<div id="parceiros"></div>
 		<div class="parceiros">
-			<?php for ($i=0; $i < 15; $i++) { ?>
+			<?php
+
+			$banner = new Banner();
+			$banner->tipo = 3;
+			$banner->flstatus = 1;
+			$banners = DaoSI::getList($banner);
+
+			foreach ($banners as $banner){
+
+				$img1 = $imgm = $banner->getImg('filename');
+				if($banner->filename_m) $imgm = $banner->getImg('filename_m');
+
+				?>
 				<span class="u">
-					Lorem ipsum
+					<span class="w-only"><?=$img1?></span>
+					<span class="m-only"><?=$imgm?></span>
 				</span>
 			<?php } ?>
 		</div>

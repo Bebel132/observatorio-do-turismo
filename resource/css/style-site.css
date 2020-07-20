@@ -102,7 +102,7 @@ h2{
 }
 
 .superbanner{
-	background: #000;
+	background: #FFF;
 }
 
 .azul .carousel-control-prev-icon{
@@ -159,7 +159,7 @@ h2{
 }
 
 .institucional img{
-  width: 70%;
+	width: 70%;
 	position: absolute;
 	left: 50%;
 	top: 50%;
@@ -167,7 +167,7 @@ h2{
 }
 
 .icon span{
-  display: block;
+	display: block;
 	margin-top: 15px;
 	font-family: Roboto-Regular;
 	position: absolute;
@@ -181,10 +181,8 @@ h2{
 }
 
 .parceiros .u{
-	background: #EEE;
 	float: left;
 	width: 20%;
-	padding: 20px 0px;
 	border: 10px solid #FFF;
 	text-transform: uppercase;
 	font-size: 13px;
@@ -193,7 +191,7 @@ h2{
 }
 
 .parceiros .u:hover{
-	background: #BBB;
+	background: #fbfbfb;
 	transition: all 0.1s;
 }
 
@@ -210,6 +208,10 @@ footer img{
 	height: 40px;
 }
 
+footer .caf img{
+	height: 25px;
+}
+
 .temp-caixa{
 	height: 450px;
 }
@@ -217,6 +219,7 @@ footer img{
 .temp-caixa .middle{
 	background: #EEE;
 	width: 800px;
+	background-size: 100% auto;
 }
 
 .temp-caixa .caixa{
@@ -253,4 +256,77 @@ footer img{
 	color: #FFF;
 	text-shadow: 1px 1px 2px #000;
 	font-size: 13px
+}
+
+.w-only{ display: initial; }
+.m-only{ display: none; }
+
+@media only screen and (max-width: 600px) {
+	.w-only{ display: none; }
+	.m-only{ display: initial; }
+
+	.azul .carousel-control-next-icon
+	,.azul .carousel-control-prev-icon{
+		margin: 0px;
+	}
+
+	.container{
+		margin: 0px 0px;
+	}
+
+	.txt{
+		text-align:justify
+	}
+
+	.w33{
+		width:100%
+	}
+
+	.institucional .fleft{
+		margin:10px 0px;
+	}
+
+	.parceiros .u{
+		width:50%;
+	}
+
+	header .logo{
+		width: 80px;
+		padding: 10px 0px;
+	}
+
+
+	header .navbar{
+		margin: 3px 0px 0px 0px;
+		transition:all 0.5s;
+		float:right;
+		width:65%;
+		clear:none;
+		text-align:right;
+	}
+
+	header nav{
+		display:block;
+		width:100%;
+	}
+
+	header.min .navbar{
+		margin: 3px 0px 0px 0px;
+	}
+
+	header .navbar a{
+		display:block;
+		padding:5px 0px;
+		margin:0;
+	}
+
+	header.min .navbar a{
+
+		padding:0px;
+	}
+
+	.backheader{
+		height: 162px;
+	}
+
 }

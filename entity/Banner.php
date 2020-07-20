@@ -21,7 +21,7 @@ class Banner extends Entity
 	public $link;
 
 	/**
-	* @Column = {"name":"tipo" , "type":"integer" , "size" : "" , "label":"Localização" , "domain":{"1":"Topo","2":"Aplicativos e Sites"} }
+	* @Column = {"name":"tipo" , "type":"integer" , "size" : "" , "label":"Localização" , "domain":{"1":"Topo","2":"Aplicativos e Sites","3":"Parceiros","4":"Área Restrita"} }
 	*/
 	public $tipo;
 
@@ -29,5 +29,15 @@ class Banner extends Entity
 	* @Column = {"name":"filename" , "type":"varchar" , "size" : "255" , "mask" : "file" , "label":"Imagem"}
 	*/
 	public $filename;
+
+	/**
+	* @Column = {"name":"filename_m" , "type":"varchar" , "size" : "255" , "mask" : "file" , "label":"Imagem Mobile"}
+	*/
+	public $filename_m;
+
+	/**
+	* @Column = {"name":"flstatus" , "type":"integer" , "size" : "" , "label":"Status" , "domain":{"1":"Ativo","2":"Inativo"} }
+	*/
+	public $flstatus;
 
 }

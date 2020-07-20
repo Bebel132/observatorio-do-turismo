@@ -21,7 +21,7 @@ if(!$EntityEdit->id) return;
 			<form method="post" enctype="multipart/form-data">
 				<div class="modal-body">
 					<?php 
-					echo FrontEnd::form($EntityEdit,'Banner_editar');
+					echo FrontEnd::form($EntityEdit,$EntityClass.'_editar');
 					?>
 				</div>
 				<div class="modal-footer">

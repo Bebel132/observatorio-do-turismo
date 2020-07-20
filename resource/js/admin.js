@@ -6,18 +6,6 @@ function hideLoading() {
 	jq('.blockscreen').fadeOut();
 }
 
-
-boxsStart = Cookie.get('boxs');
-function togglePathsView() {
-	$('.boxs').toggleClass('boxs2');
-	if(boxsStart==""){
-		boxsStart='boxs2';
-	}else{
-		boxsStart="";
-	}
-	Cookie.set('boxs',boxsStart,3)
-}
-
 function appLoaded() {
 	jq(document).ready(function(){
 		hideLoading();
@@ -58,7 +46,6 @@ function appLoaded() {
 			return confirm(pergunta);
 		});
 
-		$('.boxs').addClass(boxsStart);
 
 		// window.onbeforeunload = function(){
 		// 	val = jq('.naoindexados .contador .alterados span').html();

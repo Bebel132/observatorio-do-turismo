@@ -21,7 +21,7 @@ class Indicador extends Entity
 	public $link;
 
 	/**
-	* @Column = {"name":"tipo" , "type":"integer" , "size" : "" , "label":"Status" , "domain":{"1":"Empregos","2":"Demandas","3":"Sazonalidade","4":"Receita","5":"Prestação de Serviços"} }
+	* @Column = {"name":"tipo" , "type":"integer" , "size" : "" , "label":"Tipo" , "domain": {"1":"Demanda Turística", "2":"Prestadores de Serviço", "3":"Sazonalidade / Ocupação", "4":"Impacto na Economia", "5":"Movimentação Aeroportuária", "6":"Empregos", "7":"Investimento Público", "8":"Receita Turística"} }
 	*/
 	public $tipo; 
 
@@ -30,4 +30,10 @@ class Indicador extends Entity
 	*/
 	public $filename;
 
+	/**
+	* @Column = {"name":"flstatus" , "type":"integer" , "size" : "" , "label":"Status" , "domain":{"1":"Ativo","2":"Inativo"} }
+	*/
+	public $flstatus;
+
 }
+

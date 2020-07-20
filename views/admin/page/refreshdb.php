@@ -1,7 +1,7 @@
 <?php 
 
 if(APPLICATION_ENV=='production'){
-	// DatabaseSi::create();
+	DatabaseSi::create();
 }else{
-	DatabaseSi::recreate();
+	DatabaseSi::create();
 }

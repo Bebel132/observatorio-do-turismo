@@ -21,7 +21,7 @@ class Usuario extends Entity
 	public $senha;
 
 	/**
-	* @Column = {"name":"perfil" , "type":"integer" , "size" : "" , "label":"Status" , "domain":{"1":"Admin","2":"Parceiro","3":"SETFOR"} }
+	* @Column = {"name":"perfil" , "type":"integer" , "size" : "" , "label":"Perfil" , "domain":{"1":"Admin","2":"Parceiro"} }
 	*/
 	public $perfil; //admin, parceiro, setfot
 
@@ -29,5 +29,11 @@ class Usuario extends Entity
 	* @Column = {"name":"instituicao" , "type":"varchar" , "size" : "255" , "label":"Instituição"}
 	*/
 	public $instituicao;
+
+
+	/**
+	* @Column = {"name":"flstatus" , "type":"integer" , "size" : "" , "label":"Status" , "domain":{"1":"Ativo","2":"Inativo"} }
+	*/
+	public $flstatus;
 
 }

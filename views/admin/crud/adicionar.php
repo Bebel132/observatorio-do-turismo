@@ -12,7 +12,7 @@
 				<div class="modal-body">
 					<?php 
 					$Entity = new $EntityClass();
-					echo FrontEnd::form($Entity,'Banner_adicionar');
+					echo FrontEnd::form($Entity,$EntityClass.'_adicionar');
 					?>
 				</div>
 				<div class="modal-footer">

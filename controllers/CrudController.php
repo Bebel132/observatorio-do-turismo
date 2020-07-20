@@ -6,33 +6,36 @@ class CrudController extends Controller
 {
 
 	public $alerts = [];
-	
 
 	public function request($Entity,$nametoken=null)
 	{
 		$anon = $Entity->getAnnotation();
-
 		$tb = DaoSI::getTableObj($Entity)['name'];
-
 		if(!$nametoken) $nametoken = get_class($Entity);
 
-		$csrf_token = getSession('csrf_token_'.$nametoken);
-		if(!isset($_POST['csrf_token']) || $_POST['csrf_token'] != $csrf_token) return;
+		if(!$this->csrfToken($nametoken)) return;
 
 		if(count($_POST)>0){
 
 			foreach ($Entity as $key => $value) {
+				$mask = (isset($anon['properties'][$key]['Column']['mask'])) ? ($anon['properties'][$key]['Column']['mask']) : 'text';
 				if(isset($_POST[$key])){
-					if(isset($anon['properties'][$key]['Column']['mask']) && $anon['properties'][$key]['Column']['mask']=='password'){
+					if($mask=='password'){
 						if(trim($_POST[$key])!="") $Entity->$key = PasswordCompat::password_hash($_POST[$key]);
 						else unset($Entity->$key);
 					}else{
-						$Entity->$key = $_POST[$key];
+						$Entity->$key = trim($_POST[$key]);
 					}
 				}
-				if(isset($_FILES[$key]) && $_FILES[$key]['size']>0) $Entity->$key = $this->fileUpload($tb,$_FILES[$key]);
+				if(isset($_FILES[$key]) && $_FILES[$key]['size']>0){
+					$filename = $this->fileUpload($tb,$_FILES[$key]);
+					if($filename) $Entity->$key = $filename;
+					else unset($Entity->$key);
+				}
+				if($mask=='file' && empty($Entity->$key)){
+					unset($Entity->$key);
+				}
 			}
-
 
 			$type = ($Entity->id)?'alterar':'adicionar';
 			$ok = DaoSi::merge($Entity);
@@ -44,6 +47,13 @@ class CrudController extends Controller
 
 		}
 		
+	}
+
+	public function csrfToken($nametoken)
+	{
+		$_token = getSession('_token_'.$nametoken);
+		delSession('_token_'.$nametoken);
+		return (isset($_POST['_token']) && $_POST['_token'] == $_token);
 	}
 
 	public function deleteByObj($obj)
@@ -60,12 +70,27 @@ class CrudController extends Controller
 		$result = [];
 		$EntityClass = get_class($Entity);
 		$tb = DaoSI::getTableObj($Entity);
-		$ids = DaoSI::querySelect("SELECT id FROM {$tb['name']} ORDER BY id DESC");
+
+		$offset = 0;
+		$limitt = 100;
+
+		if(isset($_GET['page']) && is_numeric($_GET['page'])){
+			$offset = ($_GET['page'] - 1) * $limitt;
+		}
+
+		$limit = "LIMIT {$limitt} OFFSET {$offset}";
+
+
+		$ids = DaoSI::querySelect("SELECT id FROM {$tb['name']} ORDER BY id DESC {$limit}");
 		foreach ($ids as $id) {
 			$result[$id['id']] = new $EntityClass($id['id']); 
 		}
-		return $result;
+
+		$total = DaoSI::querySelect("SELECT count(id) as total FROM {$tb['name']}")[0]['total'];
+		return ['results'=>$result,'total'=>$total];
+
 	}
+
 
 	public function fileUpload($dir,$file)
 	{

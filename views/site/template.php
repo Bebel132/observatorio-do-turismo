@@ -56,7 +56,7 @@
 					<span class="rs"> <a href="#"><?=FrontEnd::resource('footer_03.png')?></a> </span>
 				</div>
 				<div class="fright">
-					<span class="rs"> <a href="#"><?=FrontEnd::resource('footer_05.png')?></a> </span>
+					<span class="rs caf"> <a href="#"><?=FrontEnd::resource('caf-rdp.png')?></a> </span>
 					<span class="rs"> <a href="#"><?=FrontEnd::resource('footer_06.png')?></a> </span>
 					<span class="rs"> <a href="#"><?=FrontEnd::resource('footer_07.png')?></a> </span>
 					<span class="rs"> <a href="#"><?=FrontEnd::resource('footer_08.png')?></a> </span>
