@@ -187,7 +187,7 @@ h2{
 	text-transform: uppercase;
 	font-size: 13px;
 	transition: all 1.5s;
-	cursor: pointer;
+	/*cursor: pointer;*/
 }
 
 .parceiros .u:hover{

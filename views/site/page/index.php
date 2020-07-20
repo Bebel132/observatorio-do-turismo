@@ -288,12 +288,14 @@
 				$img1 = $imgm = $banner->getImg('filename');
 				if($banner->filename_m) $imgm = $banner->getImg('filename_m');
 
+				if($banner->link) echo "<a target='_blank' href='{$banner->link}'>";
 				?>
 				<span class="u">
 					<span class="w-only"><?=$img1?></span>
 					<span class="m-only"><?=$imgm?></span>
 				</span>
-			<?php } ?>
+				<?php if($banner->link) echo "</a>";
+			} ?>
 		</div>
 
 		<br>
