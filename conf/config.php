@@ -3,7 +3,7 @@
 date_default_timezone_set('America/Fortaleza');
 
 // application
-define('SHOWSQL_CRUD', true);
+define('SHOWSQL_CRUD', false);
 
 if(APPLICATION_ENV=='production'){
 	define('PATH_APP', '/');
