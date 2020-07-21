@@ -51,8 +51,8 @@
 		<footer>
 			<div class="container">
 				<div class="fleft">
-					<span class="rs"> <a href="#"><?=FrontEnd::resource('footer_01.png')?></a> </span>
-					<span class="rs"> <a href="#"><?=FrontEnd::resource('footer_02.png')?></a> </span>
+					<span class="rs"> <a href="https://www.facebook.com/secretariadoturismodefortaleza/" target="_blank"><?=FrontEnd::resource('footer_01.png')?></a> </span>
+					<span class="rs"> <a href="https://www.instagram.com/secretariadoturismodefortaleza/" target="_blank"><?=FrontEnd::resource('footer_02.png')?></a> </span>
 					<span class="rs"> <a href="#"><?=FrontEnd::resource('footer_03.png')?></a> </span>
 				</div>
 				<div class="fright">

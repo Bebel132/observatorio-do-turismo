@@ -249,28 +249,47 @@
 		<!-- Aplicativos e Sites -->
 		<h2>Aplicativos e Sites</h2>
 		<div id="aplicativos"></div>
-		<?php 
-		$banner = new Banner();
-		$banner->tipo = 2;
-		$banner->flstatus = 1;
-		$banners = DaoSI::getList($banner);
-		$a=0;
-		foreach ($banners as $banner)
-		{
-			$a++;
-			$active = ($a==1)?'active':'';
-			if($banner->link) echo "<a target='_blank' href='{$banner->link}'>";
 
-			$img1 = $imgm = $banner->getImg('filename');
-			if($banner->filename_m) $imgm = $banner->getImg('filename_m');
 
-			?>
-			<div class="img">
-				<span class="w-only"><?=$img1?></span>
-				<span class="m-only"><?=$imgm?></span>
+		<div id="carouselAplicativos" class="carousel slide" data-ride="carousel">
+			<div class="carousel-inner">
+				<?php 
+				$banner = new Banner();
+				$banner->tipo = 2;
+				$banner->flstatus = 1;
+				$banners = DaoSI::getList($banner);
+				$a=0;
+				foreach ($banners as $banner)
+				{
+
+					$img1 = $imgm = $banner->getImg('filename');
+					if($banner->filename_m) $imgm = $banner->getImg('filename_m');
+
+					$a++;
+					$active = ($a==1)?'active':'';
+
+					?>
+					<div class="carousel-item <?=$active?>">
+						<?php 
+						if($banner->link) echo "<a target='_blank' href='{$banner->link}'>";
+						echo "<span class='w-only'>{$img1}</span>";
+						echo "<span class='m-only'>{$imgm}</span>";
+						if($banner->link) echo "</a>"; 
+						?>
+					</div>
+					<?php 
+				} ?>
 			</div>
-			<?php if($banner->link) echo "</a>"; 
-		} ?>
+			<a class="carousel-control-prev" href="#carouselAplicativos" role="button" data-slide="prev">
+				<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+				<span class="sr-only">Previous</span>
+			</a>
+			<a class="carousel-control-next" href="#carouselAplicativos" role="button" data-slide="next">
+				<span class="carousel-control-next-icon" aria-hidden="true"></span>
+				<span class="sr-only">Next</span>
+			</a>
+		</div>
+
 
 		<!-- Parceiros -->
 		<h2>Parceiros</h2>
