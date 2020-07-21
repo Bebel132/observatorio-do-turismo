@@ -14,7 +14,7 @@
 					$username = $_POST['username'];
 					if(User::singon($_POST['username'],$_POST['password'],$_POST['token'])){
 						FrontEnd::alert('Sucesso! Redirecionando..','success',false);
-						Utils::redirect('./admin',1);
+						Utils::redirect(FrontEnd::raiz().'admin/inicio',1);
 						$showform = false;
 					}else{
 						foreach (User::$error as $erro) {
