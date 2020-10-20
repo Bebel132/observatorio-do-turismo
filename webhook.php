@@ -1,7 +1,7 @@
 <?php
 
 // verifica se a requisição vem do servidor gitlab
-$gitlab_ips = array('192.168.2.31', '172.31.3.8', '172.31.3.48', '127.0.0.1');
+$gitlab_ips = array('192.168.2.31', '172.31.3.8', '172.31.3.48', '127.0.0.1','172.30.79.252');
 if (!in_array($_SERVER['REMOTE_ADDR'], $gitlab_ips)) {
     throw new Exception("Isto não parece uma requisição válida do Gitlab.\n");
 }
