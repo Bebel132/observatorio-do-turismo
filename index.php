@@ -15,14 +15,6 @@ if(!defined('APPLICATION_ENV')){
 }
 
 
-echo "test:";
-echo APPLICATION_ENV;
-echo "develop";
-echo "<pre>";
-print_r($_SERVER);
-echo "</pre>";
-exit;
-
 // Configurações
 require_path('conf/');
 
