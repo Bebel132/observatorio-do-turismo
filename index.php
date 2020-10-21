@@ -9,6 +9,10 @@ defined('APPLICATION_ENV') || define('APPLICATION_ENV', (getenv('APPLICATION_ENV
 
 echo "test:";
 echo APPLICATION_ENV;
+echo "develop";
+echo "<pre>";
+print_r($_SERVER);
+echo "</pre>";
 exit;
 
 // Configurações
