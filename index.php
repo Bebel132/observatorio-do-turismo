@@ -1,4 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Observatorio do Turísmo</title>
+</head>
+<body>
+	<center>
+		<br>
+		<h3>Em Manutenção</h3>
+	</center>
+</body>
+</html>
 <?php 
+
+exit;
 
 session_start();
 
