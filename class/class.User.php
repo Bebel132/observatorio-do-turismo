@@ -9,31 +9,30 @@ class User
 
 	static function getToken()
 	{
-		$token = md5(time().'Banana');
-		setSession('token',$token);
+		$token = md5(time().'Melancia');
+		$_SESSION['token'] = $token;
 		return $token;
 	}
 
 	static function checkToken($token)
 	{
-		$tokenSession = getSession('token');
-		if(!$tokenSession){
+		if(!isset($_SESSION['token'])){
 			self::setError('Token inativo');
 			return false;
 		}
-		elseif($token==$tokenSession)
+		elseif($token==$_SESSION['token'])
 		{
 			return true;
 		}else
 		{
-			delSession('token');
+			unset($_SESSION['token']);
 			return false;
 		}
 	}
 	
 	static function isLoged()
 	{
-		if(getSession('useron'))
+		if(isset($_SESSION['useron']) && $_SESSION['useron'])
 			return true;
 		return false;
 	}
@@ -57,26 +56,18 @@ class User
 			self::setError('Username e Senha necessários');
 		}elseif(self::checkToken($token)){
 
-			$tentativas_n = getSession('tentativas_n');
+			$_SESSION['tentativas_n'] = (isset($_SESSION['tentativas_n']))?$_SESSION['tentativas_n']-1:LOGIN_TENTATIVAS;
 
-			if($tentativas_n){
-				$tentativas_n--;
-			}else{
-				$tentativas_n = LOGIN_TENTATIVAS;
-			}
-			setSession('tentativas_n',$tentativas_n);
-
-			if($tentativas_n<=0){
-				setSession('tentativas_dt',date('Y-m-d H:i:s'));
+			if($_SESSION['tentativas_n']<=0){
+				$_SESSION['tentativas_dt'] = date('Y-m-d H:i:s');
 				self::setError('Acabaram suas tentativas');
 				Utils::redirect('./');
 			}else{
-				
-				$result = DaoSI::querySelect("SELECT * FROM usuarios WHERE email='{$user}' AND perfil=1 LIMIT 1");
-
-				if(isset($result[0]) && PasswordCompat::password_verify($pass,$result[0]['senha'])){
-					delSession('tentativas_n');
-					setSession('useron',new Usuario($result[0]['id']));
+				$CMISService = new CMISService(CMIS_URL.CMIS_SERV, $user, $pass);
+				if($CMISService->authenticated){
+					unset($_SESSION['tentativas_n']);
+					$_SESSION['useron']['user'] = $user;
+					$_SESSION['useron']['pass'] = $pass;
 					return true;
 				}else{
 					self::setError('Usuário e/ou senha inválido(s)');
@@ -85,40 +76,31 @@ class User
 		}else{
 			self::setError('Token inválido');
 		}
-		delSession('useron');
-		return false;
-	}
-
-	static function singonParceiro($user,$pass,$token)
-	{
-
-		$user = trim($user);
-
-		if(!$user || !$pass){
-			self::setError('Username e Senha necessários');
-		}elseif(self::checkToken($token)){
-
-			$result = DaoSI::querySelect("SELECT * FROM usuarios WHERE email='{$user}' AND perfil=2 LIMIT 1");
-
-			if(isset($result[0]) && PasswordCompat::password_verify($pass,$result[0]['senha'])){
-				setSession('ParceiroLogado',new Usuario($result[0]['id']));
-				return true;
-			}else{
-				self::setError('Usuário e/ou senha inválido(s)');
-			}
-		}else{
-			self::setError('Token inválido');
-		}
-		delSession('ParceiroLogado');
+		if(isset($_SESSION['useron']))
+			unset($_SESSION['useron']);
 		return false;
 	}
 
 	static public function logout()
 	{
-		delSession('useron');
+		if(isset($_SESSION['useron']))
+			unset($_SESSION['useron']);
 		Utils::redirect('./',1);
 	}
 
+	static function getUsername()
+	{
+		if(isset($_SESSION['useron']['user']))
+			return $_SESSION['useron']['user'];
+		return false;
+	}
+
+	static function getPassword()
+	{
+		if(isset($_SESSION['useron']['pass']))
+			return $_SESSION['useron']['pass'];
+		return false;
+	}
 
 }
 ?>

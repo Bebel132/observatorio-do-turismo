@@ -12,57 +12,182 @@
 
 	<link rel="icon" href="<?=FrontEnd::resource('logo.svg',1)?>" />
 
-	<?= FrontEnd::resource('jquery-3.3.1.min.js'); ?>
-	<script> jq = jQuery.noConflict( true ); </script>
 	<?php
-	// echo FrontEnd::resource('cookie.js');
-	echo FrontEnd::resource('main.js');
-	// echo FrontEnd::resource('reset.css');
-	echo FrontEnd::resource('style-site.css');
+
+	// FrontEnd::resource('jquery-3.3.1.min.js');
+	// FrontEnd::resource('cookie.js');
+	// FrontEnd::resource('main.js');
+	FrontEnd::resource('reset.css');
+	FrontEnd::resource('style-site.css');
+
 	?>
+
+	<script> //jq = jQuery.noConflict( true ); </script>
+
 
 </head>
 <body>
+
 	<center>
-		<div class="backheader"></div>
+
+
 		<header>
 			<div class="container">
 				<div class="logo fleft">
-					<a href="<?=$raiz?>./">
-						<?=FrontEnd::resource('logo.svg')?>
-					</a>
+					<?=FrontEnd::resource('logo.svg')?>
 				</div>
 				<div class="navbar fleft">
 					<nav>
-						<a href="<?=FrontEnd::raiz()?>./#home" class="rollto active">Home</a>
-						<a href="<?=FrontEnd::raiz()?>./#pesquisas" class="rollto">Pesquisas</a>
-						<a href="<?=FrontEnd::raiz()?>./#indicadores" class="rollto">Indicadores</a>
-						<a href="<?=FrontEnd::raiz()?>./#dashboards" class="rollto">Dashboards</a>
-						<a href="<?=FrontEnd::raiz()?>./#aplicativos" class="rollto">Aplicativos e Sites</a>
+						<a href="#" class="active">Home</a>
+						<a href="#">Pesquisas</a>
+						<a href="#">Indicadores</a>
+						<a href="#">Dashboards</a>
+						<a href="#">Aplicativos e Sites</a>
 					</nav>
 				</div>
 			</div>
 		</header>
 
-		<section class="page">
-			<?php FrontEnd::page(); ?>
-		</section>
-
-		<footer>
-			<div class="container">
-				<div class="fleft">
-					<span class="rs"> <a href="#"><?=FrontEnd::resource('footer_01.png')?></a> </span>
-					<span class="rs"> <a href="#"><?=FrontEnd::resource('footer_02.png')?></a> </span>
-					<span class="rs"> <a href="#"><?=FrontEnd::resource('footer_03.png')?></a> </span>
+		<div class="superbanner">
+			<div id="carouselSuperbanner" class="carousel slide" data-ride="carousel">
+				
+				<div class="carousel-inner">
+					<div class="carousel-item active">
+						<?=FrontEnd::resource('test-banner.jpg')?>
+					</div>
+					<div class="carousel-item">
+						<?=FrontEnd::resource('test-banner.jpg')?>
+					</div>
+					<div class="carousel-item">
+						<?=FrontEnd::resource('test-banner.jpg')?>
+					</div>
 				</div>
-				<div class="fright">
-					<span class="rs caf"> <a href="#"><?=FrontEnd::resource('caf-rdp.png')?></a> </span>
-					<span class="rs"> <a href="#"><?=FrontEnd::resource('footer_06.png')?></a> </span>
-					<span class="rs"> <a href="#"><?=FrontEnd::resource('footer_07.png')?></a> </span>
-					<span class="rs"> <a href="#"><?=FrontEnd::resource('footer_08.png')?></a> </span>
+
+				<a class="carousel-control-prev" href="#carouselSuperbanner" role="button" data-slide="prev">
+					<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+					<span class="sr-only">Previous</span>
+				</a>
+				<a class="carousel-control-next" href="#carouselSuperbanner" role="button" data-slide="next">
+					<span class="carousel-control-next-icon" aria-hidden="true"></span>
+					<span class="sr-only">Next</span>
+				</a>
+			</div>
+		</div>
+
+		<div class="container">
+
+			<h2>O que é o Observatório do Turismo</h2>
+
+			<div class="txt">
+				Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+				tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+				quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+				consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+				cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+				proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+				Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+				tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+				quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+				consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+				cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+				proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+			</div>
+
+			<div class="institucional">
+				<div class="fleft w33">
+					<div class="icon">
+						<?=FrontEnd::resource('icon-missao.svg')?>
+						<span>MISSÃO</span>
+					</div>
+					<div class="txt">
+						Auxiliar na tomada de decisão dos setores
+						público e privado para o desenvolvimento da
+						economia do Turismo, fornecendo informações
+						segmentadas e específicas, agregando à
+						cadeia produtiva.
+					</div>
+				</div>
+				<div class="fleft w33">
+					<div class="icon">
+						<?=FrontEnd::resource('icon-visao.svg')?>
+						<span>VISÃO</span>
+					</div>
+					<div class="txt">
+						Ser referência no provimento de
+						informações capazes de promover o
+						desenvolvimento econômico através de
+						qualificação continuada e
+						processos bem definidos.
+					</div>
+				</div>
+				<div class="fleft w33">
+					<div class="icon">
+						<?=FrontEnd::resource('icon-valores.svg')?>
+						<span>VALORES</span>
+					</div>
+					<div class="txt">
+						VALORES: <br>
+						1. Inovação <br>
+						2. Sustentabilidade <br>
+						3. Criatividade <br>
+						4. Credibilidade <br>
+						5. Compromisso com a gestão <br>
+						6. Respeito às pessoas <br>
+						7. Ética, transparência e honestidade <br>
+						8. Integração e Colaboração <br>
+					</div>
 				</div>
 			</div>
-		</footer>
+
+
+			<h2>Pesquisas</h2>
+
+			<div class="pesquisas">
+				<div id="carouselPesquisas" class="carousel slide" data-ride="carousel">
+					
+					<div class="carousel-inner">
+						<div class="carousel-item active">
+							<div class="fleft w33"><?=FrontEnd::resource('test-pesquisa1.jpg')?></div>
+							<div class="fleft w33"><?=FrontEnd::resource('test-pesquisa2.jpg')?></div>
+							<div class="fleft w33"><?=FrontEnd::resource('test-pesquisa3.jpg')?></div>
+						</div>
+						<div class="carousel-item">
+							<div class="fleft w33"><?=FrontEnd::resource('test-pesquisa1.jpg')?></div>
+							<div class="fleft w33"><?=FrontEnd::resource('test-pesquisa2.jpg')?></div>
+							<div class="fleft w33"><?=FrontEnd::resource('test-pesquisa3.jpg')?></div>
+						</div>
+					</div>
+
+					<a class="carousel-control-prev" href="#carouselPesquisas" role="button" data-slide="prev">
+						<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+						<span class="sr-only">Previous</span>
+					</a>
+					<a class="carousel-control-next" href="#carouselPesquisas" role="button" data-slide="next">
+						<span class="carousel-control-next-icon" aria-hidden="true"></span>
+						<span class="sr-only">Next</span>
+					</a>
+				</div>
+			</div>
+
+
+			<h2>Indicadores</h2>
+
+
+
+			<!-- iframe -->
+			<div style="height: 500px; background: #EEE">
+				<div class="middle">
+					<h2 style="color: #CCC">IFRAME DASHBOARD</h2>
+				</div>
+			</div>
+
+
+
+			
+
+		</div>
+
+
 
 	</center>
 

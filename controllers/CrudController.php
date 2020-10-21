@@ -74,19 +74,21 @@ class CrudController extends Controller
 		$offset = 0;
 		$limitt = 100;
 
+
 		if(isset($_GET['page']) && is_numeric($_GET['page'])){
 			$offset = ($_GET['page'] - 1) * $limitt;
 		}
 
 		$limit = "LIMIT {$limitt} OFFSET {$offset}";
 
-
-		$ids = DaoSI::querySelect("SELECT id FROM {$tb['name']} ORDER BY id DESC {$limit}");
+		DaoSI::setDatabase($Entity);
+		$idField = DaoSI::getIdField($Entity);
+		$ids = DaoSI::querySelect("SELECT {$idField} FROM {$tb['name']} ORDER BY {$idField} DESC {$limit}");
 		foreach ($ids as $id) {
-			$result[$id['id']] = new $EntityClass($id['id']); 
+			$result[$id[$idField]] = new $EntityClass($id[$idField]); 
 		}
 
-		$total = DaoSI::querySelect("SELECT count(id) as total FROM {$tb['name']}")[0]['total'];
+		$total = DaoSI::querySelect("SELECT count({$idField}) as total FROM {$tb['name']}")[0]['total'];
 		return ['results'=>$result,'total'=>$total];
 
 	}
