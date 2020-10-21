@@ -6,7 +6,7 @@ date_default_timezone_set('America/Fortaleza');
 define('SHOWSQL_CRUD', false);
 
 if(APPLICATION_ENV=='production'){
-	define('PATH_APP', '/obsturismo/');
+	define('PATH_APP', '/');
 }elseif(APPLICATION_ENV=='testing'){
 	define('PATH_APP', '/obsturismo/');
 }else{
