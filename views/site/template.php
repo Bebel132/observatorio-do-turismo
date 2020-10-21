@@ -17,8 +17,8 @@
 	// FrontEnd::resource('jquery-3.3.1.min.js');
 	// FrontEnd::resource('cookie.js');
 	// FrontEnd::resource('main.js');
-	FrontEnd::resource('reset.css');
-	FrontEnd::resource('style-site.css');
+	echo FrontEnd::resource('reset.css');
+	echo FrontEnd::resource('style-site.css');
 
 	?>
 

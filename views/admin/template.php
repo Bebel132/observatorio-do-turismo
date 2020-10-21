@@ -17,10 +17,10 @@
 
 	<?php
 
-	FrontEnd::resource('jquery-3.3.1.min.js');
-	FrontEnd::resource('cookie.js');
-	FrontEnd::resource('admin.js');
-	FrontEnd::resource('style-admin.css');
+	echo FrontEnd::resource('jquery-3.3.1.min.js');
+	echo FrontEnd::resource('cookie.js');
+	echo FrontEnd::resource('admin.js');
+	echo FrontEnd::resource('style-admin.css');
 
 	?>
 
