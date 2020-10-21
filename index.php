@@ -9,6 +9,7 @@ defined('APPLICATION_ENV') || define('APPLICATION_ENV', (getenv('APPLICATION_ENV
 
 echo "test:";
 echo APPLICATION_ENV;
+echo "master";
 exit;
 
 // Configurações
