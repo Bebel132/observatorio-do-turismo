@@ -12,7 +12,7 @@ class Controller
 		if(!isset(self::$current)) 
 		{
 			$vars = Utils::getUrlVars();
-			$section = (count($vars)>0)?$vars[1]:PAGE_INITIAL;
+			$section = (count($vars)>0)?$vars[0]:PAGE_INITIAL;
 			$nameClass = str_replace(' ', '', ucwords(str_replace('-', ' ', $section))).'Controller';
 
 			if(class_exists($nameClass))

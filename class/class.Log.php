@@ -29,7 +29,7 @@ class Log
 		$Rastreio->request = $_REQUEST;
 		if($ext)
 			$Rastreio->ext = $ext;
-
+		dd('Rastreio');
 		DaoSI::persist($Rastreio);
 
 	}

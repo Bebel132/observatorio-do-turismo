@@ -52,7 +52,13 @@ class DatabaseSi
 
 		return $sqls;
 
-
+// 		CREATE TABLE tbeixo
+// (
+//   cdeixo serial NOT NULL,
+//   dseixo character varying(255),
+//   dsresumo character varying(1000),
+//   CONSTRAINT tbeixo_pkey PRIMARY KEY (cdeixo)
+// )
 	}
 
 	static function getSqlByEntity($Entity)

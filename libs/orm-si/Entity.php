@@ -6,14 +6,14 @@ class Entity
 {
 	
 	/**	
-	 * @Column = {"name":"id","type":"serial","size":"","index":""}
+	 * @Id = {"name":"id","type":"serial","size":"","index":""}
 	 */
 	public $id;
 
 	/**	
 	 * @Column = {"name":"timestamp","type":"timestamp","index":"NOT NULL"}
 	 */
-	public $timestamp; 
+	// public $timestamp; 
 
 	function __construct($id=null)
 	{
@@ -37,7 +37,7 @@ class Entity
 		return PhpAnnotation::get($this);
 	}
 
-	public function getImg($attr,$onlyurl=false)
+	public function getImg($attr)
 	{
 		$anon = $this->getAnnotation();
 
@@ -53,7 +53,7 @@ class Entity
 			$parts = explode('.', $value);
 			$ext = strtolower($parts[count($parts)-1]);
 			if(in_array($ext, ['jpg','jpeg','gif','png'])){
-				$value = FrontEnd::resource("../uploads/{$tb}/".$value,$onlyurl);
+				$value = FrontEnd::resource("../uploads/{$tb}/".$value);
 			}
 		}
 		return $value;
