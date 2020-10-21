@@ -8,7 +8,7 @@ function require_path($diretorio){$dir = dir($diretorio);while($arquivo = $dir->
 // defined('APPLICATION_ENV') || define('APPLICATION_ENV', (getenv('APPLICATION_ENV') ? getenv('APPLICATION_ENV') : 'development'));
 
 if(!defined('APPLICATION_ENV')){
-	if($_SERVER['SERVER_ADDR']=="172.30.79.25")
+	if($_SERVER['SERVER_ADDR']=="172.30.79.252")
 		define('APPLICATION_ENV','production');
 	else
 		define('APPLICATION_ENV', (getenv('APPLICATION_ENV') ? getenv('APPLICATION_ENV') : 'development'));
