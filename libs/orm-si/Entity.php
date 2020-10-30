@@ -6,14 +6,14 @@ class Entity
 {
 	
 	/**	
-	 * @Column = {"name":"id","type":"serial","size":"","index":""}
+	 * @Id = {"name":"id","type":"serial","size":"","index":""}
 	 */
 	public $id;
 
 	/**	
 	 * @Column = {"name":"timestamp","type":"timestamp","index":"NOT NULL"}
 	 */
-	public $timestamp; 
+	// public $timestamp; 
 
 	function __construct($id=null)
 	{

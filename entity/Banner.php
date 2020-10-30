@@ -40,4 +40,9 @@ class Banner extends Entity
 	*/
 	public $flstatus;
 
+	/**	
+	 * @Column = {"name":"timestamp","type":"timestamp","index":"NOT NULL"}
+	 */
+	public $timestamp; 
+
 }
