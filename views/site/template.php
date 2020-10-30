@@ -28,7 +28,7 @@
 		<header>
 			<div class="container">
 				<div class="logo fleft">
-					<a href="<?=$raiz?>./">
+					<a href="<?=FrontEnd::raiz()?>./">
 						<?=FrontEnd::resource('logo.svg')?>
 					</a>
 				</div>
