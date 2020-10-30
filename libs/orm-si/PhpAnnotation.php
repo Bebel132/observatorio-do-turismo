@@ -9,44 +9,17 @@ class PhpAnnotation
 	static $ReflectionClass;
 	static $ReflectionClassParent;
 
-	static $class;
-	static $properties;
-	static $Id;
-
 	static function get($class)
 	{
 		
 		self::$ReflectionClass = new ReflectionClass($class);
 		self::$ReflectionClassParent = self::$ReflectionClass->getParentClass();
 		
+		$res['class'] = self::commentToArray(self::$ReflectionClass->getDocComment());
 
-		self::$class = self::commentToArray(self::$ReflectionClass->getDocComment());
-		self::$properties = self::getPropriedades();
-
-		self::setIdColumn();
-		
-		$res['class'] = self::$class;
-		$res['properties'] = self::$properties;
-		$res['id'] = self::$Id;
-
+		$res['properties'] = self::getPropriedades();
 		
 		return $res;
-
-	}
-
-	private function setIdColumn()
-	{
-		
-		self::$Id = ['name'=>'id','type'=>'serial'];
-
-		foreach (self::$properties as $name => $value) {
-			foreach ($value as $key => $value2) {
-				if(strtolower($key)=='id'){
-					self::$Id = $value2;
-					self::$properties[$name] = ['Column'=>self::$Id];
-				}
-			}
-		}
 
 	}
 
@@ -65,9 +38,6 @@ class PhpAnnotation
 		foreach ($props as $k => $v) {
 			$a[$v->name] = self::getPropertyAnnotations($v->name);
 		}
-
-		
-
 
 		return $a;
 

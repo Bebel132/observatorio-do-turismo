@@ -52,7 +52,7 @@
 			<div class="row">
 				<nav class="col-sm-3 col-md-2 hidden-xs-down bg-faded sidebar">
 					<div class="logo">
-						<?php FrontEnd::resource('logo.png'); ?>
+						<?= FrontEnd::resource('logo.png'); ?>
 					</div>
 					<ul class="nav nav-pills flex-column">
 						<?php FrontEnd::navAdmin(); ?>
@@ -67,7 +67,7 @@
 						
 					</section>
 					<div class="logo-iplanfor">
-						<?php FrontEnd::resource('logo-Iplanfor.png'); ?>
+						<?= FrontEnd::resource('logo-Iplanfor.png'); ?>
 					</div>
 				</main>
 			</div>

@@ -1,7 +1,5 @@
 <?php 
 
-$token = User::getToken();
-
 $banner = new Banner();
 $banner->tipo = 4;
 $banner->flstatus = 1;
@@ -22,7 +20,7 @@ if($banner){
 				<form method="post" action="<?=FrontEnd::raiz()?>area-restrita">
 					<input type="email" name="email" placeholder="EMAIL">
 					<input type="password" name="senha" placeholder="SENHA">
-					<input type="hidden" name="token" value="<?=$token?>">
+					<input type="text" name="_token" value="<?=User::getToken()?>">
 					<button class="btn btn-warning btn-sm">entrar</button>
 				</form>
 			</div>

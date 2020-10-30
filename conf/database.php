@@ -26,14 +26,15 @@ if(APPLICATION_ENV=='production'){
 	);
 
 
+
 }elseif(APPLICATION_ENV=='testing'){
 
 	$GLOBALS['db']['default'] = array(
 		'dsn'	=> '',
 		'hostname' => '172.31.3.48',
-		'username' => 'postgres',
-		'password' => '@1a2b3c4d*',
-		'database' => 'acervoadmin',
+		'username' => 'homolog_user',
+		'password' => 'homolog_user@59753',
+		'database' => 'obsturismo',
 		'schema'   => 'public',
 		'dbdriver' => 'pgsql',
 		'dbprefix' => '',
@@ -52,15 +53,16 @@ if(APPLICATION_ENV=='production'){
 	);
 
 
+
 }else{
 
 	// development
 	$GLOBALS['db']['default'] = array(
 		'dsn'	=> '',
-		'hostname' => '172.31.3.8',
-		'username' => 'postgres',
-		'password' => '@1a2b3c4d*',
-		'database' => 'acervoadmin',
+		'hostname' => '172.31.3.48',
+		'username' => 'homolog_user',
+		'password' => 'homolog_user@59753',
+		'database' => 'obsturismo',
 		'schema'   => 'public',
 		'dbdriver' => 'pgsql',
 		'dbprefix' => '',
@@ -80,5 +82,3 @@ if(APPLICATION_ENV=='production'){
 
 
 }
-
-?>

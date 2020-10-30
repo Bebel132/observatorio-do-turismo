@@ -1,7 +1,7 @@
 <div class="pagelogin">
 	<div class="box">
 		<span class="logo">
-			<?php FrontEnd::resource('logo.svg'); ?>
+			<?= FrontEnd::resource('logo.svg'); ?>
 		</span>
 		<form method="post">
 			<div class="form-group">
@@ -12,7 +12,7 @@
 				$username = '';
 				if(count($_POST)>0 && isset($_POST['username']) && isset($_POST['password'])){
 					$username = $_POST['username'];
-					if(User::singon($_POST['username'],$_POST['password'],$_POST['token'])){
+					if(User::singon($_POST['username'],$_POST['password'],$_POST['_token'])){
 						FrontEnd::alert('Sucesso! Redirecionando..','success',false);
 						// FrontEnd::alert('Sincronizando. Isso pode demorar um pouco. Aguarde!','warning',false);
 						delSession('ni_f2040_total');
@@ -62,7 +62,7 @@
 				</div>
 			<?php } ?>
 
-			<input type="hidden" name="token" value="<?=$token?>">
+			<input type="hidden" name="_token" value="<?=$token?>">
 		</form>
 	</div>
 

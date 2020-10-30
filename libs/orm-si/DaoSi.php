@@ -14,9 +14,7 @@ class DaoSi {
 
 	static function setDb($db)
 	{
-		if($db == self::$db) return;
 		self::$db = $db;
-		self::$CONN = null;
 	}
 
 	static function execute($query)
@@ -35,8 +33,6 @@ class DaoSi {
 		
 		/* SHOW_CRUD */ if(self::$SHOWSQL_CRUD) { echo '<pre>['.$SQL.']</pre>'; }
 		$con = self::conecta();
-
-		// dd(self::$config);
 
 		if($con){
 			$query = $con->prepare($SQL);
@@ -105,7 +101,7 @@ class DaoSi {
 
 	}
 	
-	static function insert($tb,$dados,$idColumn='id')
+	static function insert($tb,$dados)
 	{
 
 		$arrCampos = array_keys($dados);
@@ -137,7 +133,6 @@ class DaoSi {
 
 		try{
 
-
 			$conn = self::conecta();
 			$query = $conn->prepare($SQL);
 
@@ -157,7 +152,7 @@ class DaoSi {
 				$conn->commit(); 
 
 				if(!$id){
-					$getid = self::querySelect("SELECT {$idColumn} AS id FROM {$tb} ORDER BY {$idColumn} DESC LIMIT 1");
+					$getid = self::querySelect("SELECT id FROM {$tb} ORDER BY id DESC LIMIT 1");
 					if($getid) $id = $getid[0]['id'];
 				}
 
@@ -185,7 +180,7 @@ class DaoSi {
 
 	}
 
-	static function update($tb,$dados,$where,$idColumn='id')
+	static function update($tb,$dados,$where)
 	{
 		
 		$where = addslashes($where);
@@ -228,8 +223,8 @@ class DaoSi {
 				$conn->commit();
 				
 
-				if(isset($dados[$idColumn]))
-					return $dados[$idColumn];
+				if(isset($dados['id']))
+					return $dados['id'];
 				return true;
 
 			} catch(PDOExecption $e) { 
@@ -267,8 +262,7 @@ class DaoSi {
 		//$where = addslashes($where);
 		
 		try{
-
-			$SQL = "SELECT * FROM ".$tb." WHERE ".$where." ";
+			$SQL = "SELECT 'id' FROM ".$tb." WHERE ".$where." ";
 			$query = self::conecta()->prepare($SQL);
 			
 			/* SHOW_CRUD */ if(self::$SHOWSQL_CRUD) { echo '<pre>['.$SQL.']</pre>'; }
@@ -340,7 +334,6 @@ class DaoSi {
 		$properties = $obj->getAnnotation()['properties'];
 
 		$tableName = self::getTableObj($obj)['name'];
-		$idColumn = self::getIdField($obj);
 
 		if(isset($obj->id))
 			unset($obj->id);
@@ -361,15 +354,8 @@ class DaoSi {
 			}
 		}
 
-		self::setDatabase($obj);
-
-
-		unset($dados[$idColumn]);
 		unset($dados['id']);
-
-		if(array_key_exists('timestamp', $dados)) $dados['timestamp'] = date('Y-m-d G:i:s');
-		
-
+		$dados['timestamp'] = date('Y-m-d G:i:s');
 		$insert = self::insert($tableName,$dados);
 
 		if($insert){
@@ -386,7 +372,6 @@ class DaoSi {
 		$properties = $obj->getAnnotation()['properties'];
 
 		$tableName = self::getTableObj($obj)['name'];
-		$idColumn = self::getIdField($obj);
 
 		foreach ($obj as $k => $v) {
 			if(isset($properties[$k]['Column']['name'])){
@@ -402,16 +387,13 @@ class DaoSi {
 			}
 		}
 
-		self::setDatabase($obj);
-
 		if(isset($obj->id) && $obj->id){
-			$where = $idColumn."=".$obj->id;
-			if(array_key_exists('timestamp', $dados)) unset($dados['timestamp']);
+			$where = "id=".$obj->id;
+			unset($dados['timestamp']);
 			$insert = self::update($tableName,$dados,$where);
 		}else{
-			unset($dados[$idColumn]);
 			unset($dados['id']);
-			if(array_key_exists('timestamp', $dados)) $dados['timestamp'] = date('Y-m-d G:i:s');
+			$dados['timestamp'] = date('Y-m-d G:i:s');
 			$insert = self::insert($tableName,$dados);
 		}
 
@@ -427,11 +409,9 @@ class DaoSi {
 	{
 
 		$tableName = self::getTableObj($obj)['name'];
-		$idColumn = self::getIdField($obj);
 
 		if(isset($obj->id)){
-			$where = $idColumn."=".$obj->id;
-			self::setDatabase($obj);
+			$where = "id=".$obj->id;
 			return self::delete($tableName,$where);
 		}
 		return false;
@@ -441,21 +421,14 @@ class DaoSi {
 	{
 
 		$properties = $obj->getAnnotation()['properties'];
-		$idColumn = self::getIdField($obj);
 
 		$tableName = self::getTableObj($obj)['name'];
 
-		self::setDatabase($obj);
-		$result = self::querySelect("SELECT * FROM {$tableName} WHERE {$idColumn}={$id} LIMIT 1");
+		$result = self::querySelect("SELECT * FROM {$tableName} WHERE id={$id} LIMIT 1");
 
 		foreach ($properties as $attr => $column) {
-			if(isset($column['Column']['name']))
 			$columns[ $column['Column']['name'] ] = $attr;
 		}
-
-		// $columns[$idColumn] = $idColumn;
-
-		// dd($columns);;
 
 		if($result)
 		{
@@ -475,14 +448,12 @@ class DaoSi {
 
 		$properties = $obj->getAnnotation()['properties'];
 		foreach ($properties as $attr => $column) {
-			if(isset($column['Column']['name']))
 			$columns[ $column['Column']['name'] ] = $attr;
 		}
 
 		$result = [];
 		$EntityClass = get_class($obj);
 		$tb = self::getTableObj($obj);
-		$idColumn = self::getIdField($obj);
 		$addSql = "WHERE (true)";
 		foreach ($obj as $attr => $value) {
 			if($value || $value===0 || $value==="0"){
@@ -492,7 +463,7 @@ class DaoSi {
 			}
 		}
 
-		if(!$orderby) $orderby = "{$idColumn} DESC";
+		if(!$orderby) $orderby = "id DESC";
 		$addSql .= " ORDER BY ".$orderby;
 
 		if($limit) 
@@ -504,14 +475,13 @@ class DaoSi {
 		// }
 
 		// otimized
-		self::setDatabase($obj);
 		$data = self::querySelect("SELECT * FROM {$tb['name']} {$addSql}");
 		foreach ($data as $line) {
 			$obj = new $EntityClass();
 			foreach ($line as $k => $v) {
 				$obj->{$columns[$k]} = $v;
 			}
-			$result[$obj->{$idColumn}] = $obj;
+			$result[$obj->id] = $obj;
 		}
 
 
@@ -534,25 +504,7 @@ class DaoSi {
 
 	}
 
-	public function getIdField($obj)
-	{
-		$idColumn = $obj->getAnnotation()['id']['name'];
 
-		return $idColumn;
-
-	}
-
-
-	public function setDatabase($obj)
-	{
-		// otimizar
-		$database = 'default';
-		$classAttr = $obj->getAnnotation()['class'];
-		if(isset($classAttr['Table']['database']) && isset($GLOBALS['db'][$classAttr['Table']['database']])) 
-			$database = $classAttr['Table']['database'];
-
-		self::setDb($database);
-	}
 
 
 

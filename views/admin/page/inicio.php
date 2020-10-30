@@ -4,7 +4,7 @@
 <br><br><br>
 
 <span class="logorotate">
-    <?php FrontEnd::resource('logo.svg'); ?>
+    <?= FrontEnd::resource('logo.svg'); ?>
 </span>
 
 <br><br><br>

@@ -5,7 +5,7 @@ if(
 	&& isset($_POST['email'])
 	&& isset($_POST['senha'])
 ){
-	$login = User::singonParceiro($_POST['email'],$_POST['senha'],$_POST['token']);
+	$login = User::singonParceiro($_POST['email'],$_POST['senha'],$_POST['_token']);
 	if(!$login){
 		foreach (User::$error as $erro) {
 			FrontEnd::alert($erro,'danger');
