@@ -14,10 +14,14 @@
 					$username = $_POST['username'];
 					if(User::singon($_POST['username'],$_POST['password'],$_POST['token'])){
 						FrontEnd::alert('Sucesso! Redirecionando..','success',false);
+<<<<<<< HEAD
 						// FrontEnd::alert('Sincronizando. Isso pode demorar um pouco. Aguarde!','warning',false);
 						delSession('ni_f2040_total');
 						delSession('ni_memoria');
 						Utils::redirect('./',1);
+=======
+						Utils::redirect(FrontEnd::raiz().'admin',1);
+>>>>>>> release/v1.2
 						$showform = false;
 					}else{
 						foreach (User::$error as $erro) {
@@ -66,4 +70,8 @@
 		</form>
 	</div>
 
+<<<<<<< HEAD
 </div>
+=======
+</div>
+>>>>>>> release/v1.2

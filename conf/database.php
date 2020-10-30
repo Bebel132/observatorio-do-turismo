@@ -4,10 +4,17 @@ if(APPLICATION_ENV=='production'){
 
 	$GLOBALS['db']['default'] = array(
 		'dsn'	=> '',
+<<<<<<< HEAD
 		'hostname' => '172.31.3.8',
 		'username' => 'postgres',
 		'password' => '@1a2b3c4d*',
 		'database' => 'acervoadmin',
+=======
+		'hostname' => '172.30.79.252',
+		'username' => 'postgres',
+		'password' => '6f@pbW6AzV&*',
+		'database' => 'observatorio',
+>>>>>>> release/v1.2
 		'schema'   => 'public',
 		'dbdriver' => 'pgsql',
 		'dbprefix' => '',
@@ -143,5 +150,3 @@ if(APPLICATION_ENV=='production'){
 	);
 
 }
-
-?>

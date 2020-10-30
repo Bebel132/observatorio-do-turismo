@@ -9,15 +9,27 @@ class User
 
 	static function getToken()
 	{
+<<<<<<< HEAD
 		$token = md5(time().'Melancia');
 		$_SESSION['token'] = $token;
+=======
+		$token = md5(time().'Banana');
+		setSession('_token',$token);
+>>>>>>> release/v1.2
 		return $token;
 	}
 
 	static function checkToken($token)
 	{
+<<<<<<< HEAD
 		if(!isset($_SESSION['token'])){
+=======
+
+		$tokenSession = getSession('_token');
+		if(!$tokenSession){
+>>>>>>> release/v1.2
 			self::setError('Token inativo');
+			header_status(500,'Inactive token');
 			return false;
 		}
 		elseif($token==$_SESSION['token'])
@@ -25,7 +37,12 @@ class User
 			return true;
 		}else
 		{
+<<<<<<< HEAD
 			unset($_SESSION['token']);
+=======
+			delSession('_token');
+			header_status(500,'Invalid token');
+>>>>>>> release/v1.2
 			return false;
 		}
 	}
@@ -102,5 +119,9 @@ class User
 		return false;
 	}
 
+<<<<<<< HEAD
 }
 ?>
+=======
+}
+>>>>>>> release/v1.2

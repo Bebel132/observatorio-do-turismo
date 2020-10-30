@@ -21,13 +21,13 @@ class FrontEnd
 	{
 
 		$vars = Utils::getUrlVars();
-		$section = (count($vars)>1)?$vars[1]:'inicio';
+		$section = (count($vars)>1)?$vars[1]:'index';
 
 		// badges
 
 		$itens = [
 
-			 ['href' => 'inicio'		,'name'=>'Início' 			, 'icon'=>'home' 	, 'class' => 'showloading']
+			 ['href' => 'index'		,'name'=>'Início' 			, 'icon'=>'home' 	, 'class' => 'showloading']
 			,['href' => 'banners'		,'name'=>'Banners'	 		, 'icon'=>'image' , 'class' => 'showloading']
 			,['href' => 'pesquisas'		,'name'=>'Pesquisas' 		, 'icon'=>'list-alt' , 'class' => 'showloading']
 			,['href' => 'indicadores'	,'name'=>'Indicadores' 		, 'icon'=>'chart-line' , 'class' => 'showloading']
@@ -104,6 +104,7 @@ class FrontEnd
 		$vars = Utils::getUrlVars();
 		$section = (count($vars)>0 && isset($vars[$i]) && $vars[$i])?$vars[$i]:'index';
 		$section = str_replace(['/','\\'], '', $section);
+		if(!$section) $section = 'index';
 		$page = "views/{$area}/page/{$section}.php";
 		if(is_file($page)){
 			require_once($page);

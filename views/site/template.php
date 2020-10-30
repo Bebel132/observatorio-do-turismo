@@ -1,17 +1,18 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-
-	<title>Observatorio Turismo</title>
-
 	<meta charset="utf-8">
+	<title>Observatório do Turismo</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
 	<!-- Bootstrap -->
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
-
 	<link rel="icon" href="<?=FrontEnd::resource('logo.svg',1)?>" />
+<<<<<<< HEAD
 
+=======
+	<?= FrontEnd::resource('jquery-3.3.1.min.js'); ?>
+	<script> jq = jQuery.noConflict( true ); </script>
+>>>>>>> release/v1.2
 	<?php
 
 	// FrontEnd::resource('jquery-3.3.1.min.js');
@@ -21,10 +22,13 @@
 	FrontEnd::resource('style-site.css');
 
 	?>
+<<<<<<< HEAD
 
 	<script> //jq = jQuery.noConflict( true ); </script>
 
 
+=======
+>>>>>>> release/v1.2
 </head>
 <body>
 
@@ -34,7 +38,13 @@
 		<header>
 			<div class="container">
 				<div class="logo fleft">
+<<<<<<< HEAD
 					<?=FrontEnd::resource('logo.svg')?>
+=======
+					<a href="<?=FrontEnd::raiz()?>./">
+						<?=FrontEnd::resource('logo.svg')?>
+					</a>
+>>>>>>> release/v1.2
 				</div>
 				<div class="navbar fleft">
 					<nav>
@@ -63,6 +73,7 @@
 					</div>
 				</div>
 
+<<<<<<< HEAD
 				<a class="carousel-control-prev" href="#carouselSuperbanner" role="button" data-slide="prev">
 					<span class="carousel-control-prev-icon" aria-hidden="true"></span>
 					<span class="sr-only">Previous</span>
@@ -178,6 +189,48 @@
 			<div style="height: 500px; background: #EEE">
 				<div class="middle">
 					<h2 style="color: #CCC">IFRAME DASHBOARD</h2>
+=======
+		<footer>
+			<div class="container">
+				<div class="fleft">
+					<span class="rs"> 
+						<a href="https://www.facebook.com/secretariadoturismodefortaleza/" target="_blank">
+							<?=FrontEnd::resource('footer_01.png')?>
+						</a> 
+					</span>
+					<span class="rs"> 
+						<a href="https://www.instagram.com/secretariadoturismodefortaleza/" target="_blank">
+							<?=FrontEnd::resource('footer_02.png')?>
+						</a> 
+					</span>
+					<span class="rs"> 
+						<a href="#" target="_blank">
+							<?=FrontEnd::resource('footer_03.png')?>
+						</a> 
+					</span>
+				</div>
+				<div class="fright">
+					<span class="rs caf"> 
+						<a href="#" target="_blank">
+							<?=FrontEnd::resource('caf-rdp.png')?>
+						</a> 
+					</span>
+					<span class="rs"> 
+						<a href="<?=FrontEnd::raiz()?>./">
+							<?=FrontEnd::resource('footer_06.png')?>
+						</a> 
+					</span>
+					<span class="rs"> 
+						<a href="#" target="_blank">
+							<?=FrontEnd::resource('footer_07.png')?>
+						</a> 
+					</span>
+					<span class="rs"> 
+						<a href="#" target="_blank">
+							<?=FrontEnd::resource('footer_08.png')?>
+						</a> 
+					</span>
+>>>>>>> release/v1.2
 				</div>
 			</div>
 
