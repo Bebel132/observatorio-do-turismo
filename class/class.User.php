@@ -20,6 +20,7 @@ class User
 		$tokenSession = getSession('_token');
 		if(!$tokenSession){
 			self::setError('Token inativo');
+			header_status(500,'Inactive token');
 			return false;
 		}
 		elseif($token==$tokenSession)
@@ -28,6 +29,7 @@ class User
 		}else
 		{
 			delSession('_token');
+			header_status(500,'Invalid token');
 			return false;
 		}
 	}
