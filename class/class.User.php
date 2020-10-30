@@ -16,10 +16,8 @@ class User
 
 	static function checkToken($token)
 	{
+
 		$tokenSession = getSession('_token');
-		echo $tokenSession;
-		echo '=';
-		echo $token;
 		if(!$tokenSession){
 			self::setError('Token inativo');
 			return false;

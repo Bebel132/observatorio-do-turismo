@@ -8,10 +8,11 @@ $banner = DaoSI::getList($banner,null,1);
 $img = "";
 if($banner){
 	$img = $banner->getImg('filename',true);
+	$img = "background-image: url({$img});";
 }
 
 ?><div class="temp-caixa">
-	<div class="middle" style="background-image: url(<?=$img?>);">
+	<div class="middle" style="<?=$img?>">
 		<div class="caixa">
 			<div class="txt">
 				<b>COLABORE</b> COM A O DESENVOLVIMENTO DE UM <b>CENÁRIO POSITIVO</b> PARA O TURISMO EM FORTLAEZA. <br><br>
