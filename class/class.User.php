@@ -122,5 +122,4 @@ class User
 		Utils::redirect('./',1);
 	}
 
-
 }
