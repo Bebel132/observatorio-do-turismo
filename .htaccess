@@ -21,7 +21,7 @@
         Header set Cache-Control 'no-store, no-cache, must-revalidate, post-check=0, pre-check=0'
     </FilesMatch>
 
-    Header edit Set-Cookie ^(.*)$ $1;HttpOnly;Secure
+    Header edit Set-Cookie ^(.*)$ $1;HttpOnly;Secure;SameSite=strict
 
     Header set X-XSS-Protection '1; mode=block;'
 
