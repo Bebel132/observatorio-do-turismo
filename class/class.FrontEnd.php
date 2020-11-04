@@ -233,9 +233,9 @@ class FrontEnd
 
 	static function getInputToken($nametoken)
 	{
-		$_token = md5(Utils::microtimeFloat());
-		setSession('_token_'.$nametoken,$_token);
-		return self::formInput('hidden','_token',$_token);
+		$csrf_token = md5(Utils::microtimeFloat());
+		setSession('csrf_token_'.$nametoken,$csrf_token);
+		return self::formInput('hidden','csrf_token',$csrf_token);
 	}
 
 	static function formInput($inputType,$name,$value='',$domain=NULL,$attrs=array())

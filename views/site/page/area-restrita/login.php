@@ -21,7 +21,7 @@ if($banner){
 				<form method="post" action="<?=FrontEnd::raiz()?>area-restrita">
 					<input type="email" name="email" placeholder="EMAIL">
 					<input type="password" name="senha" placeholder="SENHA">
-					<input type="text" name="_token" value="<?=User::getToken()?>">
+					<input type="text" name="csrf_token" value="<?=User::getToken()?>">
 					<button class="btn btn-warning btn-sm">entrar</button>
 				</form>
 			</div>

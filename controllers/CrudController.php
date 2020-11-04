@@ -53,12 +53,12 @@ class CrudController extends Controller
 
 	public function csrfToken($nametoken)
 	{
-		$_token = getSession('_token_'.$nametoken);
-		delSession('_token_'.$nametoken);
+		$csrf_token = getSession('csrf_token_'.$nametoken);
+		delSession('csrf_token_'.$nametoken);
 
-		if(isset($_POST['_token'])){
+		if(isset($_POST['csrf_token'])){
 
-			if($_POST['_token'] == $_token)
+			if($_POST['csrf_token'] == $csrf_token)
 				return true;
 			header_status(500,'Invalid token');
 		}

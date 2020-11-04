@@ -10,14 +10,14 @@ class User
 	static function getToken()
 	{
 		$token = md5(time().'Banana');
-		setSession('_token',$token);
+		setSession('csrf_token',$token);
 		return $token;
 	}
 
 	static function checkToken($token)
 	{
 
-		$tokenSession = getSession('_token');
+		$tokenSession = getSession('csrf_token');
 		if(!$tokenSession){
 			self::setError('Token inativo');
 			header_status(500,'Inactive token');
@@ -28,7 +28,7 @@ class User
 			return true;
 		}else
 		{
-			delSession('_token');
+			delSession('csrf_token');
 			header_status(500,'Invalid token');
 			return false;
 		}
