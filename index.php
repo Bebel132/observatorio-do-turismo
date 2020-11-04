@@ -2,8 +2,6 @@
 
 session_start();
 
-header('Set-Cookie: cross-site-cookie=name; SameSite=None; Secure');
-
 // helper function
 function require_path($diretorio){$dir = dir($diretorio);while($arquivo = $dir->read()){if(substr($arquivo, -4,4) == '.php'){include_once($diretorio.$arquivo);}}$dir -> close();}
 
