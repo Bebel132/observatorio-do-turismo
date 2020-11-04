@@ -4,7 +4,8 @@ if(APPLICATION_ENV=='production'){
 
 	$GLOBALS['db']['default'] = array(
 		'dsn'	=> '',
-		'hostname' => '172.30.79.252',
+		// 'hostname' => '172.30.79.252',
+		'hostname' => 'localhost',
 		'username' => 'postgres',
 		'password' => '6f@pbW6AzV&*',
 		'database' => 'observatorio',
