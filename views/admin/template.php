@@ -21,18 +21,14 @@
 	echo FrontEnd::resource('style-admin.css');
 	?>
 
+	<script> jq = jQuery.noConflict( true ); </script>
 	<script src='http://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.1/js/bootstrap-datepicker.min.js'></script>
 	<script> $(document).ready(function(){jq('input[type=datetime-local]').datepicker({format: "yy-mm-dd"}); }) </script>
 	<script> $(document).ready(function(){jq('input[type=datetime]').datepicker({format: "yyyy-mm-dd"}); }) </script>
-
-	<script> jq = jQuery.noConflict( true ); </script>
 	<?= FrontEnd::resource('admin.js'); ?>
-
 
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.bundle.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js"></script>
-
-
 </head>
 <body onload="appLoaded()">
 
