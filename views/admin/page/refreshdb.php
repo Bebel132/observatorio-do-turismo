@@ -5,5 +5,3 @@ if(APPLICATION_ENV=='production'){
 }else{
 	DatabaseSi::create();
 }
-
-?>

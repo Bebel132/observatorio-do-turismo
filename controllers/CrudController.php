@@ -13,7 +13,9 @@ class CrudController extends Controller
 		$tb = DaoSI::getTableObj($Entity)['name'];
 		if(!$nametoken) $nametoken = get_class($Entity);
 
-		if(!$this->csrfToken($nametoken)) return;
+		if(!$this->csrfToken($nametoken)){
+			return;
+		}
 
 		if(count($_POST)>0){
 
@@ -51,9 +53,16 @@ class CrudController extends Controller
 
 	public function csrfToken($nametoken)
 	{
-		$_token = getSession('_token_'.$nametoken);
-		delSession('_token_'.$nametoken);
-		return (isset($_POST['_token']) && $_POST['_token'] == $_token);
+		$csrf_token = getSession('csrf_token_'.$nametoken);
+		delSession('csrf_token_'.$nametoken);
+
+		if(isset($_POST['csrf_token'])){
+
+			if($_POST['csrf_token'] == $csrf_token)
+				return true;
+			header_status(500,'Invalid token');
+		}
+		return false;
 	}
 
 	public function deleteByObj($obj)

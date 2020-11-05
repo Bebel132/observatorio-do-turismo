@@ -21,13 +21,13 @@ class FrontEnd
 	{
 
 		$vars = Utils::getUrlVars();
-		$section = (count($vars)>1)?$vars[1]:'inicio';
+		$section = (count($vars)>1)?$vars[1]:'index';
 
 		// badges
 
 		$itens = [
 
-			 ['href' => 'inicio'		,'name'=>'Início' 			, 'icon'=>'home' 	, 'class' => 'showloading']
+			 ['href' => 'index'		,'name'=>'Início' 			, 'icon'=>'home' 	, 'class' => 'showloading']
 			,['href' => 'banners'		,'name'=>'Banners'	 		, 'icon'=>'image' , 'class' => 'showloading']
 			,['href' => 'pesquisas'		,'name'=>'Pesquisas' 		, 'icon'=>'list-alt' , 'class' => 'showloading']
 			,['href' => 'indicadores'	,'name'=>'Indicadores' 		, 'icon'=>'chart-line' , 'class' => 'showloading']
@@ -104,6 +104,7 @@ class FrontEnd
 		$vars = Utils::getUrlVars();
 		$section = (count($vars)>0 && isset($vars[$i]) && $vars[$i])?$vars[$i]:'index';
 		$section = str_replace(['/','\\'], '', $section);
+		if(!$section) $section = 'index';
 		$page = "views/{$area}/page/{$section}.php";
 		if(is_file($page)){
 			require_once($page);
@@ -232,9 +233,9 @@ class FrontEnd
 
 	static function getInputToken($nametoken)
 	{
-		$_token = md5(Utils::microtimeFloat());
-		setSession('_token_'.$nametoken,$_token);
-		return self::formInput('hidden','_token',$_token);
+		$csrf_token = md5(Utils::microtimeFloat());
+		setSession('csrf_token_'.$nametoken,$csrf_token);
+		return self::formInput('hidden','csrf_token',$csrf_token);
 	}
 
 	static function formInput($inputType,$name,$value='',$domain=NULL,$attrs=array())
