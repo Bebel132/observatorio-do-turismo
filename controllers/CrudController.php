@@ -131,9 +131,12 @@ class CrudController extends Controller
 
 		$destino = $dir.$filename;
 
-		$destino = str_replace('/', DIRECTORY_SEPARATOR, getcwd().'/'.$destino);
+		$destino1 = str_replace('/', DIRECTORY_SEPARATOR, getcwd().'/'.$destino);
+		$destino2 = str_replace('/', DIRECTORY_SEPARATOR, __DIR__.'/'.$destino);
 
-		if(@move_uploaded_file($file['tmp_name'], $destino)){
+		if(@move_uploaded_file($file['tmp_name'], $destino1)){
+			return $filename;
+		}elseif(@move_uploaded_file($file['tmp_name'], $destino2)){
 			return $filename;
 		}else{
 			$this->alerts[] = ['danger','Falha ao enviar arquivo. ('.$file['error'].')'.$destino];
