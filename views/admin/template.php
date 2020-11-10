@@ -22,7 +22,7 @@
 	?>
 
 	<script> jq = jQuery.noConflict( true ); </script>
-	<script src='http://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.1/js/bootstrap-datepicker.min.js'></script>
+	<!-- <script src='http://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.1/js/bootstrap-datepicker.min.js'></script> -->
 	<!-- <script> jq(document).ready(function(){jq('input[type=datetime-local]').datepicker({format: "yy-mm-dd"}); }) </script>
 	<script> jq(document).ready(function(){jq('input[type=datetime]').datepicker({format: "yyyy-mm-dd"}); }) </script> -->
 	<?= FrontEnd::resource('admin.js'); ?>
