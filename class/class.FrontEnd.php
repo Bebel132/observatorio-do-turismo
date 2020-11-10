@@ -12,7 +12,7 @@ class FrontEnd
 	{
 		if(isset(self::$raiz))
 			return self::$raiz;
-		$raiz = 'http'.(ISHTTPS?'s':'').'://'.$_SERVER['HTTP_HOST'].PATH_APP;
+		$raiz = 'http'.(ISHTTPS?'s':'').'://'.$_SERVER['HTTP_HOST'].'/'.PATH_APP;
 		self::$raiz = $raiz;
 		return self::$raiz;
 	}

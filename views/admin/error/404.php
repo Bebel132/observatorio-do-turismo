@@ -3,6 +3,16 @@
 <br>
 <br>
 <br>
+<pre>
+	<?php 
+
+	$vars = Utils::getUrlVars();
+	print_r($vars);
+
+	dd(getSession());
+
+	?>
+</pre>
 <br>
 <br>
 <br>

@@ -6,13 +6,13 @@ date_default_timezone_set('America/Fortaleza');
 define('SHOWSQL_CRUD', false);
 
 if(APPLICATION_ENV=='production'){
-	define('PATH_APP', '/');
+	define('PATH_APP', '');
 	define('ISHTTPS', true);
 }elseif(APPLICATION_ENV=='testing'){
-	define('PATH_APP', '/observatorio-do-turismo/');
+	define('PATH_APP', 'observatorio-do-turismo/');
 	define('ISHTTPS', true);
 }else{
-	define('PATH_APP', '/IPLANFOR/observatorio-do-turismo/');
+	define('PATH_APP', 'IPLANFOR/observatorio-do-turismo/');
 	define('ISHTTPS', false);
 }
 
