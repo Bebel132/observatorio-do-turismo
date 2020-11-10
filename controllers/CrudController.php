@@ -138,8 +138,18 @@ class CrudController extends Controller
 			return $filename;
 		}elseif(@move_uploaded_file($file['tmp_name'], $destino2)){
 			return $filename;
+
+		}elseif(@move_uploaded_file($file['tmp_name'], $destino)){
+			return $filename;
+
+		}elseif(@move_uploaded_file($file['tmp_name'], '../'.$destino)){
+			return $filename;
+
+		}elseif(@move_uploaded_file($file['tmp_name'], '../../'.$destino)){
+			return $filename;
+
 		}else{
-			$this->alerts[] = ['danger','Falha ao enviar arquivo. ('.$file['error'].') Destiny: '.$destino1.' Destiny: '.$destino2];
+			$this->alerts[] = ['danger','Falha ao enviar arquivo. ('.$file['error'].') Destiny: '.$destino.' Destiny: '.$destino1];
 			return null;
 		}
 
