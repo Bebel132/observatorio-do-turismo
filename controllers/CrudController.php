@@ -57,7 +57,6 @@ class CrudController extends Controller
 		delSession('csrf_token_'.$nametoken);
 
 		if(isset($_POST['csrf_token'])){
-
 			if($_POST['csrf_token'] == $csrf_token)
 				return true;
 			header_status(500,'Invalid token');

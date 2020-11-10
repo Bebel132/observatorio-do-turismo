@@ -4,11 +4,11 @@ $EntityClass = get_class($Entity);
 
 $Controller = new CrudController();
 
-$Controller->request($Entity,$EntityClass.'_adicionar');
-
 if(isset($vars[3]) && is_numeric($vars[3])){
 	if($vars[2] == "del") $Controller->deleteByObj( new $EntityClass($vars[3]) );
 	if($vars[2] == "edit") $Controller->request($Entity,$EntityClass.'_editar');
+}else{
+	$Controller->request($Entity,$EntityClass.'_adicionar');
 }
 
 // alerts
