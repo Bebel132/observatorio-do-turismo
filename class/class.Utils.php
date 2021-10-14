@@ -10,8 +10,10 @@ class Utils
 		$vars = array();
 		$urlVars = $_SERVER['REDIRECT_URL'];
 
-		$urlVars = explode(PATH_APP, $urlVars);
-		$urlVars = $urlVars[1];
+		if(PATH_APP){
+			$urlVars = explode(PATH_APP, $urlVars);
+			$urlVars = $urlVars[1];
+		}
 
 		// if(substr($urlVars, 0, strlen(PATH_APP)) == PATH_APP)
 			// $urlVars = substr_replace($urlVars, '', 0, strlen(PATH_APP));

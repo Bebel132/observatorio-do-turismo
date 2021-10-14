@@ -104,6 +104,7 @@ class FrontEnd
 		$i = ($area=='site')?0:1;
 
 		$vars = Utils::getUrlVars();
+		dd($vars);
 		$section = (count($vars)>0 && isset($vars[$i]) && $vars[$i])?$vars[$i]:'index';
 		$section = str_replace(['/','\\'], '', $section);
 		$page = "views/{$area}/page/{$section}.php";
