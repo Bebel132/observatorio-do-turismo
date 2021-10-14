@@ -21,9 +21,9 @@ class Indicador extends Entity
 	public $link;
 
 	/**
-	* @Column = {"name":"tipo" , "type":"integer" , "size" : "" , "label":"Tipo" , "domain": {"1":"Demanda Turística", "2":"Prestadores de Serviço", "3":"Sazonalidade / Ocupação", "4":"Impacto na Economia", "5":"Movimentação Aeroportuária", "6":"Empregos", "7":"Investimento Público", "8":"Receita Turística"} }
+	* @Column = {"name":"tipo" , "type":"integer" , "size" : "" , "label":"Tipo" , "domain": "IndicadorTipo|id|titulo|(1)" }
 	*/
-	public $tipo; 
+	public $indicador_tipo_id;
 
 	/**
 	* @Column = {"name":"filename" , "type":"varchar" , "size" : "255" , "mask" : "file" , "label":"Imagem"}

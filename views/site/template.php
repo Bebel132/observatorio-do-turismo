@@ -29,9 +29,8 @@
 				<div class="navbar fleft">
 					<nav>
 						<a href="<?=FrontEnd::raiz()?>./#home" class="rollto active">Home</a>
+						<a href="<?=FrontEnd::raiz()?>./area-restrita" class="rollto">Formulários de Pesquisas</a>
 						<a href="<?=FrontEnd::raiz()?>./#pesquisas" class="rollto">Pesquisas</a>
-						<a href="<?=FrontEnd::raiz()?>./#indicadores" class="rollto">Indicadores</a>
-						<a href="<?=FrontEnd::raiz()?>./#dashboards" class="rollto">Dashboards</a>
 						<a href="<?=FrontEnd::raiz()?>./#aplicativos" class="rollto">Aplicativos e Sites</a>
 					</nav>
 				</div>

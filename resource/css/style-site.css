@@ -151,28 +151,28 @@ h2{
 }
 
 .institucional .icon{
-	width: 100px;
+/*	width: 100px;
 	height: 100px;
 	float: left;
 	margin-right: 20px;
-	margin-bottom: 20px;
+	margin-bottom: 20px;*/
 }
 
 .institucional img{
-	width: 70%;
+	/*width: 70%;
 	position: absolute;
 	left: 50%;
 	top: 50%;
-	transform: translate(-50%,-70%);
+	transform: translate(-50%,-70%);*/
 }
 
 .icon span{
 	display: block;
 	margin-top: 15px;
 	font-family: Roboto-Regular;
-	position: absolute;
-	bottom: 0;
-	width: 100%;
+	/*position: absolute;*/
+	/*bottom: 0;*/
+	/*width: 100%;*/
 	text-align: center;
 }
 
@@ -213,7 +213,7 @@ footer .caf img{
 }
 
 .temp-caixa{
-	height: 450px;
+	height: 650px;
 }
 
 .temp-caixa .middle{
@@ -235,7 +235,7 @@ footer .caf img{
 	background: transparent;
 	border: 1px solid #FFF;
 	color: #FFF;
-	width: 100px;
+	width: 100%;
 	padding: 6px 6px;
 	float: left;
 	margin-right: 5px;

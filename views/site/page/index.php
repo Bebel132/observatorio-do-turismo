@@ -57,54 +57,72 @@
 		<p>
 			Dessa forma, trata-se de uma ferramenta da Ciência da Informação que, quando devidamente usada, melhora os processos de gestão pública e das organizações do sistema turístico. Isso porque possibilita ao setor turístico estabelecer novas ações e programas, bem como definir políticas públicas que maximizem os resultados e implementem benefícios econômicos à cidade e à região. Serve também para estabelecer padrões de comportamento, relações e tendências que auxiliem na tomada de decisão. Além de fornecer dados da realidade do nosso município, o que possibilita acompanhar a evolução do setor.
 		</p>
-		<p>
-			Enfim, a idealização do Observatório do Turismo de Fortaleza tem por objetivo incrementar o potencial turístico e a competitividade da cidade de Fortaleza. O referido projeto foi desenvolvido pela Secretaria Municipal do Turismo de Fortaleza, através do financiamento do Banco de Desenvolvimento da América Latina (CAF), instrumentalizada por meio do Contrato de Empréstimo nº CFA 10352/10356, e está inserido no Programa Cidade com Futuro, no componente “Transformação Produtiva, subitem 2.4 – Apoio para a preparação de indicadores de monitoramento, controle e plano de promoção”.
-		</p>
+		
 	</div>
 	<div class="institucional">
-		<div class="fleft w33">
-			<div class="icon">
-				<?=FrontEnd::resource('icon-missao.svg')?>
-				<span>MISSÃO</span>
+
+
+		<div class="row">
+			
+			<div class="col-12 col-md-4">
+				<div class="row">
+					<div class="col-3 icon">
+						<?=FrontEnd::resource('icon-missao.svg')?>
+						<span>MISSÃO</span>
+					</div>
+					<div class="col-9">
+						Auxiliar na tomada de decisão dos setores
+						público e privado para o desenvolvimento da
+						economia do Turismo, fornecendo informações
+						segmentadas e específicas, agregando à
+						cadeia produtiva.
+					</div>
+				</div>
 			</div>
-			<div class="txt">
-				Auxiliar na tomada de decisão dos setores
-				público e privado para o desenvolvimento da
-				economia do Turismo, fornecendo informações
-				segmentadas e específicas, agregando à
-				cadeia produtiva.
+
+
+			<div class="col-12 col-md-4">
+				<div class="row">
+					<div class="col-3 icon">
+						<?=FrontEnd::resource('icon-visao.svg')?>
+						<span>VISÃO</span>
+					</div>
+					<div class="col-9">
+						Ser referência no provimento de
+						informações capazes de promover o
+						desenvolvimento econômico através de
+						qualificação continuada e
+						processos bem definidos.
+					</div>
+				</div>
 			</div>
+
+
+			<div class="col-12 col-md-4">
+				<div class="row">
+					<div class="col-3 icon">
+						<?=FrontEnd::resource('icon-valores.svg')?>
+						<span>VALORES</span>
+					</div>
+					<div class="col-9">
+						1. Inovação <br>
+						2. Sustentabilidade <br>
+						3. Criatividade <br>
+						4. Credibilidade <br>
+						5. Compromisso com a gestão <br>
+						6. Respeito às pessoas <br>
+						7. Ética, transparência e honestidade <br>
+						8. Integração e Colaboração <br>
+					</div>
+				</div>
+			</div>
+
+
+
 		</div>
-		<div class="fleft w33">
-			<div class="icon">
-				<?=FrontEnd::resource('icon-visao.svg')?>
-				<span>VISÃO</span>
-			</div>
-			<div class="txt">
-				Ser referência no provimento de
-				informações capazes de promover o
-				desenvolvimento econômico através de
-				qualificação continuada e
-				processos bem definidos.
-			</div>
-		</div>
-		<div class="fleft w33">
-			<div class="icon">
-				<?=FrontEnd::resource('icon-valores.svg')?>
-				<span>VALORES</span>
-			</div>
-			<div class="txt">
-				VALORES: <br>
-				1. Inovação <br>
-				2. Sustentabilidade <br>
-				3. Criatividade <br>
-				4. Credibilidade <br>
-				5. Compromisso com a gestão <br>
-				6. Respeito às pessoas <br>
-				7. Ética, transparência e honestidade <br>
-				8. Integração e Colaboração <br>
-			</div>
-		</div>
+
+
+		
 	</div>
 
 	<!-- Pesquisas -->
@@ -114,6 +132,7 @@
 		<div id="carouselPesquisas" class="carousel slide" data-ride="carousel">
 			<div class="carousel-inner">
 				<div class="carousel-item active">
+					<div class="row">
 					<?php 
 					$pesquisa = new Pesquisa();
 					$pesquisa->tipo = 2;
@@ -126,7 +145,7 @@
 						$a++;
 						$b++;
 						?>
-						<div class="fleft w33">
+						<div class="col-12 col-md-4">
 							<?php 
 
 							$link = "";
@@ -143,8 +162,9 @@
 							if($link) echo "</a>"; 
 							?>
 						</div>
-						<?php if($b==3 && $a<$t){echo '</div><div class="carousel-item">'; $b=0; } 
+						<?php if($b==3 && $a<$t){echo '</div></div><div class="carousel-item"><div class="row">'; $b=0; } 
 					} ?>
+				</div>
 				</div>
 			</div>
 			<a class="carousel-control-prev" href="#carouselPesquisas" role="button" data-slide="prev">
@@ -163,21 +183,32 @@
 
 
 	<!-- Indicadores -->
-	<?php $tipos = [1=>"Demanda Turística",
-	"Prestadores de Serviço",
-	"Sazonalidade / Ocupação",
-	"Impacto na Economia",
-	"Movimentação Aeroportuária",
-	"Empregos",
-	"Investimento Público",
-	"Receita Turística"]; ?>
+	<?php 
+
+	$IndicadorTipo = new IndicadorTipo();
+	$IndicadorTipo->flstatus = 1;
+	$IndicadorTipos = DaoSI::getList($IndicadorTipo,1,false,'titulo asc');
+
+
+	// $tipos = [1=>"Demanda Turística",
+	// "Prestadores de Serviço",
+	// "Sazonalidade / Ocupação",
+	// "Impacto na Economia",
+	// "Movimentação Aeroportuária",
+	// "Empregos",
+	// "Investimento Público",
+	// "Receita Turística"];
+
+	?>
 	<h2>Indicadores</h2>
 	<div id="indicadores"></div>
 	<div class="carouselIndicadores">
 		<div class="naver">
 			<?php
-			$a=0; foreach ($tipos as $k => $name)
-			{ $a++; $active = ($a==1)?'active':''; ?>
+			$a=0; foreach ($IndicadorTipos as $key => $indicadorTipo){ 
+				$k = $indicadorTipo->id;
+				$name = $indicadorTipo->titulo;
+				$a++; $active = ($a==1)?'active':''; ?>
 			<a href="#indicadores" class="gotab rollto <?=$active?>" tab=".tab<?=$k?>" container=".carouselIndicadores"><?=$name?></a>
 		<?php } ?>
 	</div>
@@ -185,8 +216,10 @@
 	<?php 
 	$hide = "";
 	$a=0;
-	foreach ($tipos as $k => $name)
+	foreach ($IndicadorTipos as $key => $indicadorTipo)
 	{
+		$k = $indicadorTipo->id;
+		$name = $indicadorTipo->titulo;
 		$a++;
 		$Indicador = new Indicador();
 		$Indicador->tipo = $k;
@@ -196,6 +229,7 @@
 		<div id="carouselIndicadores<?=$k?>" class="carousel azul slide tab tab<?=$k?><?=$hide?>" data-ride="carousel">
 			<div class="carousel-inner">
 				<div class="carousel-item active">
+					<div class="row">
 					<?php 
 					$b=$a=0;
 					foreach ($indicadores as $kk => $indicador)
@@ -210,7 +244,7 @@
 						}
 
 						?>
-						<div class="fleft w33">
+						<div class="col-12 col-md-4">
 							<?php 
 							if($link) echo "<a target='_blank' href='{$link}'>";
 							echo $indicador->getImg('filename');
@@ -219,7 +253,8 @@
 							<div class="subtitle"><?=$indicador->descricao?></div>
 							<?php if($link) echo "</a>";  ?>
 						</div>
-						<?php if($b==3 && $a<$t){echo '</div><div class="carousel-item">'; $b=0; } } ?>
+						<?php if($b==3 && $a<$t){echo '</div></div><div class="carousel-item"><div class="row">'; $b=0; } } ?>
+					</div>
 					</div>
 				</div>
 				<a class="carousel-control-prev" href="#carouselIndicadores<?=$k?>" role="button" data-slide="prev">
@@ -236,11 +271,15 @@
 
 		<br><br><br>
 
+		<?php 
+		/*
 		<!-- Dashboard -->
-		<div id="dashboards"></div>
+		<!-- <div id="dashboards"></div>
 		<div style="height: 500px; background: #EEE">
 			<iframe frameborder="0" width="100%" height="100%" src="<?=IFRAME_POWERBI?>"></iframe>
-		</div>
+		</div> -->
+		*/
+		?>
 
 
 		<br><br>

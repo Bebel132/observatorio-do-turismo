@@ -17,6 +17,7 @@ if(APPLICATION_ENV=='production'){
 }
 
 // Login
+define('PAGE_INITIAL', 'home');
 define('LOGIN_TENTATIVAS', 3);
 define('LOGIN_TENTATIVAS_WAIT', '3 minutes');
 
@@ -24,3 +25,9 @@ define('IFRAME_POWERBI', "https://app.powerbi.com/view?r=eyJrIjoiNGY0ZDg4NTYtYTg
 
 // Rastreio
 define('R_MAX_LISTA', 300);
+
+// Application text values
+define('APP_TITLE', 'Observatorio do Turismo');
+define('APP_TITLE_LOWER', 'Observatorio do Turismo');
+
+define('CENTRAL_PAGINACAO', 100);

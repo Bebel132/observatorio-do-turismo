@@ -7,6 +7,7 @@ class FrontEnd
 
 	static $raiz;
 	static $cAlert;
+	static $domains;
 
 	static function raiz()
 	{
@@ -31,6 +32,7 @@ class FrontEnd
 			,['href' => 'banners'		,'name'=>'Banners'	 		, 'icon'=>'image' , 'class' => 'showloading']
 			,['href' => 'pesquisas'		,'name'=>'Pesquisas' 		, 'icon'=>'list-alt' , 'class' => 'showloading']
 			,['href' => 'indicadores'	,'name'=>'Indicadores' 		, 'icon'=>'chart-line' , 'class' => 'showloading']
+			,['href' => 'indicadores-tipos'	,'name'=>'Indicadores Tipos' 		, 'icon'=>'chart-line' , 'class' => 'showloading']
 			// ,['href' => 'noticias'		,'name'=>'Notícias' 		, 'icon'=>'newspaper' , 'class' => 'showloading']
 			,['href' => 'usuarios'		,'name'=>'Usuários' 		, 'icon'=>'user' , 'class' => 'showloading']
 
@@ -83,7 +85,7 @@ class FrontEnd
 				$badge = "<span class='badge badge-light'>{$item['badge']}</span>";
 			}
 
-			$res .= 
+			$res .=
 			"<li class='nav-item'>
 			<a class='nav-link {$item['class']} {$selected}' href='{$item['href']}' {$toggle}>
 			<i class='fas fa-{$item['icon']}'></i>
@@ -104,8 +106,8 @@ class FrontEnd
 		$vars = Utils::getUrlVars();
 		$section = (count($vars)>0 && isset($vars[$i]) && $vars[$i])?$vars[$i]:'index';
 		$section = str_replace(['/','\\'], '', $section);
-		if(!$section) $section = 'index';
 		$page = "views/{$area}/page/{$section}.php";
+
 		if(is_file($page)){
 			require_once($page);
 		}else{
@@ -117,8 +119,8 @@ class FrontEnd
 
 	static function login()
 	{
-		if(getSession('csrf_token')){
-			if(getSession('tentativas_dt')){
+		if(isset($_SESSION['token'])){
+			if( isset($_SESSION['tentativas_dt']) ){
 				$page = 'wait';
 			}else{
 				$page = 'login';
@@ -172,11 +174,10 @@ class FrontEnd
 		return false;
 	}
 
-	static function resource($filename,$onlyurl=false)
+	static function resource($filename,$onlyurl=false,$title=APP_TITLE)
 	{
 		$ext = explode('.', $filename);
 		$ext = $ext[count($ext)-1];
-		$embed = $url = "";
 
 		$atcss = APPLICATION_ENV=='development'?time():date('Ymd');
 
@@ -188,7 +189,7 @@ class FrontEnd
 			$embed = "<script src='".$url."'></script>";
 		}elseif (in_array(strtolower($ext), ['jpg','jpeg','gif','png','svg'])) {
 			$url = self::raiz()."resource/imgs/{$filename}"."?i={$atcss}";
-			$embed = "<img src='".$url."'>";
+			$embed = "<img title='".$title."' alt='".$title."' src='".$url."'>";
 		}
 
 		if($onlyurl) return $url;
@@ -207,7 +208,6 @@ class FrontEnd
 		$inputs .= self::getInputToken($nametoken);
 
 		foreach ($anon['properties'] as $key => $v) {
-
 
 			$label = (isset($v['Column']['label']))?$v['Column']['label']:$v['Column']['name'];
 			$mask = (isset($v['Column']['mask']))?$v['Column']['mask']:$v['Column']['type'];
@@ -233,9 +233,9 @@ class FrontEnd
 
 	static function getInputToken($nametoken)
 	{
-		$csrf_token = md5(Utils::microtimeFloat());
-		setSession('csrf_token_'.$nametoken,$csrf_token);
-		return self::formInput('hidden','csrf_token',$csrf_token);
+		$_token = md5(Utils::microtimeFloat());
+		setSession('_token_'.$nametoken,$_token);
+		return self::formInput('hidden','_token',$_token);
 	}
 
 	static function formInput($inputType,$name,$value='',$domain=NULL,$attrs=array())
@@ -247,9 +247,23 @@ class FrontEnd
 				$addClass = $attrs['class'];
 				unset($attrs['class']);
 			}
+
 			foreach ($attrs as $k => $v) {
 				$attrStr .= " {$k}='{$v}' ";
 			}
+		}
+
+		if($domain){
+
+			if(!self::$domains) self::$domains = [];
+
+			if(!is_array($domain) && !isset(self::$domains[$name])){
+				$a = explode('|', $domain);
+				$domain = getUniarrayDb($a[0],$a[1],$a[2],$a[3]);
+			}
+
+			if(!isset(self::$domains[$name])) self::$domains[$name] = $domain;
+			$domain = self::$domains[$name];
 		}
 
 		if($inputType=='textarea'){
@@ -272,4 +286,3 @@ class FrontEnd
 	}
 
 }
-

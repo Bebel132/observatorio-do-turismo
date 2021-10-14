@@ -8,11 +8,13 @@ $anon = $Entity->getAnnotation();
 
 $tb = DaoSI::getTableObj($Entity)['name'];
 
+$domains = [];
+
 echo "<div style='overflow-x:auto'>";
 
-echo '<table class="table table-striped">';
+echo '<table class="table table-striped table-sm">';
 
-echo "<thead><tr>";
+echo "<thead class='bg-info text-light'><tr>";
 echo "<th>ID</th>";
 foreach ($Entity as $attr => $value) {
 	if(in_array($attr, $exclusao)) continue;
@@ -72,6 +74,18 @@ foreach ($lista['results'] as $id => $objs) {
 		}
 
 		if($domain){
+
+			if(!is_array($domain)){
+				if(!isset($domains[$attr])){
+					$a = explode('|', $domain);
+					$domain = getUniarrayDb($a[0],$a[1],$a[2],$a[3]);
+				}else{
+					$domain = $domains[$attr];
+				}
+			}
+
+			if(!isset($domains[$attr])) $domains[$attr] = $domain;
+
 			if(isset($domain[$value])) $value = $domain[$value];
 		}
 

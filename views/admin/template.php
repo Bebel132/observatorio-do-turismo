@@ -51,8 +51,8 @@
 					<ul class="nav nav-pills flex-column">
 						<?php FrontEnd::navAdmin(); ?>
 					</ul>
-					<div class="powered">
-						Powered IPLANFOR - Instituto de Planejamento de Fortaleza
+					<div class="powered w-100">
+						<!-- Powered IPLANFOR - Instituto de Planejamento de Fortaleza -->
 					</div>
 				</nav>
 				<main class="col-sm-9 offset-sm-3 col-md-10 offset-md-2 pt-3">
@@ -60,7 +60,6 @@
 						<?php FrontEnd::page('admin'); ?>
 					</section>
 					<div class="logo-iplanfor">
-						<?= FrontEnd::resource('logo-Iplanfor.png'); ?>
 					</div>
 				</main>
 			</div>
