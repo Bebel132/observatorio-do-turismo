@@ -1,6 +1,8 @@
 <?php
+dd($_SESSION);
 User::getToken();
-Utils::redirect('./admin',2);
+// Utils::redirect('./admin',2);
+dd($_SESSION);
 ?>
 <div class="pagelogin">
 	<div class="box">

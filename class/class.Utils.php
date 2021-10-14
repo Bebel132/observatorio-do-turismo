@@ -18,7 +18,6 @@ class Utils
 		// if(substr($urlVars, 0, strlen(PATH_APP)) == PATH_APP)
 			// $urlVars = substr_replace($urlVars, '', 0, strlen(PATH_APP));
 
-
 		$exploded = explode('/', $urlVars);
 		if($exploded && count($exploded)>0)
 		{

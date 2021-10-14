@@ -17,10 +17,8 @@
 	?>
 </head>
 <body>
-	
-<?php 
-DatabaseSi::create();
-?>
+
+
 	<center>
 		<div class="backheader"></div>
 		<header>
