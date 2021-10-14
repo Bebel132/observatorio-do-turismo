@@ -126,6 +126,7 @@
 	</div>
 
 	<!-- Pesquisas -->
+	<div class="my-5 overflow-hidden"></div>
 	<h2>Pesquisas</h2>
 	<div id="pesquisas"></div>
 	<div class="pesquisas">
@@ -187,7 +188,7 @@
 
 	$IndicadorTipo = new IndicadorTipo();
 	$IndicadorTipo->flstatus = 1;
-	$IndicadorTipos = DaoSI::getList($IndicadorTipo,1,false,'titulo asc');
+	$IndicadorTipos = DaoSI::getList($IndicadorTipo,'titulo asc');
 
 
 	// $tipos = [1=>"Demanda Turística",
@@ -200,6 +201,7 @@
 	// "Receita Turística"];
 
 	?>
+	<div class="my-5 overflow-hidden"></div>
 	<h2>Indicadores</h2>
 	<div id="indicadores"></div>
 	<div class="carouselIndicadores">
@@ -232,6 +234,7 @@
 					<div class="row">
 					<?php 
 					$b=$a=0;
+					$t=count($indicadores);
 					foreach ($indicadores as $kk => $indicador)
 					{
 						$a++;
@@ -269,23 +272,24 @@
 			<?php $hide=" hide"; } ?>
 		</div>
 
-		<br><br><br>
 
 		<?php 
 		/*
+		<br><br><br>
 		<!-- Dashboard -->
 		<!-- <div id="dashboards"></div>
 		<div style="height: 500px; background: #EEE">
 			<iframe frameborder="0" width="100%" height="100%" src="<?=IFRAME_POWERBI?>"></iframe>
 		</div> -->
+		<br><br>
+		<br><br>
 		*/
 		?>
 
 
-		<br><br>
-		<br><br>
 
 		<!-- Aplicativos e Sites -->
+		<div class="my-5 overflow-hidden"></div>
 		<h2>Aplicativos e Sites</h2>
 		<div id="aplicativos"></div>
 
@@ -331,6 +335,7 @@
 
 
 		<!-- Parceiros -->
+		<div class="my-5 overflow-hidden"></div>
 		<h2>Parceiros</h2>
 		<div id="parceiros"></div>
 		<div class="parceiros">
