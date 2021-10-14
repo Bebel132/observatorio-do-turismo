@@ -17,8 +17,6 @@
 	?>
 </head>
 <body>
-
-
 	<center>
 		<div class="backheader"></div>
 		<header>

@@ -119,7 +119,7 @@ class FrontEnd
 
 	static function login()
 	{
-		if(isset($_SESSION['token'])){
+		if(isset($_SESSION['csrf_token'])){
 			if( isset($_SESSION['tentativas_dt']) ){
 				$page = 'wait';
 			}else{
