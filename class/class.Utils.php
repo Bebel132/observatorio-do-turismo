@@ -23,7 +23,7 @@ class Utils
 		if($exploded && count($exploded)>0)
 		{
 			foreach ($exploded as $k => $v) {
-				// if(trim($v))
+				if(trim($v))
 				$vars[] = $v;
 			}
 		}
