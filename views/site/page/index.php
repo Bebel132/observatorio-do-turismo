@@ -1,4 +1,4 @@
-<div id="home"></div>
+<div id="inicio"></div>
 <div class="superbanner">
 	<div id="carouselSuperbanner" class="carousel slide" data-ride="carousel">
 		<div class="carousel-inner">
@@ -44,6 +44,7 @@
 <!-- Institucional -->
 <div class="container">
 	<h2>O que é o Observatório do Turismo</h2>
+	<div id="quem-somos"></div>
 	<div class="txt">
 		<p>
 			O turismo é a atividade do setor terciário que mais cresce no mundo. E é uma fonte relevante de geração de renda e de empregos diretos e indiretos fundamental para a economia de diversos países. Como em outros lugares do mundo, a movimentação turística representa expressivos resultados no PIB da economia de Fortaleza.
@@ -130,10 +131,10 @@
 	<h2>Pesquisas</h2>
 	<div id="pesquisas"></div>
 	<div class="pesquisas">
-		<div id="carouselPesquisas" class="carousel slide" data-ride="carousel">
+		<div id="carouselPesquisas" class="carousel azul slide" data-ride="carousel">
 			<div class="carousel-inner">
 				<div class="carousel-item active">
-					<div class="row">
+					<div class="row justify-content-center">
 					<?php 
 					$pesquisa = new Pesquisa();
 					$pesquisa->tipo = 2;
@@ -163,11 +164,12 @@
 							if($link) echo "</a>"; 
 							?>
 						</div>
-						<?php if($b==3 && $a<$t){echo '</div></div><div class="carousel-item"><div class="row">'; $b=0; } 
+						<?php if($b==3 && $a<$t){echo '</div></div><div class="carousel-item"><div class="row justify-content-center">'; $b=0; } 
 					} ?>
 				</div>
 				</div>
 			</div>
+			<?php if (count($pesquisas)>3): ?>
 			<a class="carousel-control-prev" href="#carouselPesquisas" role="button" data-slide="prev">
 				<span class="carousel-control-prev-icon" aria-hidden="true"></span>
 				<span class="sr-only">Previous</span>
@@ -176,7 +178,9 @@
 				<span class="carousel-control-next-icon" aria-hidden="true"></span>
 				<span class="sr-only">Next</span>
 			</a>
+			<?php endif ?>
 		</div>
+		<br>
 		<br>
 		<a href="area-restrita" class='btn btn-sm btn-primary'> Responda as pesquisas </a>
 	</div>
@@ -231,7 +235,7 @@
 		<div id="carouselIndicadores<?=$k?>" class="carousel azul slide tab tab<?=$k?><?=$hide?>" data-ride="carousel">
 			<div class="carousel-inner">
 				<div class="carousel-item active">
-					<div class="row">
+					<div class="row justify-content-center">
 					<?php 
 					$b=$a=0;
 					$t=count($indicadores);
@@ -256,10 +260,11 @@
 							<div class="subtitle"><?=$indicador->descricao?></div>
 							<?php if($link) echo "</a>";  ?>
 						</div>
-						<?php if($b==3 && $a<$t){echo '</div></div><div class="carousel-item"><div class="row">'; $b=0; } } ?>
+						<?php if($b==3 && $a<$t){echo '</div></div><div class="carousel-item"><div class="row justify-content-center">'; $b=0; } } ?>
 					</div>
 					</div>
 				</div>
+				<?php if ($t>3): ?>
 				<a class="carousel-control-prev" href="#carouselIndicadores<?=$k?>" role="button" data-slide="prev">
 					<span class="carousel-control-prev-icon" aria-hidden="true"></span>
 					<span class="sr-only">Previous</span>
@@ -268,6 +273,7 @@
 					<span class="carousel-control-next-icon" aria-hidden="true"></span>
 					<span class="sr-only">Next</span>
 				</a>
+				<?php endif ?>
 			</div>
 			<?php $hide=" hide"; } ?>
 		</div>

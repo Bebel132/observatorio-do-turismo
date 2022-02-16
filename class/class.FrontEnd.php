@@ -32,11 +32,18 @@ class FrontEnd
 			,['href' => 'banners'		,'name'=>'Banners'	 		, 'icon'=>'image' , 'class' => 'showloading']
 			,['href' => 'pesquisas'		,'name'=>'Pesquisas' 		, 'icon'=>'list-alt' , 'class' => 'showloading']
 			,['href' => 'indicadores'	,'name'=>'Indicadores' 		, 'icon'=>'chart-line' , 'class' => 'showloading']
+			// ,['href' => 'indicadores'	,'name'=>'Indicadores' 		, 'icon'=>'chart-line' , 'class' => 'showloading']
 			,['href' => 'indicadores-tipos'	,'name'=>'Indicadores Tipos' 		, 'icon'=>'chart-line' , 'class' => 'showloading']
 			// ,['href' => 'noticias'		,'name'=>'Notícias' 		, 'icon'=>'newspaper' , 'class' => 'showloading']
-			,['href' => 'usuarios'		,'name'=>'Usuários' 		, 'icon'=>'user' , 'class' => 'showloading']
+			,['href' => 'usuarios-site'	,'name'=>'Usuários do site' 		, 'icon'=>'users' , 'class' => 'showloading']
+			,['href' => 'usuarios'		,'name'=>'Usuários do sistema' 		, 'icon'=>'user-cog' , 'class' => 'showloading']
 
 		];
+
+		// $itens[] = ['href' => 'tipos'			,'name'=>'Cadastros de Tipos' 	, 'icon'=>'database' , 'class' =>'' , 'subitens' => [
+		// 	['href' => 'indicador-tipo'		,'name'=>'de Indicadores' 		, 'icon'=>'server' 	, 'class' => 'showloading']
+		// 	,['href' => 'usuarios-site'			,'name'=>'de Usuários do site' 			, 'icon'=>'server' 	, 'class' => 'showloading']
+		// ]];
 
 
 		$itens[] = ['href' => 'sair'		,'name'=>'Sair' 	, 'icon'=>'sign-out-alt' 	, 'class' => 'showloading'];
@@ -190,6 +197,9 @@ class FrontEnd
 		}elseif (in_array(strtolower($ext), ['jpg','jpeg','gif','png','svg'])) {
 			$url = self::raiz()."resource/imgs/{$filename}"."?i={$atcss}";
 			$embed = "<img title='".$title."' alt='".$title."' src='".$url."'>";
+		}else{
+			$url = $url = self::raiz()."resource/uploads/{$filename}"."?i={$atcss}";
+
 		}
 
 		if($onlyurl) return $url;

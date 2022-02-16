@@ -36,7 +36,7 @@ class Pesquisa extends Entity
 	public $file_resultado;
 
 	/**
-	* @Column = {"name":"tipo" , "type":"integer" , "size" : "" , "label":"Tipo" , "domain":{"1":"Formulários","2":"Resultados"} }
+	* @Column = {"name":"tipo" , "type":"integer" , "size" : "" , "label":"Botão" , "domain":{"1":"Preencher Formulário","2":"Ver Resultados"} }
 	*/
 	public $tipo;
 

@@ -355,6 +355,10 @@ class Utils
 
 	}
 
+	static function urlFormat($url){
+		if(substr($url, 0,4) == 'http') return $url;
+		return 'http'.((ISHTTPS) ? 's':'').'://'.$url;
+	}
 
 	static function clearString($string)
 	{
@@ -368,4 +372,3 @@ class Utils
 
 
 }
-?>

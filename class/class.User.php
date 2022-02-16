@@ -92,7 +92,7 @@ class User
 		return false;
 	}
 
-	static function singonParceiro($user,$pass,$token)
+	static function singonUsuarioSite($user,$pass,$token)
 	{
 
 		$user = trim($user);
@@ -101,10 +101,10 @@ class User
 			self::setError('Username e Senha necessários');
 		}elseif(self::checkToken($token)){
 
-			$result = DaoSI::querySelect("SELECT * FROM usuarios WHERE email='{$user}' AND perfil=2 LIMIT 1");
+			$result = DaoSI::querySelect("SELECT * FROM usuarios_site WHERE email='{$user}' AND flstatus=1 LIMIT 1");
 
 			if(isset($result[0]) && PasswordCompat::password_verify($pass,$result[0]['senha'])){
-				setSession('ParceiroLogado',new Usuario($result[0]['id']));
+				setSession('UsuarioSiteLogado',new UsuarioSite($result[0]['id']));
 				return true;
 			}else{
 				self::setError('Usuário e/ou senha inválido(s)');
@@ -112,7 +112,7 @@ class User
 		}else{
 			self::setError('Token inválido');
 		}
-		delSession('ParceiroLogado');
+		delSession('UsuarioSiteLogado');
 		return false;
 	}
 

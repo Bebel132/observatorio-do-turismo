@@ -21,9 +21,9 @@ a:hover img{
 
 body{
 	text-align: left;
-	line-height: 18px;
-	font-size: 15px;
-	font-family: Roboto-Light;
+	/*line-height: 18px;*/
+	/*font-size: 15px;*/
+	font-family: Calibri;
 }
 
 /*--------------------------------------------------- Attr*/
@@ -71,29 +71,48 @@ header.min .logo{
 }
 
 header .navbar{
-	margin: 43px 0px 0px 180px;
+	margin: 34px 0px 0px 180px;
 	transition:all 0.5s;
 }
 
 header.min .navbar{
-	margin: 21px 0px 0px 180px;
+	margin: 16px 0px 0px 180px;
 }
 
 .navbar a{
 	text-decoration: none;
 	margin-right: 20px;
 	text-transform: uppercase;
-	font-family: 'Roboto-Regular';
+	/*font-family: 'Roboto-Regular';*/
 	color: #000;
-	font-size: 14px;
+	font-size: 16px;
 }
 
 .navbar a:hover, .navbar a.active{
 	color: #eb6215;
 }
 
+.navbar span{
+	position: absolute;
+	left: 0;
+	font-size: 12px;
+	top: 15px;
+	text-align: left;
+	width: 300px;
+	color: #0ba59e;
+	opacity:0;
+	transition: all 0.3s;
+}
+
+.navbar a:hover span{
+	top: 20px;
+	opacity:1;
+	border-left:1px solid #CCC;
+	padding-left:7px;
+}
+
 h2{
-	font-family: Roboto-Medium;
+	/*font-family: Roboto-Medium;*/
 	text-transform: uppercase;
 	font-size: 25px;
 	padding: 20px;
@@ -103,6 +122,18 @@ h2{
 
 .superbanner{
 	background: #FFF;
+}
+
+.azul .carousel-control-next, .azul .carousel-control-prev{
+	width: 100px;
+}
+
+.azul .carousel-inner{
+	padding: 0px 70px
+}
+
+.azul .carousel-control-prev{
+	width: 100px;
 }
 
 .azul .carousel-control-prev-icon{
@@ -169,7 +200,7 @@ h2{
 .icon span{
 	display: block;
 	margin-top: 15px;
-	font-family: Roboto-Regular;
+	/*font-family: Roboto-Regular;*/
 	/*position: absolute;*/
 	/*bottom: 0;*/
 	/*width: 100%;*/
@@ -213,13 +244,15 @@ footer .caf img{
 }
 
 .temp-caixa{
-	height: 650px;
+	height: 700px;
 }
 
-.temp-caixa .middle{
+.temp-caixa .bnr{
 	background: #EEE;
 	width: 800px;
 	background-size: 100% auto;
+	overflow: hidden;
+	background-position: center
 }
 
 .temp-caixa .caixa{
@@ -228,7 +261,9 @@ footer .caf img{
 	width: 400px;
 	margin: 40px 0px 40px 400px;
 	padding: 30px;
-	text-align: left
+	text-align: left;
+	border: 1px solid #FFF;
+	border-right: none
 }
 
 .temp-caixa input{
@@ -239,6 +274,12 @@ footer .caf img{
 	padding: 6px 6px;
 	float: left;
 	margin-right: 5px;
+}
+
+
+
+.temp-caixa.cadastro .caixa{
+	margin: 0;
 }
 
 .carouselIndicadores .title{
@@ -253,9 +294,23 @@ footer .caf img{
 	font-weight: bold;
 	text-transform: uppercase;
 	text-align: left;
-	color: #FFF;
-	text-shadow: 1px 1px 2px #000;
+	color: #999;
+/* 	text-shadow: 1px 1px 2px #000; */
 	font-size: 13px
+}
+
+.card .img-center{
+	height: 200px;
+	background: #f5f5f5;
+	position: relative
+}
+.card .img-center img{
+	max-width: 100%;
+	max-height: 100%;
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%,-50%);
 }
 
 .w-only{ display: initial; }

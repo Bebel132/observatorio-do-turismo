@@ -1,8 +1,8 @@
 <?php 
 /**
- * @Table = {"name":"usuarios"}
+ * @Table = {"name":"usuarios_site"}
  */
-class Usuario extends Entity
+class UsuarioSite extends Entity
 {
 
 	/**
@@ -21,9 +21,9 @@ class Usuario extends Entity
 	public $senha;
 
 	/**
-	* @Column = {"name":"perfil" , "type":"integer" , "size" : "" , "label":"Perfil" , "domain":{"1":"Administrador"} }
+	* @Column = {"name":"perfil" , "type":"integer" , "size" : "" , "label":"Perfil" , "domain":{"1":"Parceiro","2":"Entrevistado","3":"Assinante"} }
 	*/
-	public $perfil; //admin, parceiro, setfot
+	public $perfil;
 
 	/**
 	* @Column = {"name":"instituicao" , "type":"varchar" , "size" : "255" , "label":"Instituição"}
