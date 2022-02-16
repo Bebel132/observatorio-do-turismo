@@ -116,6 +116,52 @@ class User
 		return false;
 	}
 
+	static function registerUsuarioSite($email,$pass,$pass_confirm,$typeUser,$token)
+	{
+
+		$email = trim($email);
+
+		if(!$email || !$pass){
+			self::setError('Email e Senha necessários');
+		}elseif(self::checkToken($token)){
+
+			if($pass != $pass_confirm){
+				self::setError('Confirmação de senha inválido');
+			}else{
+
+				$result = DaoSI::querySelect("SELECT * FROM usuarios_site WHERE email='{$email}' AND perfil={$typeUser} LIMIT 1");
+
+				if(isset($result[0]) && PasswordCompat::password_verify($pass,$result[0]['senha'])){
+					self::setError('Cadastro já existente');
+					return false;
+				}else{
+
+					$UsuarioSite = new UsuarioSite();
+					$UsuarioSite->email = $email;
+					$UsuarioSite->senha = PasswordCompat::password_hash($pass);
+					$UsuarioSite->perfil = $typeUser;
+					$UsuarioSite->flstatus = 1;
+					$UsuarioSite->timestamp = date('Y-m-d H:i:s');
+
+					if(DaoSI::merge($UsuarioSite)){
+						setSession('UsuarioSiteLogado', $UsuarioSite);
+						return true;
+					}else{
+						self::setError('Falha ao cadastrar');
+						return false;
+
+					}
+				}
+
+			}
+
+		}else{
+			self::setError('Token inválido');
+		}
+		delSession('UsuarioSiteLogado');
+		return false;
+	}
+
 	static public function logout()
 	{
 		delSession('useron');

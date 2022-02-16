@@ -1,5 +1,17 @@
 <?php 
 
+if(
+	count($_POST) 
+	&& isset($_POST['email'])
+	&& isset($_POST['senha'])
+){
+	$login = User::singonUsuarioSite($_POST['email'],$_POST['senha'],$_POST['csrf_token']);
+
+	if($login){
+		Utils::redirect('./',0);
+	}
+}
+
 $banner = new Banner();
 $banner->tipo = 4;
 $banner->flstatus = 1;
@@ -37,7 +49,7 @@ if($banner){
 					}
 					?>
 
-					<form method="post" action="<?=FrontEnd::raiz()?>area-restrita">
+					<form method="post" action="<?=FrontEnd::raiz()?>area-restrita/login">
 						<input type="hidden" name="csrf_token" value="<?=User::getToken()?>">
 
 						<div class="row">

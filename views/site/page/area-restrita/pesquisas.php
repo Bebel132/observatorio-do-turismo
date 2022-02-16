@@ -32,6 +32,10 @@
 					</div>
 				</div>
 			<?php } ?>
+
+			<?php if (!count($pesquisas)): ?>
+				<span class="alert alert-warning">Nenhum formulário disponível no momento</span>
+			<?php endif ?>
 		</div>
 	</div>
 
@@ -71,6 +75,10 @@
 			</div>
 		</div>
 	<?php } ?>
+
+	<?php if (!count($resultados)): ?>
+		<span class="alert alert-warning">Nenhum resultado disponível no momento</span>
+	<?php endif ?>
 
 </div>
 
