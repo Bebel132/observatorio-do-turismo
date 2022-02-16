@@ -44,37 +44,35 @@
 	$resultado->flstatus = 1;
 	$resultado->tipo = 2;
 	$resultados = DaoSI::getList($resultado);
-	if(count($resultados)){
-		?>
-		<div class="pb-4">
-			<h5 class="mb-3 text-info mt-5">Resultados disponíveis</h5>
-			<div class="row justify-content-center">
-				<?php 
+	?>
+	<div class="pb-4">
+		<h5 class="mb-3 text-info mt-5">Resultados disponíveis</h5>
+		<div class="row justify-content-center">
+			<?php 
 
-				foreach ($resultados as $kk => $resultado)
-				{
+			foreach ($resultados as $kk => $resultado)
+			{
 
-					$link = "#indiponivel";
-					if($resultado->file_resultado)
-						$link = $resultado->getImg('file_resultado',1);
-					if($resultado->link_resultado)
-						$link = Utils::urlFormat($resultado->link_resultado);
+				$link = "#indiponivel";
+				if($resultado->file_resultado)
+					$link = $resultado->getImg('file_resultado',1);
+				if($resultado->link_resultado)
+					$link = Utils::urlFormat($resultado->link_resultado);
 
-					?>
-					<div class="col-12 col-sm-3">
-						<div class="card">
-							<div class="img-center"> <?=$resultado->getImg('filename')?> </div>
-							<div class="card-body">
-								<h5 class="card-title"><?=$resultado->titulo?></h5>
-								<p class="card-text"><?=$resultado->descricao?></p>
-								<a href="<?=$link?>" class="btn btn-sm btn-info" target="_blank">Ver resultado</a>
-							</div>
+				?>
+				<div class="col-12 col-sm-3">
+					<div class="card">
+						<div class="img-center"> <?=$resultado->getImg('filename')?> </div>
+						<div class="card-body">
+							<h5 class="card-title"><?=$resultado->titulo?></h5>
+							<p class="card-text"><?=$resultado->descricao?></p>
+							<a href="<?=$link?>" class="btn btn-sm btn-info" target="_blank">Ver resultado</a>
 						</div>
 					</div>
-				<?php } ?>
-			</div>
+				</div>
+			<?php } ?>
 		</div>
-	<?php } ?>
+	</div>
 
 	<?php if (!count($resultados)): ?>
 		<span class="alert alert-warning">Nenhum resultado disponível no momento</span>
