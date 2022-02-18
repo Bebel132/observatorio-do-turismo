@@ -101,7 +101,7 @@ class PhpAnnotation
 
 
 	private static function json_decode($json){
-		if(get_magic_quotes_gpc()){
+		if(function_exists('get_magic_quotes_gpc') && get_magic_quotes_gpc()){
 			$json = stripslashes($json);
 		}
 

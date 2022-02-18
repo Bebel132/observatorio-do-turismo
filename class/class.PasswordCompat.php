@@ -154,7 +154,7 @@ static function password_hash($password, $algo = PASSWORD_DEFAULT, array $option
     return $ret;
 }
 
-function password_get_info($hash) {
+static function password_get_info($hash) {
     $return = array(
         'algo' => 0,
         'algoName' => 'unknown',
@@ -170,7 +170,7 @@ function password_get_info($hash) {
 }
 
 
-function password_needs_rehash($hash, $algo, array $options = array()) {
+static function password_needs_rehash($hash, $algo, array $options = array()) {
     $info = password_get_info($hash);
     if ($info['algo'] != $algo) {
         return true;
@@ -204,21 +204,21 @@ static function password_verify($password, $hash) {
     return $status === 0;
 }
 
-function Binary_strlen($binary_string) {
+static function Binary_strlen($binary_string) {
     if (function_exists('mb_strlen')) {
         return mb_strlen($binary_string, '8bit');
     }
     return strlen($binary_string);
 }
 
-function Binary_substr($binary_string, $start, $length) {
+static function Binary_substr($binary_string, $start, $length) {
     if (function_exists('mb_substr')) {
         return mb_substr($binary_string, $start, $length, '8bit');
     }
     return substr($binary_string, $start, $length);
 }
 
-function Binary_check() {
+static function Binary_check() {
     static $pass = NULL;
 
     if (is_null($pass)) {
