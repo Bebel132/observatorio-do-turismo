@@ -30,6 +30,7 @@ class FrontEnd
 
 			 ['href' => 'index'		,'name'=>'Início' 			, 'icon'=>'home' 	, 'class' => 'showloading']
 			,['href' => 'banners'		,'name'=>'Banners'	 		, 'icon'=>'image' , 'class' => 'showloading']
+			,['href' => 'institucional'		,'name'=>'Intitucional'	 		, 'icon'=>'list-alt' , 'class' => 'showloading']
 			,['href' => 'pesquisas'		,'name'=>'Pesquisas' 		, 'icon'=>'list-alt' , 'class' => 'showloading']
 			,['href' => 'indicadores'	,'name'=>'Indicadores' 		, 'icon'=>'chart-line' , 'class' => 'showloading']
 			// ,['href' => 'indicadores'	,'name'=>'Indicadores' 		, 'icon'=>'chart-line' , 'class' => 'showloading']
