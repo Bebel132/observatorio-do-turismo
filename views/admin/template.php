@@ -32,12 +32,6 @@
 </head>
 <body onload="appLoaded()">
 
-<!-- 	<div class="blockscreen">
-		<div class="in">
-			<div class="loading"> <i></i> </div>
-		</div>
-	</div> -->
-
 	<?php 
 	
 	if(User::isLoged()){ ?>

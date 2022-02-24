@@ -67,6 +67,11 @@ if($banner){
 								<button class="w-100 btn btn-warning btn">entrar</button>
 							</div>
 						</div>
+						<div class="row mt-3">
+							<div class="col-12">
+								<u><a href="<?=FrontEnd::raiz()?>area-restrita/recuperar" class="text-white">Esqueceu a senha?</a></u>
+							</div>
+						</div>
 
 					</form>
 				</div>
