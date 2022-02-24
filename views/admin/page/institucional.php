@@ -1,6 +1,5 @@
 <h2>
 	Institucional
-	<button class="btn btn-sm btn-success" data-toggle="modal" data-target="#modalAdicionar"> <i class="fas fa-plus"></i> Adicionar </button>
 </h2>
 
 <?php 
