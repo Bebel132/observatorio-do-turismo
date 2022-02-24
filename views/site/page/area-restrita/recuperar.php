@@ -4,11 +4,9 @@ if(
 	count($_POST) 
 	&& isset($_POST['email'])
 ){
-	$cadastro = User::registerUsuarioSite($_POST['email'],$_POST['senha'],$_POST['senha_confirma'],$_POST['csrf_token']);
+	
+	$cadastro = User::recoveryUsuarioSite($_POST['email'],$_POST['csrf_token']);
 
-	if($cadastro){
-		Utils::redirect('./',0);
-	}
 }
 
 ?><div class="temp-caixa cadastro">
@@ -17,9 +15,13 @@ if(
 		<div class="caixa">
 			<div class="txt">
 				<?php 
-				if(isset($cadastro) && !$cadastro){
-					foreach (User::$error as $erro) {
-						FrontEnd::alert($erro,'danger');
+				if(isset($cadastro)){
+					if(!$cadastro){
+						foreach (User::$error as $erro) {
+							FrontEnd::alert($erro,'danger');
+						}
+					}else{
+							FrontEnd::alert('Uma nova senha foi enviada para o e-mail solicitado!','success');
 					}
 				}
 				?>

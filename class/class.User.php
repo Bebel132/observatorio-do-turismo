@@ -162,6 +162,38 @@ class User
 		return false;
 	}
 
+	static function recoveryUsuarioSite($email,$token)
+	{
+
+		$email = trim($email);
+
+		if(!$email){
+			self::setError('Email necessário');
+		}elseif(self::checkToken($token)){
+
+			$result = DaoSI::querySelect("SELECT * FROM usuarios_site WHERE email='{$email}' LIMIT 1");
+
+			if(isset($result[0])){
+
+				$UsuarioSite = new UsuarioSite($result[0]['id']);
+
+				return $UsuarioSite;
+				
+			}else{
+
+				self::setError('Cadastro inexistente');
+				return false;
+
+			}
+
+
+		}else{
+			self::setError('Token inválido');
+		}
+		delSession('UsuarioSiteLogado');
+		return false;
+	}
+
 	static public function logout()
 	{
 		delSession('useron');
