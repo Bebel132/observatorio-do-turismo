@@ -177,6 +177,21 @@ class User
 
 				$UsuarioSite = new UsuarioSite($result[0]['id']);
 
+				$now = date('Y-m-d H:i:s');
+
+				$envio = getSession('recovery_'.$email);
+
+				if($envio && $now <= date('Y-m-d H:i:s',strtotime("{$envio} + 10 minutes"))){
+
+					self::setError('Recuperação enviada às '.date('H\hi').'. Cheque seu email ou espere 10 minutos para solicitar novamente.');
+					return false;
+
+				}
+
+				setSession('recovery_'.$email,$now);
+
+				// envia
+
 				return $UsuarioSite;
 				
 			}else{
