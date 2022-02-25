@@ -189,7 +189,7 @@ class User
 				}
 
 
-				$senha = substr( mb_strtolower(md5(time())), 0,6);
+				$senha = substr( strtolower(md5(time())), 0,6);
 				$hora = date('d/m/Y \à\s H:i');
 
 
