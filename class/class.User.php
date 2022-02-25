@@ -129,10 +129,10 @@ class User
 				self::setError('Confirmação de senha inválido');
 			}else{
 
-				$result = DaoSI::querySelect("SELECT * FROM usuarios_site WHERE email='{$email}' AND perfil={$typeUser} LIMIT 1");
+				$result = DaoSI::querySelect("SELECT * FROM usuarios_site WHERE email='{$email}' LIMIT 1");
 
 				if(isset($result[0]) && PasswordCompat::password_verify($pass,$result[0]['senha'])){
-					self::setError('Cadastro já existente');
+					self::setError('Cadastro já existente! Recupere a senha.');
 					return false;
 				}else{
 
