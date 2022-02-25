@@ -183,14 +183,64 @@ class User
 
 				if($envio && $now <= date('Y-m-d H:i:s',strtotime("{$envio} + 10 minutes"))){
 
-					self::setError('Recuperação enviada às '.date('H\hi').'. Cheque seu email ou espere 10 minutos para solicitar novamente.');
+					self::setError('Recuperação enviada às '.date('H\hi').'. Cheque seu email e a caixa de spam ou espere 10 minutos para solicitar novamente.');
 					return false;
 
 				}
 
-				setSession('recovery_'.$email,$now);
+
+				$senha = substr( mb_strtolower(md5(time())), 0,6);
+				$hora = date('d/m/Y \à\s H:i');
+
+
+				$senhaAtual = $UsuarioSite->senha;
+				$UsuarioSite->senha = PasswordCompat::password_hash($senha);
+				$merge = DaoSI::merge($UsuarioSite);
+
+				if(!$merge){
+					self::setError('Não foi possível modificar senha');
+					return false;
+				}
 
 				// envia
+
+				$message = "
+				<div style='padding: 30px;background: #F5F5F5;text-align: left;border-top: 30px solid #009891;'>
+
+				<div style='font-size: 30px;color: #009891;'>Observatório do Turismo</div>
+				<div>Olá {$email}, você solicitou recuperação de senha? Se sim, segue a nova:</div>
+				<div style='padding: 20px 0px;'><span style='padding: 10px 20px;font-size: 20px;background: #009891;color: #FFF;letter-spacing: 2px;'>{$senha}</span></div>
+				<div>Se não, não se preocupe. Somente o proprietário da conta de e-mail possui acesso. <br> Atenciosamente,</div>
+
+				</div>
+				<div style='padding: 10px 30px;text-align: left;'>
+				Mensagem enviada em: {$hora}
+				</div>
+				";
+
+
+				$Mailer = new Mailer();
+
+				$Mailer->smtp(EMAIL_RECOVERY,EMAIL_RECOVERY_PASS);
+
+				$Mailer->setDe(EMAIL_RECOVERY);
+				$Mailer->addReplyTo(EMAIL_RECOVERY);
+
+				$Mailer->addPara($email);
+
+				$Mailer->setSubject('Recuperação de senha');
+				$Mailer->setBody($message);
+				$sended = $Mailer->send();
+
+				if(!$sended){
+					self::setError('Não foi possível enviar a nova senha');
+					self::setError($Mailer->mail->ErrorInfo);
+					$UsuarioSite->senha = $senhaAtual;
+					$merge = DaoSI::merge($UsuarioSite);
+					return false;
+				}
+
+				setSession('recovery_'.$email,$now);
 
 				return $UsuarioSite;
 				

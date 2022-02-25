@@ -7,9 +7,12 @@ if(
 	
 	$cadastro = User::recoveryUsuarioSite($_POST['email'],$_POST['csrf_token']);
 
+
 }
 
-?><div class="temp-caixa cadastro">
+
+?>
+<div class="temp-caixa cadastro">
 
 	<div class="middle">
 		<div class="caixa">
