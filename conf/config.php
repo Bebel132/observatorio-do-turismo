@@ -36,3 +36,6 @@ define('CENTRAL_PAGINACAO', 100);
 // E-mail
 define('EMAIL_RECOVERY', 'observatorio.setfor@setfor.fortaleza.ce.gov.br');
 define('EMAIL_RECOVERY_PASS', '@2qzwxEC2@');
+
+define('SMTP_HOST', 'mail.setfor.fortaleza.ce.gov.br');
+define('SMTP_PORT', 587);

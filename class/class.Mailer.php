@@ -22,8 +22,8 @@ class Mailer
 		$mail = new PHPMailer();
 
 		$mail->SMTPAuth = false;
-		$mail->Host = 'mail.'.$_SERVER['HTTP_HOST'];
-		$mail->Port = 587; 
+		$mail->Host = SMTP_HOST;
+		$mail->Port = SMTP_PORT; 
 
 		$mail->IsHTML(true); 
 
