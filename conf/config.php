@@ -34,5 +34,5 @@ define('CENTRAL_PAGINACAO', 100);
 
 
 // E-mail
-define('EMAIL_RECOVERY', 'observatorio.setfor@setfor.fortaqleza.ce.gov.br');
+define('EMAIL_RECOVERY', 'observatorio.setfor@setfor.fortaleza.ce.gov.br');
 define('EMAIL_RECOVERY_PASS', '@2qzwxEC2@');
