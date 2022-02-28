@@ -141,3 +141,29 @@ function header_status($statusCode,$msgCustomize=null) {
 	}
 
 }
+
+
+
+
+
+function getUniarrayDb($Classe,$key,$value,$where='(1)'){
+
+	$arr = $r = array();
+
+	$where = $where != '(1)' ? "WHERE $where" : '';
+
+	$Entity = new $Classe();
+
+	$tb = DaoSI::getTableObj($Entity)['name'];
+	$r = DaoSi::querySelect("SELECT $key , $value FROM {$tb} $where");
+
+	$r = Utils::escapeHtml($r);
+
+	for ($a=0; $a < count($r); $a++) { 
+		$k = $r[$a][$key];
+		$v = $r[$a][$value]." #{$k}";
+		$arr[$k] = $v;
+	}
+	return $arr;
+
+}

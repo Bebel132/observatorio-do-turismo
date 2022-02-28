@@ -28,11 +28,27 @@
 				</div>
 				<div class="navbar fleft">
 					<nav>
-						<a href="<?=FrontEnd::raiz()?>./#home" class="rollto active">Home</a>
-						<a href="<?=FrontEnd::raiz()?>./#pesquisas" class="rollto">Pesquisas</a>
-						<a href="<?=FrontEnd::raiz()?>./#indicadores" class="rollto">Indicadores</a>
-						<a href="<?=FrontEnd::raiz()?>./#dashboards" class="rollto">Dashboards</a>
-						<a href="<?=FrontEnd::raiz()?>./#aplicativos" class="rollto">Aplicativos e Sites</a>
+						<a href="<?=FrontEnd::raiz()?>./#inicio" class="rollto">Início</a>
+						<a href="<?=FrontEnd::raiz()?>./#quem-somos" class="rollto">
+							Quem Somos
+							<span>Missão do Observatório!</span>
+						</a>
+						<a href="<?=FrontEnd::raiz()?>./#pesquisas" class="rollto">
+							Pesquisas
+							<span>Veja resultados ou preencha nossas pesquisas!</span>
+						</a>
+						<a href="<?=FrontEnd::raiz()?>./#indicadores" class="rollto">
+							Indicadores
+							<span>Acesse os nossos indicadores!</span>
+						</a>
+						<a href="<?=FrontEnd::raiz()?>./area-restrita/cadastro/?t=assinante" class="rollto">
+							Assinantes
+							<span>Seja nosso assinante e receba nossas publicações!</span>
+						</a>
+						<a href="<?=FrontEnd::raiz()?>./#aplicativos" class="rollto">
+							Aplicativos e Sites
+							<span>Acesse aplicativos e stites que recomendamos!</span>
+						</a>
 					</nav>
 				</div>
 			</div>

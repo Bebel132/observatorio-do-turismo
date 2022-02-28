@@ -21,7 +21,7 @@ class Banner extends Entity
 	public $link;
 
 	/**
-	* @Column = {"name":"tipo" , "type":"integer" , "size" : "" , "label":"Localização" , "domain":{"1":"Topo","2":"Aplicativos e Sites","3":"Parceiros","4":"Área Restrita"} }
+	* @Column = {"name":"tipo" , "type":"integer" , "size" : "" , "label":"Localização" , "domain":{"1":"Topo","2":"Aplicativos e Sites","3":"Parceiros","4":"Área Restrita","5":"Banner Pesquisas"} }
 	*/
 	public $tipo;
 

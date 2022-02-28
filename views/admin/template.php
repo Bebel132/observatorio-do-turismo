@@ -2,7 +2,7 @@
 <html lang="pt-BR">
 <head>
 
-	<title><?=FrontEnd::navAdmin(true)['name']?> | Agricultura Urbana</title>
+	<title><?=FrontEnd::navAdmin(true)['name']?> | Observatório do Turismo</title>
 
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -22,21 +22,15 @@
 	?>
 
 	<script> jq = jQuery.noConflict( true ); </script>
-	<script src='http://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.1/js/bootstrap-datepicker.min.js'></script>
-	<script> $(document).ready(function(){jq('input[type=datetime-local]').datepicker({format: "yy-mm-dd"}); }) </script>
-	<script> $(document).ready(function(){jq('input[type=datetime]').datepicker({format: "yyyy-mm-dd"}); }) </script>
+	<!-- <script src='http://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.1/js/bootstrap-datepicker.min.js'></script> -->
+	<!-- <script> jq(document).ready(function(){jq('input[type=datetime-local]').datepicker({format: "yy-mm-dd"}); }) </script>
+	<script> jq(document).ready(function(){jq('input[type=datetime]').datepicker({format: "yyyy-mm-dd"}); }) </script> -->
 	<?= FrontEnd::resource('admin.js'); ?>
 
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.bundle.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js"></script>
 </head>
 <body onload="appLoaded()">
-
-	<div class="blockscreen">
-		<div class="in">
-			<div class="loading"> <i></i> </div>
-		</div>
-	</div>
 
 	<?php 
 	
@@ -51,8 +45,8 @@
 					<ul class="nav nav-pills flex-column">
 						<?php FrontEnd::navAdmin(); ?>
 					</ul>
-					<div class="powered">
-						Powered IPLANFOR - Instituto de Planejamento de Fortaleza
+					<div class="powered w-100">
+						<!-- Powered IPLANFOR - Instituto de Planejamento de Fortaleza -->
 					</div>
 				</nav>
 				<main class="col-sm-9 offset-sm-3 col-md-10 offset-md-2 pt-3">
@@ -60,7 +54,6 @@
 						<?php FrontEnd::page('admin'); ?>
 					</section>
 					<div class="logo-iplanfor">
-						<?= FrontEnd::resource('logo-Iplanfor.png'); ?>
 					</div>
 				</main>
 			</div>
@@ -73,8 +66,6 @@
 	}
 
 	?>
-
-	<?php //Log::rastreio(); ?>
 
 	<!-- Bootstrap -->
 	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>

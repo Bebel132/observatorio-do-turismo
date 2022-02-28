@@ -1,23 +1,21 @@
 <?php 
 
-if(
-	count($_POST) 
-	&& isset($_POST['email'])
-	&& isset($_POST['senha'])
-){
-	$login = User::singonParceiro($_POST['email'],$_POST['senha'],$_POST['csrf_token']);
-	if(!$login){
-		foreach (User::$error as $erro) {
-			FrontEnd::alert($erro,'danger');
-		}
-	}
-}elseif(isset($vars[1]) && $vars[1]=='sair'){
-	delSession('ParceiroLogado');
+if(isset($vars[1]) && $vars[1]=='sair'){
+	delSession('UsuarioSiteLogado');
 }
 
-$ParceiroLogado = getSession('ParceiroLogado');
+$UsuarioSiteLogado = getSession('UsuarioSiteLogado');
 
-if($ParceiroLogado)
+
+if($UsuarioSiteLogado){
+	$anon = $UsuarioSiteLogado->getAnnotation();
+	$domainTipoUsuarioSite = isset($anon['properties']['perfil']['Column']['domain'])?$anon['properties']['perfil']['Column']['domain']:null;
+	$perfil = isset($domainTipoUsuarioSite[$UsuarioSiteLogado->perfil]) ? $domainTipoUsuarioSite[$UsuarioSiteLogado->perfil] : '';
+	// dd($domainTipoUsuarioSite);
 	require_once('area-restrita/pesquisas.php');
-else
+}
+elseif(isset($vars[1]) && is_file(__DIR__.'/area-restrita/'.$vars[1].'.php')){
+	require_once('area-restrita/'.$vars[1].'.php');
+}else{
 	require_once('area-restrita/login.php');
+}

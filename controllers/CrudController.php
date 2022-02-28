@@ -13,9 +13,7 @@ class CrudController extends Controller
 		$tb = DaoSI::getTableObj($Entity)['name'];
 		if(!$nametoken) $nametoken = get_class($Entity);
 
-		if(!$this->csrfToken($nametoken)){
-			return;
-		}
+		if(!$this->csrfToken($nametoken)) return;
 
 		if(count($_POST)>0){
 
@@ -37,6 +35,11 @@ class CrudController extends Controller
 				if($mask=='file' && empty($Entity->$key)){
 					unset($Entity->$key);
 				}
+
+				if($mask=='timestamp' && (empty($Entity->$key) || trim($Entity->$key)=="" )){
+					$Entity->$key = null;
+				}
+
 			}
 
 			$type = ($Entity->id)?'alterar':'adicionar';
@@ -53,16 +56,9 @@ class CrudController extends Controller
 
 	public function csrfToken($nametoken)
 	{
-		$csrf_token = getSession('csrf_token_'.$nametoken);
-		delSession('csrf_token_'.$nametoken);
-
-		if(isset($_POST['csrf_token'])){
-
-			if($_POST['csrf_token'] == $csrf_token)
-				return true;
-			header_status(500,'Invalid token');
-		}
-		return false;
+		$_token = getSession('_token_'.$nametoken);
+		delSession('_token_'.$nametoken);
+		return (isset($_POST['_token']) && $_POST['_token'] == $_token);
 	}
 
 	public function deleteByObj($obj)
@@ -83,21 +79,19 @@ class CrudController extends Controller
 		$offset = 0;
 		$limitt = 100;
 
-
 		if(isset($_GET['page']) && is_numeric($_GET['page'])){
 			$offset = ($_GET['page'] - 1) * $limitt;
 		}
 
 		$limit = "LIMIT {$limitt} OFFSET {$offset}";
 
-		DaoSI::setDatabase($Entity);
-		$idField = DaoSI::getIdField($Entity);
-		$ids = DaoSI::querySelect("SELECT {$idField} FROM {$tb['name']} ORDER BY {$idField} DESC {$limit}");
+
+		$ids = DaoSI::querySelect("SELECT id FROM {$tb['name']} ORDER BY id DESC {$limit}");
 		foreach ($ids as $id) {
-			$result[$id[$idField]] = new $EntityClass($id[$idField]); 
+			$result[$id['id']] = new $EntityClass($id['id']); 
 		}
 
-		$total = DaoSI::querySelect("SELECT count({$idField}) as total FROM {$tb['name']}")[0]['total'];
+		$total = DaoSI::querySelect("SELECT count(id) as total FROM {$tb['name']}")[0]['total'];
 		return ['results'=>$result,'total'=>$total];
 
 	}

@@ -9,49 +9,22 @@ class PhpAnnotation
 	static $ReflectionClass;
 	static $ReflectionClassParent;
 
-	static $class;
-	static $properties;
-	static $Id;
-
 	static function get($class)
 	{
 		
 		self::$ReflectionClass = new ReflectionClass($class);
 		self::$ReflectionClassParent = self::$ReflectionClass->getParentClass();
 		
+		$res['class'] = self::commentToArray(self::$ReflectionClass->getDocComment());
 
-		self::$class = self::commentToArray(self::$ReflectionClass->getDocComment());
-		self::$properties = self::getPropriedades();
-
-		self::setIdColumn();
-		
-		$res['class'] = self::$class;
-		$res['properties'] = self::$properties;
-		$res['id'] = self::$Id;
-
+		$res['properties'] = self::getPropriedades();
 		
 		return $res;
 
 	}
 
-	private function setIdColumn()
-	{
-		
-		self::$Id = ['name'=>'id','type'=>'serial'];
 
-		foreach (self::$properties as $name => $value) {
-			foreach ($value as $key => $value2) {
-				if(strtolower($key)=='id'){
-					self::$Id = $value2;
-					self::$properties[$name] = ['Column'=>self::$Id];
-				}
-			}
-		}
-
-	}
-
-
-	private function getPropriedades($value='')
+	private static function getPropriedades($value='')
 	{
 
 		$a = array();
@@ -66,26 +39,23 @@ class PhpAnnotation
 			$a[$v->name] = self::getPropertyAnnotations($v->name);
 		}
 
-		
-
-
 		return $a;
 
 	}
 
-	private function getPropertyAnnotations($propertyName)
+	private static function getPropertyAnnotations($propertyName)
 	{
 		$property = self::$ReflectionClass->getProperty($propertyName);
 		return self::commentToArray($property->getDocComment());
 	}
 
-	private function getPropertyParentAnnotations($propertyName)
+	private static function getPropertyParentAnnotations($propertyName)
 	{
 		$property = self::$ReflectionClassParent->getProperty($propertyName);
 		return self::commentToArray($property->getDocComment());
 	}
 
-	private function commentToArray($text)
+	private static function commentToArray($text)
 	{
 		$attrs = explode('@', $text);
 
@@ -130,19 +100,19 @@ class PhpAnnotation
 	}
 
 
-	private function json_decode($json){
-		if(get_magic_quotes_gpc()){
+	private static function json_decode($json){
+		if(function_exists('get_magic_quotes_gpc') && get_magic_quotes_gpc()){
 			$json = stripslashes($json);
 		}
 
 		return json_decode($json,true);
 	}
 
-	private function json_encode($dados){
+	private static function json_encode($dados){
 		return json_encode($dados);
 	}
 
-	private function isJson($str)
+	private static function isJson($str)
 	{
 		$r = self::json_decode($str);
 		if($r!='' && $r != NULL)

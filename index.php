@@ -2,6 +2,8 @@
 
 session_start();
 
+ini_set('display_errors', TRUE );
+
 // helper function
 function require_path($diretorio){$dir = dir($diretorio);while($arquivo = $dir->read()){if(substr($arquivo, -4,4) == '.php'){include_once($diretorio.$arquivo);}}$dir -> close();}
 
@@ -13,7 +15,6 @@ if(!defined('APPLICATION_ENV')){
 	else
 		define('APPLICATION_ENV', (getenv('APPLICATION_ENV') ? getenv('APPLICATION_ENV') : 'development'));
 }
-
 
 // Configurações
 require_path('conf/');

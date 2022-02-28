@@ -21,7 +21,7 @@ class Usuario extends Entity
 	public $senha;
 
 	/**
-	* @Column = {"name":"perfil" , "type":"integer" , "size" : "" , "label":"Perfil" , "domain":{"1":"Admin","2":"Parceiro"} }
+	* @Column = {"name":"perfil" , "type":"integer" , "size" : "" , "label":"Perfil" , "domain":{"1":"Administrador"} }
 	*/
 	public $perfil; //admin, parceiro, setfot
 

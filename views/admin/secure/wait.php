@@ -1,10 +1,10 @@
 <?php 
-if( isset($_SESSION['tentativas_dt']) ){
+if( getSession('tentativas_dt') ){
 	$now = date('Y-m-d H:i:s');
-	$wait  = date('Y-m-d H:i:s',strtotime($_SESSION['tentativas_dt'].'+ '.LOGIN_TENTATIVAS_WAIT));
+	$wait  = date('Y-m-d H:i:s',strtotime(getSession('tentativas_dt').'+ '.LOGIN_TENTATIVAS_WAIT));
 	if($now > $wait){
-		unset($_SESSION['tentativas_dt']);
-		unset($_SESSION['tentativas_n']);
+		delSession('tentativas_dt')
+		delSession('tentativas_n')
 		$msg = 'Só um instante..';
 		Utils::redirect('./admin',3);
 	}else{

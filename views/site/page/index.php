@@ -1,4 +1,4 @@
-<div id="home"></div>
+<div id="inicio"></div>
 <div class="superbanner">
 	<div id="carouselSuperbanner" class="carousel slide" data-ride="carousel">
 		<div class="carousel-inner">
@@ -43,110 +43,111 @@
 
 <!-- Institucional -->
 <div class="container">
-	<h2>O que é o Observatório do Turismo</h2>
-	<div class="txt">
-		<p>
-			O turismo é a atividade do setor terciário que mais cresce no mundo. E é uma fonte relevante de geração de renda e de empregos diretos e indiretos fundamental para a economia de diversos países. Como em outros lugares do mundo, a movimentação turística representa expressivos resultados no PIB da economia de Fortaleza.
-		</p>
-		<p>
-			Para promover a qualidade desta atividade é de extrema importância a constante realização de pesquisas, de forma que possamos conhecer, além do número de entrada e saída de turistas em um destino, o perfil da demanda real, suas necessidades e desejos, bem como detectar a demanda potencial e realizar estudos de posicionamento de mercado desses locais.
-		</p>
-		<p>
-			Atualmente, os dados sobre o turismo no município de Fortaleza são praticamente inexistentes, o que dificulta mensurar a importância desse setor para a economia do município. Daí a relevância do Observatório do Turismo de Fortaleza. Ele tem a finalidade de pesquisar, registrar, informar e gerenciar os resultados como instrumento de planejamento e gestão estratégica.
-		</p>
-		<p>
-			Dessa forma, trata-se de uma ferramenta da Ciência da Informação que, quando devidamente usada, melhora os processos de gestão pública e das organizações do sistema turístico. Isso porque possibilita ao setor turístico estabelecer novas ações e programas, bem como definir políticas públicas que maximizem os resultados e implementem benefícios econômicos à cidade e à região. Serve também para estabelecer padrões de comportamento, relações e tendências que auxiliem na tomada de decisão. Além de fornecer dados da realidade do nosso município, o que possibilita acompanhar a evolução do setor.
-		</p>
-		<p>
-			Enfim, a idealização do Observatório do Turismo de Fortaleza tem por objetivo incrementar o potencial turístico e a competitividade da cidade de Fortaleza. O referido projeto foi desenvolvido pela Secretaria Municipal do Turismo de Fortaleza, através do financiamento do Banco de Desenvolvimento da América Latina (CAF), instrumentalizada por meio do Contrato de Empréstimo nº CFA 10352/10356, e está inserido no Programa Cidade com Futuro, no componente “Transformação Produtiva, subitem 2.4 – Apoio para a preparação de indicadores de monitoramento, controle e plano de promoção”.
-		</p>
-	</div>
+
+	<?php $Texto_QuemSomos = new Texto(1); ?>
+
+	<?php if ($Texto_QuemSomos->flstatus==1): ?>
+		<h2><?=$Texto_QuemSomos->label?></h2>
+		<div id="quem-somos"></div>
+		<div class="txt">
+			<?=nl2br($Texto_QuemSomos->texto)?>
+		</div>
+	<?php endif ?>
 	<div class="institucional">
-		<div class="fleft w33">
-			<div class="icon">
-				<?=FrontEnd::resource('icon-missao.svg')?>
-				<span>MISSÃO</span>
-			</div>
-			<div class="txt">
-				Auxiliar na tomada de decisão dos setores
-				público e privado para o desenvolvimento da
-				economia do Turismo, fornecendo informações
-				segmentadas e específicas, agregando à
-				cadeia produtiva.
-			</div>
+
+
+		<div class="row">
+			
+			<?php $TextoMissao = new Texto(2); ?>
+			<?php if ($TextoMissao->flstatus==1): ?>
+				<div class="col-12 col-md-4">
+					<div class="row">
+						<div class="col-3 icon">
+							<?=FrontEnd::resource('icon-missao.svg')?>
+							<span><?=$TextoMissao->label?></span>
+						</div>
+						<div class="col-9">
+							<?=nl2br($TextoMissao->texto)?>
+						</div>
+					</div>
+				</div>
+			<?php endif ?>
+
+
+			<?php $TextoVisao = new Texto(3); ?>
+			<?php if ($TextoVisao->flstatus==1): ?>
+				<div class="col-12 col-md-4">
+					<div class="row">
+						<div class="col-3 icon">
+							<?=FrontEnd::resource('icon-visao.svg')?>
+							<span><?=$TextoVisao->label?></span>
+						</div>
+						<div class="col-9">
+							<?=nl2br($TextoVisao->texto)?>
+						</div>
+					</div>
+				</div>
+			<?php endif ?>
+
+
+			<?php $TextoValores = new Texto(4); ?>
+			<?php if ($TextoValores->flstatus==1): ?>
+				<div class="col-12 col-md-4">
+					<div class="row">
+						<div class="col-3 icon">
+							<?=FrontEnd::resource('icon-valores.svg')?>
+							<span><?=$TextoValores->label?></span>
+						</div>
+						<div class="col-9">
+							<?=nl2br($TextoValores->texto)?>
+						</div>
+					</div>
+				</div>
+			<?php endif ?>
+
+
+
 		</div>
-		<div class="fleft w33">
-			<div class="icon">
-				<?=FrontEnd::resource('icon-visao.svg')?>
-				<span>VISÃO</span>
-			</div>
-			<div class="txt">
-				Ser referência no provimento de
-				informações capazes de promover o
-				desenvolvimento econômico através de
-				qualificação continuada e
-				processos bem definidos.
-			</div>
-		</div>
-		<div class="fleft w33">
-			<div class="icon">
-				<?=FrontEnd::resource('icon-valores.svg')?>
-				<span>VALORES</span>
-			</div>
-			<div class="txt">
-				VALORES: <br>
-				1. Inovação <br>
-				2. Sustentabilidade <br>
-				3. Criatividade <br>
-				4. Credibilidade <br>
-				5. Compromisso com a gestão <br>
-				6. Respeito às pessoas <br>
-				7. Ética, transparência e honestidade <br>
-				8. Integração e Colaboração <br>
-			</div>
-		</div>
+
+
+		
 	</div>
 
 	<!-- Pesquisas -->
+	<div class="my-5 overflow-hidden"></div>
 	<h2>Pesquisas</h2>
 	<div id="pesquisas"></div>
-	<div class="pesquisas">
-		<div id="carouselPesquisas" class="carousel slide" data-ride="carousel">
-			<div class="carousel-inner">
-				<div class="carousel-item active">
+
+	<div id="carouselPesquisas" class="carousel slide azul" data-ride="carousel">
+		<div class="carousel-inner">
+			<?php 
+			$banner = new Banner();
+			$banner->tipo = 5;
+			$banner->flstatus = 1;
+			$banners = DaoSI::getList($banner);
+			$a=0;
+			foreach ($banners as $banner)
+			{
+
+				$img1 = $imgm = $banner->getImg('filename');
+				if($banner->filename_m) $imgm = $banner->getImg('filename_m');
+
+				$a++;
+				$active = ($a==1)?'active':'';
+
+				?>
+				<div class="carousel-item mb-4 <?=$active?>">
 					<?php 
-					$pesquisa = new Pesquisa();
-					$pesquisa->tipo = 2;
-					$pesquisa->flstatus = 1;
-					$pesquisas = DaoSI::getList($pesquisa);
-					$t = count($pesquisas);
-					$b=$a=0;
-					foreach ($pesquisas as $kk => $pesquisa)
-					{
-						$a++;
-						$b++;
-						?>
-						<div class="fleft w33">
-							<?php 
-
-							$link = "";
-							if($pesquisa->link_resultado){
-								$link = $pesquisa->link_resultado;
-								if(substr($link, 0,4)!="http") $link = "https://".$link;
-							}
-							elseif($pesquisa->file_resultado){
-								$link = "resource/uploads/pesquisas/".$pesquisa->file_resultado;
-							}
-
-							if($link) echo "<a target='_blank' href='{$link}'>";
-							echo $pesquisa->getImg('filename');
-							if($link) echo "</a>"; 
-							?>
-						</div>
-						<?php if($b==3 && $a<$t){echo '</div><div class="carousel-item">'; $b=0; } 
-					} ?>
+					if($banner->link) echo "<a target='_blank' href='{$banner->link}'>";
+					echo "<span class='w-only'>{$img1}</span>";
+					echo "<span class='m-only'>{$imgm}</span>";
+					if($banner->link) echo "</a>"; 
+					?>
 				</div>
-			</div>
+				<?php 
+			} ?>
+		</div>
+		<?php if (count($banners)>1): ?>
 			<a class="carousel-control-prev" href="#carouselPesquisas" role="button" data-slide="prev">
 				<span class="carousel-control-prev-icon" aria-hidden="true"></span>
 				<span class="sr-only">Previous</span>
@@ -155,98 +156,200 @@
 				<span class="carousel-control-next-icon" aria-hidden="true"></span>
 				<span class="sr-only">Next</span>
 			</a>
-		</div>
-		<br>
-		<a href="area-restrita" class='btn btn-sm btn-primary'> Responda as pesquisas </a>
+		<?php endif ?>
 	</div>
 
+	<?php 
+	$pesquisa = new Pesquisa();
+	$pesquisa->tipo = 2;
+	$pesquisa->flstatus = 1;
+	$pesquisas = DaoSI::getList($pesquisa);
+	if (count($pesquisas)){ ?>
+		
+		<div class="pesquisas">
+			<div id="carouselPesquisas" class="carousel azul slide" data-ride="carousel">
+				<div class="carousel-inner">
+					<div class="carousel-item active">
+						<div class="row justify-content-center">
+							<?php 
 
+							$t = count($pesquisas);
+							$b=$a=0;
+							foreach ($pesquisas as $kk => $pesquisa)
+							{
+								$a++;
+								$b++;
+								?>
+								<div class="col-12 col-md-4">
+									<?php 
+
+									$link = "";
+									if($pesquisa->link_resultado){
+										$link = $pesquisa->link_resultado;
+										if(substr($link, 0,4)!="http") $link = "https://".$link;
+									}
+									elseif($pesquisa->file_resultado){
+										$link = "resource/uploads/pesquisas/".$pesquisa->file_resultado;
+									}
+
+									if($link) echo "<a target='_blank' href='{$link}'>";
+									echo $pesquisa->getImg('filename');
+									if($link) echo "</a>"; 
+									?>
+								</div>
+								<?php if($b==3 && $a<$t){echo '</div></div><div class="carousel-item"><div class="row justify-content-center">'; $b=0; } 
+							} ?>
+						</div>
+					</div>
+				</div>
+				<?php if (count($pesquisas)>3): ?>
+					<a class="carousel-control-prev" href="#carouselPesquisas" role="button" data-slide="prev">
+						<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+						<span class="sr-only">Previous</span>
+					</a>
+					<a class="carousel-control-next" href="#carouselPesquisas" role="button" data-slide="next">
+						<span class="carousel-control-next-icon" aria-hidden="true"></span>
+						<span class="sr-only">Next</span>
+					</a>
+				<?php endif ?>
+			</div>
+			
+		</div>
+
+	<?php }else{ ?>
+		<div class="text-warning">Nenhum resultado disponível no momento</div>
+	<?php } ?>
+
+	<?php 
+
+	$pesquisa = new Pesquisa();
+	$pesquisa->tipo = 1;
+	$pesquisa->flstatus = 1;
+	$formularios = DaoSI::getList($pesquisa);
+
+	if(count($formularios)){
+		?>
+
+		<br>
+		<a href="area-restrita" class='btn btn-sm btn-primary'> Responda as pesquisas </a>
+	<?php } ?>
 
 	<!-- Indicadores -->
-	<?php $tipos = [1=>"Demanda Turística",
-	"Prestadores de Serviço",
-	"Sazonalidade / Ocupação",
-	"Impacto na Economia",
-	"Movimentação Aeroportuária",
-	"Empregos",
-	"Investimento Público",
-	"Receita Turística"]; ?>
+	<?php 
+
+	$IndicadorTipo = new IndicadorTipo();
+	$IndicadorTipo->flstatus = 1;
+	$IndicadorTipos = DaoSI::getList($IndicadorTipo,'titulo asc');
+
+	?>
+	<div class="my-5 overflow-hidden"></div>
 	<h2>Indicadores</h2>
 	<div id="indicadores"></div>
 	<div class="carouselIndicadores">
 		<div class="naver">
 			<?php
-			$a=0; foreach ($tipos as $k => $name)
-			{ $a++; $active = ($a==1)?'active':''; ?>
-			<a href="#indicadores" class="gotab rollto <?=$active?>" tab=".tab<?=$k?>" container=".carouselIndicadores"><?=$name?></a>
-		<?php } ?>
-	</div>
-	<br>
-	<?php 
-	$hide = "";
-	$a=0;
-	foreach ($tipos as $k => $name)
-	{
-		$a++;
-		$Indicador = new Indicador();
-		$Indicador->tipo = $k;
-		$Indicador->flstatus = 1;
-		$indicadores = DaoSI::getList($Indicador);
-		?>
-		<div id="carouselIndicadores<?=$k?>" class="carousel azul slide tab tab<?=$k?><?=$hide?>" data-ride="carousel">
-			<div class="carousel-inner">
-				<div class="carousel-item active">
-					<?php 
-					$b=$a=0;
-					foreach ($indicadores as $kk => $indicador)
-					{
-						$a++;
-						$b++;
-
-						$link = "";
-						if($indicador->link){
-							$link = $indicador->link;
-							if(substr($link, 0,4)!="http") $link = "https://".$link;
-						}
-
-						?>
-						<div class="fleft w33">
-							<?php 
-							if($link) echo "<a target='_blank' href='{$link}'>";
-							echo $indicador->getImg('filename');
-							?>
-							<div class="title"><?=$indicador->titulo?></div>
-							<div class="subtitle"><?=$indicador->descricao?></div>
-							<?php if($link) echo "</a>";  ?>
-						</div>
-						<?php if($b==3 && $a<$t){echo '</div><div class="carousel-item">'; $b=0; } } ?>
-					</div>
-				</div>
-				<a class="carousel-control-prev" href="#carouselIndicadores<?=$k?>" role="button" data-slide="prev">
-					<span class="carousel-control-prev-icon" aria-hidden="true"></span>
-					<span class="sr-only">Previous</span>
-				</a>
-				<a class="carousel-control-next" href="#carouselIndicadores<?=$k?>" role="button" data-slide="next">
-					<span class="carousel-control-next-icon" aria-hidden="true"></span>
-					<span class="sr-only">Next</span>
-				</a>
-			</div>
-			<?php $hide=" hide"; } ?>
+			$a=0; foreach ($IndicadorTipos as $key => $indicadorTipo){ 
+				$k = $indicadorTipo->id;
+				$name = $indicadorTipo->titulo;
+				$a++; $active = ($a==1)?'active':''; ?>
+				<a href="#indicadores" class="gotab rollto <?=$active?>" tab=".tab<?=$k?>" container=".carouselIndicadores"><?=$name?></a>
+			<?php } ?>
 		</div>
+		<br>
+		<?php 
+		$hide = "";
+		$a=0;
+		foreach ($IndicadorTipos as $key => $indicadorTipo)
+		{
+			$k = $indicadorTipo->id;
+			$name = $indicadorTipo->titulo;
+			$a++;
+			$Indicador = new Indicador();
+			$Indicador->tipo = $k;
+			$Indicador->flstatus = 1;
+			$indicadores = DaoSI::getList($Indicador);
+			?>
+			<div id="carouselIndicadores<?=$k?>" class="carousel azul slide tab tab<?=$k?><?=$hide?>" data-ride="carousel">
+				<div class="carousel-inner">
+					<div class="carousel-item active">
+						<div class="row justify-content-center">
+							<?php 
+							$b=$a=0;
+							$t=count($indicadores);
+							$UsuarioSiteLogado = getSession('UsuarioSiteLogado');
+							foreach ($indicadores as $kk => $indicador)
+							{
+								$a++;
+								$b++;
 
+								$link = "";
+								$lock = false;
+								$target = "_blank";
+								if($indicador->link){
+									$link = $indicador->link;
+									if(substr($link, 0,4)!="http") $link = "https://".$link;
+								}
+
+								if(strstr($link, 'app.powerbi.com')){
+								if(!$UsuarioSiteLogado || $UsuarioSiteLogado->perfil != 1){
+									$link = "area-restrita";
+									$target = "_self";
+									$lock = true;
+								}
+								}
+
+								?>
+								<div class="col-12 col-md-4">
+									<?php 
+									if($link) echo "<a target='{$target}' href='{$link}'>";
+									echo $indicador->getImg('filename');
+									?>
+									
+									<div class="title">
+										<?=$indicador->titulo?>
+										<?php if ($lock): ?>
+											<span data-toggle="tooltip" title="Necessário estar logado como parceiro para ter acesso a este link"><?=Frontend::resource('lock.svg')?></span>
+										<?php endif ?>
+									</div>
+									<div class="subtitle"><?=$indicador->descricao?></div>
+									<?php if($link) echo "</a>";  ?>
+								</div>
+								<?php if($b==3 && $a<$t){echo '</div></div><div class="carousel-item"><div class="row justify-content-center">'; $b=0; } } ?>
+							</div>
+						</div>
+					</div>
+					<?php if ($t>3): ?>
+						<a class="carousel-control-prev" href="#carouselIndicadores<?=$k?>" role="button" data-slide="prev">
+							<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+							<span class="sr-only">Previous</span>
+						</a>
+						<a class="carousel-control-next" href="#carouselIndicadores<?=$k?>" role="button" data-slide="next">
+							<span class="carousel-control-next-icon" aria-hidden="true"></span>
+							<span class="sr-only">Next</span>
+						</a>
+					<?php endif ?>
+				</div>
+				<?php $hide=" hide"; } ?>
+			</div>
+
+
+			<?php 
+		/*
 		<br><br><br>
-
 		<!-- Dashboard -->
-		<div id="dashboards"></div>
+		<!-- <div id="dashboards"></div>
 		<div style="height: 500px; background: #EEE">
 			<iframe frameborder="0" width="100%" height="100%" src="<?=IFRAME_POWERBI?>"></iframe>
-		</div>
-
-
+		</div> -->
 		<br><br>
 		<br><br>
+		*/
+		?>
+
+
 
 		<!-- Aplicativos e Sites -->
+		<div class="my-5 overflow-hidden"></div>
 		<h2>Aplicativos e Sites</h2>
 		<div id="aplicativos"></div>
 
@@ -280,18 +383,21 @@
 					<?php 
 				} ?>
 			</div>
-			<a class="carousel-control-prev" href="#carouselAplicativos" role="button" data-slide="prev">
-				<span class="carousel-control-prev-icon" aria-hidden="true"></span>
-				<span class="sr-only">Previous</span>
-			</a>
-			<a class="carousel-control-next" href="#carouselAplicativos" role="button" data-slide="next">
-				<span class="carousel-control-next-icon" aria-hidden="true"></span>
-				<span class="sr-only">Next</span>
-			</a>
+			<?php if (count($banners)): ?>
+				<a class="carousel-control-prev" href="#carouselAplicativos" role="button" data-slide="prev">
+					<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+					<span class="sr-only">Previous</span>
+				</a>
+				<a class="carousel-control-next" href="#carouselAplicativos" role="button" data-slide="next">
+					<span class="carousel-control-next-icon" aria-hidden="true"></span>
+					<span class="sr-only">Next</span>
+				</a>
+			<?php endif ?>
 		</div>
 
 
 		<!-- Parceiros -->
+		<div class="my-5 overflow-hidden"></div>
 		<h2>Parceiros</h2>
 		<div id="parceiros"></div>
 		<div class="parceiros">

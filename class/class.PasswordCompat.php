@@ -11,19 +11,19 @@ class PasswordCompat
 	{
 
 		if (!defined('PASSWORD_BCRYPT')) {
-         define('PASSWORD_BCRYPT', 1);
-         define('PASSWORD_DEFAULT', PASSWORD_BCRYPT);
-         define('PASSWORD_BCRYPT_DEFAULT_COST', 10);
+           define('PASSWORD_BCRYPT', 1);
+           define('PASSWORD_DEFAULT', PASSWORD_BCRYPT);
+           define('PASSWORD_BCRYPT_DEFAULT_COST', 10);
+       }
+
+       if(self::Binary_check()){
+       }else{
+         echo "<div style='padding:10px; text-align:center; color:#FFF; background:#F00'>:: PassowdCompat not suported ::</div>";
      }
-
-     if(self::Binary_check()){
-     }else{
-       echo "<div style='padding:10px; text-align:center; color:#FFF; background:#F00'>:: PassowdCompat not suported ::</div>";
-   }
-}
+ }
 
 
-static function password_hash($password, $algo = PASSWORD_DEFAULT, array $options = array()) {
+ static function password_hash($password, $algo = PASSWORD_DEFAULT, array $options = array()) {
     if (!function_exists('crypt')) {
         trigger_error("Crypt must be loaded for password_hash to function", E_USER_WARNING);
         return null;
@@ -35,10 +35,11 @@ static function password_hash($password, $algo = PASSWORD_DEFAULT, array $option
         trigger_error("password_hash(): Password must be a string", E_USER_WARNING);
         return null;
     }
-    if (!is_int($algo)) {
-        trigger_error("password_hash() expects parameter 2 to be long, " . gettype($algo) . " given", E_USER_WARNING);
-        return null;
-    }
+            // $algo = (int) $algo;
+            // if (!is_int($algo)) {
+            //     trigger_error("password_hash() expects parameter 2 to be long, " . gettype($algo) . " given", E_USER_WARNING);
+            //     return null;
+            // }
     $resultLength = 0;
     switch ($algo) {
         case PASSWORD_BCRYPT:
@@ -50,9 +51,12 @@ static function password_hash($password, $algo = PASSWORD_DEFAULT, array $option
                 return null;
             }
         }
+                    // The length of salt to generate
         $raw_salt_len = 16;
+                    // The length required in the final serialization
         $required_salt_len = 22;
         $hash_format = sprintf("$2y$%02d$", $cost);
+                    // The expected length of the final crypt() output
         $resultLength = 60;
         break;
         default:
@@ -154,7 +158,7 @@ static function password_hash($password, $algo = PASSWORD_DEFAULT, array $option
     return $ret;
 }
 
-function password_get_info($hash) {
+static function password_get_info($hash) {
     $return = array(
         'algo' => 0,
         'algoName' => 'unknown',
@@ -170,7 +174,7 @@ function password_get_info($hash) {
 }
 
 
-function password_needs_rehash($hash, $algo, array $options = array()) {
+static function password_needs_rehash($hash, $algo, array $options = array()) {
     $info = password_get_info($hash);
     if ($info['algo'] != $algo) {
         return true;
@@ -204,21 +208,21 @@ static function password_verify($password, $hash) {
     return $status === 0;
 }
 
-function Binary_strlen($binary_string) {
+static function Binary_strlen($binary_string) {
     if (function_exists('mb_strlen')) {
         return mb_strlen($binary_string, '8bit');
     }
     return strlen($binary_string);
 }
 
-function Binary_substr($binary_string, $start, $length) {
+static function Binary_substr($binary_string, $start, $length) {
     if (function_exists('mb_substr')) {
         return mb_substr($binary_string, $start, $length, '8bit');
     }
     return substr($binary_string, $start, $length);
 }
 
-function Binary_check() {
+static function Binary_check() {
     static $pass = NULL;
 
     if (is_null($pass)) {
