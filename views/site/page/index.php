@@ -276,24 +276,41 @@
 							<?php 
 							$b=$a=0;
 							$t=count($indicadores);
+							$UsuarioSiteLogado = getSession('UsuarioSiteLogado');
 							foreach ($indicadores as $kk => $indicador)
 							{
 								$a++;
 								$b++;
 
 								$link = "";
+								$lock = false;
+								$target = "_blank";
 								if($indicador->link){
 									$link = $indicador->link;
 									if(substr($link, 0,4)!="http") $link = "https://".$link;
 								}
 
+								if(strstr($link, 'app.powerbi.com')){
+								if(!$UsuarioSiteLogado || $UsuarioSiteLogado->perfil != 1){
+									$link = "area-restrita";
+									$target = "_self";
+									$lock = true;
+								}
+								}
+
 								?>
 								<div class="col-12 col-md-4">
 									<?php 
-									if($link) echo "<a target='_blank' href='{$link}'>";
+									if($link) echo "<a target='{$target}' href='{$link}'>";
 									echo $indicador->getImg('filename');
 									?>
-									<div class="title"><?=$indicador->titulo?></div>
+									
+									<div class="title">
+										<?=$indicador->titulo?>
+										<?php if ($lock): ?>
+											<span data-toggle="tooltip" title="Necessário estar logado como parceiro para ter acesso a este link"><?=Frontend::resource('lock.svg')?></span>
+										<?php endif ?>
+									</div>
 									<div class="subtitle"><?=$indicador->descricao?></div>
 									<?php if($link) echo "</a>";  ?>
 								</div>

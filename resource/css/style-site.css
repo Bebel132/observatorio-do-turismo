@@ -299,6 +299,13 @@ footer .caf img{
 	font-size: 13px
 }
 
+.carouselIndicadores .title img{
+	height: 14px;
+	vertical-align: baseline;
+	margin: 0px 4px;
+	color: #F00;
+}
+
 .card .img-center{
 	height: 200px;
 	background: #f5f5f5;
