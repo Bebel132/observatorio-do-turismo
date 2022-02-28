@@ -16,7 +16,6 @@ if(!defined('APPLICATION_ENV')){
 		define('APPLICATION_ENV', (getenv('APPLICATION_ENV') ? getenv('APPLICATION_ENV') : 'development'));
 }
 
-
 // Configurações
 require_path('conf/');
 
