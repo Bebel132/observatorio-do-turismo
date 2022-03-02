@@ -295,7 +295,7 @@ footer .caf img{
 	text-transform: uppercase;
 	text-align: left;
 	color: #999;
-/* 	text-shadow: 1px 1px 2px #000; */
+	/* 	text-shadow: 1px 1px 2px #000; */
 	font-size: 13px
 }
 
@@ -365,11 +365,21 @@ footer .caf img{
 		width:65%;
 		clear:none;
 		text-align:right;
+		
 	}
-
+	
+	header .navbar.open nav{
+		max-height: 800px;
+		opacity: 1;
+	}
+	
 	header nav{
 		display:block;
 		width:100%;
+		margin-top: 50px;
+		max-height: 0px;
+		opacity: 0;
+		transition: all 0.5s
 	}
 
 	header.min .navbar{
@@ -378,7 +388,7 @@ footer .caf img{
 
 	header .navbar a{
 		display:block;
-		padding:5px 0px;
+		padding:5px 0px !important;;
 		margin:0;
 	}
 
@@ -386,9 +396,78 @@ footer .caf img{
 
 		padding:0px;
 	}
+	
+	.navbar span{
+		position: initial;
+		left: 0;
+		font-size: 12px;
+		text-align: right;
+		width: auto;
+		opacity:1;
+		display: block;
+	}
 
 	.backheader{
-		height: 162px;
+		height: 78px;
+	}
+
+	.shm{
+		background: #DDD;
+		display: inline-block;
+		width: 30px;
+		position: absolute;
+		top: 25px;
+		right: 16px;
+	}
+	
+	.shm div{
+		border-top: 4px solid #FFF;
+		border-bottom: 4px solid #FFF;
+		margin: 4px 0px;
+		padding: 2px 0px;
+	}
+
+	.azul .carousel-inner{
+		padding: 0px
+	}
+	
+	.carouselIndicadores .title{
+	text-align: center
+}
+
+.carouselIndicadores .subtitle{
+	text-align: center
+}
+	
+	footer .fleft, footer .fright{
+		float: none;
+		margin: 5px 0px
+	}
+	
+	footer .fleft{
+		margin-bottom: 20px
+	}
+	
+	.temp-caixa{
+		height: auto;
+	}
+	
+	.temp-caixa .middle{
+		position: inherit;
+		transform: none;
+		left: 0;
+		top: 0;
+		padding: 60px 0px
+	}
+	
+	.temp-caixa .bnr{
+		width: auto;
+		
+	}
+	
+	.temp-caixa .caixa{
+		margin: 0;
+		width: auto;
 	}
 
 }

@@ -60,7 +60,7 @@
 			
 			<?php $TextoMissao = new Texto(2); ?>
 			<?php if ($TextoMissao->flstatus==1): ?>
-				<div class="col-12 col-md-4">
+				<div class="col-12 col-md-4 pb-5">
 					<div class="row">
 						<div class="col-3 icon">
 							<?=FrontEnd::resource('icon-missao.svg')?>
@@ -76,7 +76,7 @@
 
 			<?php $TextoVisao = new Texto(3); ?>
 			<?php if ($TextoVisao->flstatus==1): ?>
-				<div class="col-12 col-md-4">
+				<div class="col-12 col-md-4 pb-5">
 					<div class="row">
 						<div class="col-3 icon">
 							<?=FrontEnd::resource('icon-visao.svg')?>
@@ -92,7 +92,7 @@
 
 			<?php $TextoValores = new Texto(4); ?>
 			<?php if ($TextoValores->flstatus==1): ?>
-				<div class="col-12 col-md-4">
+				<div class="col-12 col-md-4 pb-5">
 					<div class="row">
 						<div class="col-3 icon">
 							<?=FrontEnd::resource('icon-valores.svg')?>
@@ -114,7 +114,7 @@
 	</div>
 
 	<!-- Pesquisas -->
-	<div class="my-5 overflow-hidden"></div>
+	<div class="my-2 overflow-hidden"></div>
 	<h2>Pesquisas</h2>
 	<div id="pesquisas"></div>
 
@@ -180,7 +180,7 @@
 								$a++;
 								$b++;
 								?>
-								<div class="col-12 col-md-4">
+								<div class="col-12 col-md-4 pb-5">
 									<?php 
 
 									$link = "";
@@ -242,7 +242,7 @@
 	$IndicadorTipos = DaoSI::getList($IndicadorTipo,'titulo asc');
 
 	?>
-	<div class="my-5 overflow-hidden"></div>
+	<div class="my-2 overflow-hidden"></div>
 	<h2>Indicadores</h2>
 	<div id="indicadores"></div>
 	<div class="carouselIndicadores">
@@ -299,7 +299,7 @@
 								}
 
 								?>
-								<div class="col-12 col-md-4">
+								<div class="col-12 col-md-4 pb-5">
 									<?php 
 									if($link) echo "<a target='{$target}' href='{$link}'>";
 									echo $indicador->getImg('filename');
@@ -349,7 +349,7 @@
 
 
 		<!-- Aplicativos e Sites -->
-		<div class="my-5 overflow-hidden"></div>
+		<div class="my-2 overflow-hidden"></div>
 		<h2>Aplicativos e Sites</h2>
 		<div id="aplicativos"></div>
 
@@ -397,7 +397,7 @@
 
 
 		<!-- Parceiros -->
-		<div class="my-5 overflow-hidden"></div>
+		<div class="my-2 overflow-hidden"></div>
 		<h2>Parceiros</h2>
 		<div id="parceiros"></div>
 		<div class="parceiros">

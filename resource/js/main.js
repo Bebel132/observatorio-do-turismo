@@ -47,6 +47,10 @@ jq(document).ready(function(){
 
 	})
 
+	jq('.shm').click(function(){
+		jq('.navbar').toggleClass('open');
+	})
+
 	$(function () {
 		$('[data-toggle="tooltip"]').tooltip()
 	})
