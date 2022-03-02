@@ -21,7 +21,7 @@
 					$link = Utils::urlFormat($pesquisa->link_form);
 
 				?>
-				<div class="col-12 col-sm-3">
+				<div class="col-12 col-sm-3 pb-5">
 					<div class="card shadow">
 						<div class="img-center"> <?=$pesquisa->getImg('filename')?> </div>
 						<div class="card-body">
@@ -60,7 +60,7 @@
 					$link = Utils::urlFormat($resultado->link_resultado);
 
 				?>
-				<div class="col-12 col-sm-3">
+				<div class="col-12 col-sm-3 pb-5">
 					<div class="card">
 						<div class="img-center"> <?=$resultado->getImg('filename')?> </div>
 						<div class="card-body">

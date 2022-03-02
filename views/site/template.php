@@ -50,6 +50,7 @@
 							<span>Acesse aplicativos e stites que recomendamos!</span>
 						</a>
 					</nav>
+					<div class="shm"><div></div></div>
 				</div>
 			</div>
 		</header>

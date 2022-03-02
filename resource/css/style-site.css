@@ -2,8 +2,6 @@
 @font-face { font-family: Roboto-Medium; src: url('../fonts/Roboto-Medium.ttf'); }
 @font-face { font-family: Roboto-Light; src: url('../fonts/Roboto-Light.ttf'); }
 
-
-
 *{
 	box-sizing: border-box;
 	position: relative
@@ -21,8 +19,6 @@ a:hover img{
 
 body{
 	text-align: left;
-	/*line-height: 18px;*/
-	/*font-size: 15px;*/
 	font-family: Calibri;
 }
 
@@ -181,29 +177,10 @@ h2{
 	text-align: left
 }
 
-.institucional .icon{
-/*	width: 100px;
-	height: 100px;
-	float: left;
-	margin-right: 20px;
-	margin-bottom: 20px;*/
-}
-
-.institucional img{
-	/*width: 70%;
-	position: absolute;
-	left: 50%;
-	top: 50%;
-	transform: translate(-50%,-70%);*/
-}
-
 .icon span{
 	display: block;
 	margin-top: 15px;
 	/*font-family: Roboto-Regular;*/
-	/*position: absolute;*/
-	/*bottom: 0;*/
-	/*width: 100%;*/
 	text-align: center;
 }
 
@@ -218,7 +195,6 @@ h2{
 	text-transform: uppercase;
 	font-size: 13px;
 	transition: all 1.5s;
-	/*cursor: pointer;*/
 }
 
 .parceiros .u:hover{
@@ -295,7 +271,6 @@ footer .caf img{
 	text-transform: uppercase;
 	text-align: left;
 	color: #999;
-/* 	text-shadow: 1px 1px 2px #000; */
 	font-size: 13px
 }
 
@@ -357,7 +332,6 @@ footer .caf img{
 		padding: 10px 0px;
 	}
 
-
 	header .navbar{
 		margin: 3px 0px 0px 0px;
 		transition:all 0.5s;
@@ -366,10 +340,19 @@ footer .caf img{
 		clear:none;
 		text-align:right;
 	}
-
+	
+	header .navbar.open nav{
+		max-height: 800px;
+		opacity: 1;
+	}
+	
 	header nav{
 		display:block;
 		width:100%;
+		margin-top: 50px;
+		max-height: 0px;
+		opacity: 0;
+		transition: all 0.5s
 	}
 
 	header.min .navbar{
@@ -378,17 +361,85 @@ footer .caf img{
 
 	header .navbar a{
 		display:block;
-		padding:5px 0px;
+		padding:5px 0px !important;;
 		margin:0;
 	}
 
 	header.min .navbar a{
-
 		padding:0px;
+	}
+	
+	.navbar span{
+		position: initial;
+		left: 0;
+		font-size: 12px;
+		text-align: right;
+		width: auto;
+		opacity:1;
+		display: block;
 	}
 
 	.backheader{
-		height: 162px;
+		height: 78px;
+	}
+
+	.shm{
+		background: #DDD;
+		display: inline-block;
+		width: 30px;
+		position: absolute;
+		top: 25px;
+		right: 16px;
+	}
+	
+	.shm div{
+		border-top: 4px solid #FFF;
+		border-bottom: 4px solid #FFF;
+		margin: 4px 0px;
+		padding: 2px 0px;
+	}
+
+	.azul .carousel-inner{
+		padding: 0px
+	}
+	
+	.carouselIndicadores .title{
+		text-align: center
+	}
+
+	.carouselIndicadores .subtitle{
+		text-align: center
+	}
+	
+	footer .fleft, footer .fright{
+		float: none;
+		margin: 5px 0px
+	}
+	
+	footer .fleft{
+		margin-bottom: 20px
+	}
+	
+	.temp-caixa{
+		height: auto;
+	}
+	
+	.temp-caixa .middle{
+		position: inherit;
+		transform: none;
+		left: 0;
+		top: 0;
+		padding: 60px 0px
+	}
+	
+	.temp-caixa .bnr{
+		width: auto;
+		
+	}
+	
+	.temp-caixa .caixa{
+		margin: 0;
+		width: auto;
 	}
 
 }
