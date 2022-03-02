@@ -2,8 +2,6 @@
 @font-face { font-family: Roboto-Medium; src: url('../fonts/Roboto-Medium.ttf'); }
 @font-face { font-family: Roboto-Light; src: url('../fonts/Roboto-Light.ttf'); }
 
-
-
 *{
 	box-sizing: border-box;
 	position: relative
@@ -21,8 +19,6 @@ a:hover img{
 
 body{
 	text-align: left;
-	/*line-height: 18px;*/
-	/*font-size: 15px;*/
 	font-family: Calibri;
 }
 
@@ -181,29 +177,10 @@ h2{
 	text-align: left
 }
 
-.institucional .icon{
-/*	width: 100px;
-	height: 100px;
-	float: left;
-	margin-right: 20px;
-	margin-bottom: 20px;*/
-}
-
-.institucional img{
-	/*width: 70%;
-	position: absolute;
-	left: 50%;
-	top: 50%;
-	transform: translate(-50%,-70%);*/
-}
-
 .icon span{
 	display: block;
 	margin-top: 15px;
 	/*font-family: Roboto-Regular;*/
-	/*position: absolute;*/
-	/*bottom: 0;*/
-	/*width: 100%;*/
 	text-align: center;
 }
 
@@ -218,7 +195,6 @@ h2{
 	text-transform: uppercase;
 	font-size: 13px;
 	transition: all 1.5s;
-	/*cursor: pointer;*/
 }
 
 .parceiros .u:hover{
@@ -295,7 +271,6 @@ footer .caf img{
 	text-transform: uppercase;
 	text-align: left;
 	color: #999;
-	/* 	text-shadow: 1px 1px 2px #000; */
 	font-size: 13px
 }
 
@@ -357,7 +332,6 @@ footer .caf img{
 		padding: 10px 0px;
 	}
 
-
 	header .navbar{
 		margin: 3px 0px 0px 0px;
 		transition:all 0.5s;
@@ -365,7 +339,6 @@ footer .caf img{
 		width:65%;
 		clear:none;
 		text-align:right;
-		
 	}
 	
 	header .navbar.open nav{
@@ -393,7 +366,6 @@ footer .caf img{
 	}
 
 	header.min .navbar a{
-
 		padding:0px;
 	}
 	
@@ -432,12 +404,12 @@ footer .caf img{
 	}
 	
 	.carouselIndicadores .title{
-	text-align: center
-}
+		text-align: center
+	}
 
-.carouselIndicadores .subtitle{
-	text-align: center
-}
+	.carouselIndicadores .subtitle{
+		text-align: center
+	}
 	
 	footer .fleft, footer .fright{
 		float: none;
