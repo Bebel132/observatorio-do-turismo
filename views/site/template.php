@@ -64,24 +64,24 @@
 				<div class="fleft">
 					<span class="rs"> 
 						<a href="https://www.facebook.com/secretariadoturismodefortaleza/" target="_blank">
-							<?=FrontEnd::resource('footer_01.png')?>
+							<?=FrontEnd::resource('footer_01.png',false,'Facebook '.APP_TITLE)?>
 						</a> 
 					</span>
 					<span class="rs"> 
 						<a href="https://www.instagram.com/secretariadoturismodefortaleza/" target="_blank">
-							<?=FrontEnd::resource('footer_02.png')?>
+							<?=FrontEnd::resource('footer_02.png',false,'Instagram '.APP_TITLE)?>
 						</a> 
 					</span>
 					<span class="rs"> 
 						<a href="#" target="_blank">
-							<?=FrontEnd::resource('footer_03.png')?>
+							<?=FrontEnd::resource('footer_03.png',false,'LinkedIn '.APP_TITLE)?>
 						</a> 
 					</span>
 				</div>
 				<div class="fright">
 					<span class="rs caf"> 
 						<a href="#" target="_blank">
-							<?=FrontEnd::resource('caf-rdp.png')?>
+							<?=FrontEnd::resource('caf-rdp.png',false,'CAF')?>
 						</a> 
 					</span>
 					<span class="rs"> 
@@ -91,12 +91,7 @@
 					</span>
 					<span class="rs"> 
 						<a href="#" target="_blank">
-							<?=FrontEnd::resource('footer_07.png')?>
-						</a> 
-					</span>
-					<span class="rs"> 
-						<a href="#" target="_blank">
-							<?=FrontEnd::resource('footer_08.png')?>
+							<?=FrontEnd::resource('logo-turismo-ceara.png',false,'Secretaria de Turismo de Fortaleza')?>
 						</a> 
 					</span>
 				</div>

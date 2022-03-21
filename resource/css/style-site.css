@@ -215,6 +215,10 @@ footer img{
 	height: 40px;
 }
 
+footer .fright img{
+	margin-left: 10px
+}
+
 footer .caf img{
 	height: 25px;
 }

@@ -37,7 +37,7 @@ class Entity
 		return PhpAnnotation::get($this);
 	}
 
-	public function getImg($attr,$onlysrc=false)
+	public function getImg($attr,$onlysrc=false,$title=APP_TITLE)
 	{
 		$anon = $this->getAnnotation();
 
@@ -53,7 +53,7 @@ class Entity
 			$parts = explode('.', $value);
 			$ext = strtolower($parts[count($parts)-1]);
 			// if(in_array($ext, ['jpg','jpeg','gif','png'])){
-				$value = FrontEnd::resource("../uploads/{$tb}/".$value,$onlysrc);
+				$value = FrontEnd::resource("../uploads/{$tb}/".$value,$onlysrc,$title);
 			// }
 		}
 		return $value;

@@ -11,8 +11,8 @@
 			foreach ($banners as $banner)
 			{
 
-				$img1 = $imgm = $banner->getImg('filename');
-				if($banner->filename_m) $imgm = $banner->getImg('filename_m');
+				$img1 = $imgm = $banner->getImg('filename',false,$banner->titulo);
+				if($banner->filename_m) $imgm = $banner->getImg('filename_m',false,$banner->titulo);
 
 				$a++;
 				$active = ($a==1)?'active':'';
@@ -129,8 +129,8 @@
 			foreach ($banners as $banner)
 			{
 
-				$img1 = $imgm = $banner->getImg('filename');
-				if($banner->filename_m) $imgm = $banner->getImg('filename_m');
+				$img1 = $imgm = $banner->getImg('filename',false,$banner->titulo);
+				if($banner->filename_m) $imgm = $banner->getImg('filename_m',false,$banner->titulo);
 
 				$a++;
 				$active = ($a==1)?'active':'';
@@ -193,7 +193,7 @@
 									}
 
 									if($link) echo "<a target='_blank' href='{$link}'>";
-									echo $pesquisa->getImg('filename');
+									echo $pesquisa->getImg('filename',false,$pesquisa->titulo);
 									if($link) echo "</a>"; 
 									?>
 								</div>
@@ -302,7 +302,7 @@
 								<div class="col-12 col-md-4 pb-5">
 									<?php 
 									if($link) echo "<a target='{$target}' href='{$link}'>";
-									echo $indicador->getImg('filename');
+									echo $indicador->getImg('filename',false,$indicador->titulo);
 									?>
 									
 									<div class="title">
@@ -365,8 +365,8 @@
 				foreach ($banners as $banner)
 				{
 
-					$img1 = $imgm = $banner->getImg('filename');
-					if($banner->filename_m) $imgm = $banner->getImg('filename_m');
+					$img1 = $imgm = $banner->getImg('filename',false,$banner->titulo);
+					if($banner->filename_m) $imgm = $banner->getImg('filename_m',false,$banner->titulo);
 
 					$a++;
 					$active = ($a==1)?'active':'';
@@ -410,8 +410,8 @@
 
 			foreach ($banners as $banner){
 
-				$img1 = $imgm = $banner->getImg('filename');
-				if($banner->filename_m) $imgm = $banner->getImg('filename_m');
+				$img1 = $imgm = $banner->getImg('filename',false,$banner->titulo);
+				if($banner->filename_m) $imgm = $banner->getImg('filename_m',false,$banner->titulo);
 
 				if($banner->link) echo "<a target='_blank' href='{$banner->link}'>";
 				?>
