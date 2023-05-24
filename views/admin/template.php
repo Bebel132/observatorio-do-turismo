@@ -29,6 +29,17 @@
 
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.bundle.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js"></script>
+
+	<!-- Google tag GA4 (gtag.js) -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=G-3MB1CV4504"></script>
+	<script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag(){dataLayer.push(arguments);}
+		gtag('js', new Date());
+
+		gtag('config', 'G-3MB1CV4504');
+	</script>
+	
 </head>
 <body onload="appLoaded()">
 
