@@ -21,24 +21,14 @@ class Pesquisa extends Entity
 	public $filename;
 
 	/**
-	* @Column = {"name":"link_form" , "type":"varchar" , "size" : "255" , "label":"Link Formulário"}
+	* @Column = {"name":"link_relatorio" , "type":"varchar" , "size" : "255" , "label":"Link Relatório"}
 	*/
-	public $link_form;
+	public $link_relatorio;
 
 	/**
-	* @Column = {"name":"link_resultado" , "type":"varchar" , "size" : "255" , "label":"Link Resultado"}
+	* @Column = {"name":"link_painel_interativo" , "type":"varchar" , "size" : "255" , "label":"Link Painel Interativo"}
 	*/
-	public $link_resultado;
-
-	/**
-	* @Column = {"name":"file_resultado" , "type":"varchar" , "size" : "255" , "mask" : "file" , "label":"Arquivo Resultado"}
-	*/
-	public $file_resultado;
-
-	/**
-	* @Column = {"name":"tipo" , "type":"integer" , "size" : "" , "label":"Botão" , "domain":{"1":"Preencher Formulário","2":"Ver Resultados"} }
-	*/
-	public $tipo;
+	public $link_painel_interativo;
 
 	/**
 	* @Column = {"name":"flstatus" , "type":"integer" , "size" : "" , "label":"Status" , "domain":{"1":"Ativo","2":"Inativo"} }
@@ -50,5 +40,9 @@ class Pesquisa extends Entity
 	 */
 	public $timestamp; 
 	
+	/**
+	* @Column = {"name":"indicador" , "type":"integer" , "size" : "" , "label":"Tipo" , "domain": "IndicadorTipo|id|titulo|(1)" }
+	*/
+	public $indicador_tipo_id;
 
 }

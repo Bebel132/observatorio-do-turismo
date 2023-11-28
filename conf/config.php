@@ -12,7 +12,7 @@ if(APPLICATION_ENV=='production'){
 	define('PATH_APP', 'observatorio-do-turismo/');
 	define('ISHTTPS', true);
 }else{
-	define('PATH_APP', 'IPLANFOR/observatorio-do-turismo/');
+	define('PATH_APP', 'observatorio-do-turismo/');
 	define('ISHTTPS', false);
 }
 

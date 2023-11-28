@@ -4,7 +4,7 @@
 <br><br><br>
 
 <span class="logorotate">
-    <?= FrontEnd::resource('logo.svg'); ?>
+    <?= FrontEnd::resource('logo2.svg'); ?>
 </span>
 
 <br><br><br>

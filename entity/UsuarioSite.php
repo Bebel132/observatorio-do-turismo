@@ -16,14 +16,9 @@ class UsuarioSite extends Entity
 	public $email;
 
 	/**
-	* @Column = {"name":"senha" , "type":"varchar" , "size" : "255" , "label":"Senha" , "mask":"password"}
+	* @Column = {"name":"telefone" , "type":"varchar" , "size" : "15" , "label":"Telefone" , "mask" : "telefone"}
 	*/
-	public $senha;
-
-	/**
-	* @Column = {"name":"perfil" , "type":"integer" , "size" : "" , "label":"Perfil" , "domain":{"1":"Parceiro","2":"Entrevistado","3":"Assinante"} }
-	*/
-	public $perfil;
+	public $telefone;
 
 	/**
 	* @Column = {"name":"instituicao" , "type":"varchar" , "size" : "255" , "label":"Instituição"}

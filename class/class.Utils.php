@@ -8,7 +8,7 @@ class Utils
 	static function getUrlVars()
 	{
 		$vars = array();
-		$urlVars = $_SERVER['REDIRECT_URL'];
+		$urlVars = $_SERVER['REQUEST_URI'];
 
 		if(PATH_APP){
 			$urlVars = explode(PATH_APP, $urlVars);
@@ -26,7 +26,6 @@ class Utils
 				$vars[] = $v;
 			}
 		}
-
 
 		return $vars;
 	}

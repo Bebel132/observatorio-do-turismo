@@ -15,17 +15,17 @@
         Header set Expires 0
     </IfModule>
 
-    Header set X-Content-Type-Options nosniff
+    # Header set X-Content-Type-Options nosniff
 
-    <FilesMatch "\.(css|txt|doc|docx)$">
-        Header set Cache-Control 'no-store, no-cache, must-revalidate, post-check=0, pre-check=0'
-    </FilesMatch>
+    # <FilesMatch "\.(css|txt|doc|docx)$">
+    #     Header set Cache-Control 'no-store, no-cache, must-revalidate, post-check=0, pre-check=0'
+    # </FilesMatch>
 
-    Header edit Set-Cookie ^(.*)$ $1;HttpOnly;Secure;SameSite=strict
+    # Header edit Set-Cookie ^(.*)$ $1;HttpOnly;Secure;SameSite=strict
 
-    Header set X-XSS-Protection '1; mode=block;'
+    # Header set X-XSS-Protection '1; mode=block;'
 
-    Header set X-Frame-Options 'SAMEORIGIN'
+    # Header set X-Frame-Options 'SAMEORIGIN'
 
     RewriteEngine On
 
@@ -64,5 +64,5 @@
     <IfModule mod_security.c>
         SecFilterEngine Off
         SecFilterScanPOST Off
-    </IfModule>
+    </IfModule> 
 </IfModule>

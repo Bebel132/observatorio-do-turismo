@@ -6,7 +6,6 @@
 
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
 	<link rel="icon" href="<?=FrontEnd::raiz()?>resource/imgs/favicon.png" />
 
 	<!-- Bootstrap -->
@@ -51,7 +50,7 @@
 			<div class="row">
 				<nav class="col-sm-3 col-md-2 hidden-xs-down bg-faded sidebar">
 					<div class="logo">
-						<?= FrontEnd::resource('logo.svg'); ?>
+						<?= FrontEnd::resource('logo2.svg'); ?>
 					</div>
 					<ul class="nav nav-pills flex-column">
 						<?php FrontEnd::navAdmin(); ?>

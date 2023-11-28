@@ -29,10 +29,9 @@ class FrontEnd
 		$itens = [
 
 			 ['href' => 'index'		,'name'=>'Início' 			, 'icon'=>'home' 	, 'class' => 'showloading']
-			,['href' => 'banners'		,'name'=>'Banners'	 		, 'icon'=>'image' , 'class' => 'showloading']
-			,['href' => 'institucional'		,'name'=>'Intitucional'	 		, 'icon'=>'list-alt' , 'class' => 'showloading']
+			,['href' => 'textos'		,'name'=>'Textos'	 		, 'icon'=>'list-alt' , 'class' => 'showloading']
 			,['href' => 'pesquisas'		,'name'=>'Pesquisas' 		, 'icon'=>'list-alt' , 'class' => 'showloading']
-			,['href' => 'indicadores'	,'name'=>'Indicadores' 		, 'icon'=>'chart-line' , 'class' => 'showloading']
+			,['href' => 'inteligencia-turistica'	,'name'=>'Inteligência Turística' 		, 'icon'=>'chart-line' , 'class' => 'showloading']
 			// ,['href' => 'indicadores'	,'name'=>'Indicadores' 		, 'icon'=>'chart-line' , 'class' => 'showloading']
 			,['href' => 'indicadores-tipos'	,'name'=>'Indicadores Tipos' 		, 'icon'=>'chart-line' , 'class' => 'showloading']
 			// ,['href' => 'noticias'		,'name'=>'Notícias' 		, 'icon'=>'newspaper' , 'class' => 'showloading']
@@ -188,22 +187,28 @@ class FrontEnd
 		$ext = $ext[count($ext)-1];
 
 		$atcss = APPLICATION_ENV=='development'?time():date('Ymd');
-
 		if($ext=='css'){
 			$url = self::raiz()."resource/css/{$filename}"."?i={$atcss}";
 			$embed = "<link href='".$url."' rel='stylesheet'>";
 		}elseif ($ext=='js') {
-			$url = self::raiz()."resource/js/{$filename}"."?i={$atcss}";
+			$url = self::raiz()."resource/js/{$filename}";
 			$embed = "<script src='".$url."'></script>";
 		}elseif (in_array(strtolower($ext), ['jpg','jpeg','gif','png','svg'])) {
-			$url = self::raiz()."resource/imgs/{$filename}"."?i={$atcss}";
-			$embed = "<img title='".$title."' alt='".$title."' src='".$url."'>";
+			if (in_array(strtolower($ext), ['svg'])) {
+				$url = self::raiz()."resource/imgs/{$filename}"."?i={$atcss}";
+			$embed = "<img title='".$title."' alt='".$title."' src='".$url."' class='logo'>";
+			} else {
+				$url = self::raiz()."resource/imgs/{$filename}"."?i={$atcss}";
+				$embed = "<img title='".$title."' alt='".$title."' src='".$url."'>";
+			}
+			
 		}else{
 			$url = $url = self::raiz()."resource/uploads/{$filename}"."?i={$atcss}";
 
 		}
 
 		if($onlyurl) return $url;
+
 		return $embed;
 
 	}
@@ -211,9 +216,7 @@ class FrontEnd
 	static function form($obj,$nametoken=null)
 	{
 		$anon = $obj->getAnnotation();
-
 		if(!$nametoken) $nametoken = get_class($obj);
-
 		$inputs = "";
 
 		$inputs .= self::getInputToken($nametoken);
@@ -225,6 +228,7 @@ class FrontEnd
 			$domain = (isset($v['Column']['domain']))?$v['Column']['domain']:null;
 
 			$inputType = $mask;
+			
 			if($mask == "varchar") $inputType = "text";
 			if($mask == "text") $inputType = "textarea";
 			if($mask == "password") $obj->$key = "";

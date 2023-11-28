@@ -1,432 +1,254 @@
-<div id="inicio"></div>
-<div class="superbanner">
-	<div id="carouselSuperbanner" class="carousel slide" data-ride="carousel">
-		<div class="carousel-inner">
-			<?php 
-			$banner = new Banner();
-			$banner->tipo = 1;
-			$banner->flstatus = 1;
-			$banners = DaoSI::getList($banner);
-			$a=0;
-			foreach ($banners as $banner)
-			{
+<!-- 
 
-				$img1 = $imgm = $banner->getImg('filename',false,$banner->titulo);
-				if($banner->filename_m) $imgm = $banner->getImg('filename_m',false,$banner->titulo);
+	$variavel = new Objeto(ID) == CRIAÇÃO DE UM NOVO OBJETO
 
-				$a++;
-				$active = ($a==1)?'active':'';
-				
-				?>
-				<div class="carousel-item <?=$active?>">
-					<?php 
-					if($banner->link) echo "<a target='_blank' href='{$banner->link}'>";
-					echo "<span class='w-only'>{$img1}</span>";
-					echo "<span class='m-only'>{$imgm}</span>";
-					if($banner->link) echo "</a>"; 
-					?>
-				</div>
-				<?php 
-			} ?>
+	objeto::metodo        ===  chama uma função  | EXEMPLO: DaoSI::getList($IndicadorTipo,'titulo asc');  ==> gera uma lista com o titulo dos indicadores que estão no banco de dados
+	$variavel->atributo   ===  chama um atriburo | EXEMPLO: $Texto_QuemSomos->texto                       ==> chama o texto que está no banco de dados
+
+ -->
+<section>
+	<div class="section-container quemSomos">
+		<?php $Texto_QuemSomos = new Texto(1); ?>
+		<?php if ($Texto_QuemSomos->flstatus==1): ?>
+		<div class="quemSomos-title title">
+			<h2 id="quemSomos"><?=$Texto_QuemSomos->label?></h2>
 		</div>
-		<a class="carousel-control-prev" href="#carouselSuperbanner" role="button" data-slide="prev">
-			<span class="carousel-control-prev-icon" aria-hidden="true"></span>
-			<span class="sr-only">Previous</span>
-		</a>
-		<a class="carousel-control-next" href="#carouselSuperbanner" role="button" data-slide="next">
-			<span class="carousel-control-next-icon" aria-hidden="true"></span>
-			<span class="sr-only">Next</span>
-		</a>
-	</div>
-</div>
-
-
-<!-- Institucional -->
-<div class="container">
-
-	<?php $Texto_QuemSomos = new Texto(1); ?>
-
-	<?php if ($Texto_QuemSomos->flstatus==1): ?>
-		<h2><?=$Texto_QuemSomos->label?></h2>
-		<div id="quem-somos"></div>
-		<div class="txt">
-			<?=nl2br($Texto_QuemSomos->texto)?>
-		</div>
-	<?php endif ?>
-	<div class="institucional">
-
-
-		<div class="row">
-			
-			<?php $TextoMissao = new Texto(2); ?>
-			<?php if ($TextoMissao->flstatus==1): ?>
-				<div class="col-12 col-md-4 pb-5">
-					<div class="row">
-						<div class="col-3 icon">
-							<?=FrontEnd::resource('icon-missao.svg')?>
-							<span><?=$TextoMissao->label?></span>
-						</div>
-						<div class="col-9">
-							<?=nl2br($TextoMissao->texto)?>
-						</div>
-					</div>
-				</div>
-			<?php endif ?>
-
-
-			<?php $TextoVisao = new Texto(3); ?>
-			<?php if ($TextoVisao->flstatus==1): ?>
-				<div class="col-12 col-md-4 pb-5">
-					<div class="row">
-						<div class="col-3 icon">
-							<?=FrontEnd::resource('icon-visao.svg')?>
-							<span><?=$TextoVisao->label?></span>
-						</div>
-						<div class="col-9">
-							<?=nl2br($TextoVisao->texto)?>
-						</div>
-					</div>
-				</div>
-			<?php endif ?>
-
-
-			<?php $TextoValores = new Texto(4); ?>
-			<?php if ($TextoValores->flstatus==1): ?>
-				<div class="col-12 col-md-4 pb-5">
-					<div class="row">
-						<div class="col-3 icon">
-							<?=FrontEnd::resource('icon-valores.svg')?>
-							<span><?=$TextoValores->label?></span>
-						</div>
-						<div class="col-9">
-							<?=nl2br($TextoValores->texto)?>
-						</div>
-					</div>
-				</div>
-			<?php endif ?>
-
-
-
-		</div>
-
-
-		
-	</div>
-
-	<!-- Pesquisas -->
-	<div class="my-2 overflow-hidden"></div>
-	<h2>Pesquisas</h2>
-	<div id="pesquisas"></div>
-
-	<div id="carouselPesquisas" class="carousel slide azul" data-ride="carousel">
-		<div class="carousel-inner">
-			<?php 
-			$banner = new Banner();
-			$banner->tipo = 5;
-			$banner->flstatus = 1;
-			$banners = DaoSI::getList($banner);
-			$a=0;
-			foreach ($banners as $banner)
-			{
-
-				$img1 = $imgm = $banner->getImg('filename',false,$banner->titulo);
-				if($banner->filename_m) $imgm = $banner->getImg('filename_m',false,$banner->titulo);
-
-				$a++;
-				$active = ($a==1)?'active':'';
-
-				?>
-				<div class="carousel-item mb-4 <?=$active?>">
-					<?php 
-					if($banner->link) echo "<a target='_blank' href='{$banner->link}'>";
-					echo "<span class='w-only'>{$img1}</span>";
-					echo "<span class='m-only'>{$imgm}</span>";
-					if($banner->link) echo "</a>"; 
-					?>
-				</div>
-				<?php 
-			} ?>
-		</div>
-		<?php if (count($banners)>1): ?>
-			<a class="carousel-control-prev" href="#carouselPesquisas" role="button" data-slide="prev">
-				<span class="carousel-control-prev-icon" aria-hidden="true"></span>
-				<span class="sr-only">Previous</span>
-			</a>
-			<a class="carousel-control-next" href="#carouselPesquisas" role="button" data-slide="next">
-				<span class="carousel-control-next-icon" aria-hidden="true"></span>
-				<span class="sr-only">Next</span>
-			</a>
+		<div class="quemSomos-content content">
+			<p><?=nl2br($Texto_QuemSomos->texto)?></p>
 		<?php endif ?>
-	</div>
-
-	<?php 
-	$pesquisa = new Pesquisa();
-	$pesquisa->tipo = 2;
-	$pesquisa->flstatus = 1;
-	$pesquisas = DaoSI::getList($pesquisa);
-	if (count($pesquisas)){ ?>
-		
-		<div class="pesquisas">
-			<div id="carouselPesquisas" class="carousel azul slide" data-ride="carousel">
-				<div class="carousel-inner">
-					<div class="carousel-item active">
-						<div class="row justify-content-center">
-							<?php 
-
-							$t = count($pesquisas);
-							$b=$a=0;
-							foreach ($pesquisas as $kk => $pesquisa)
-							{
-								$a++;
-								$b++;
-								?>
-								<div class="col-12 col-md-4 pb-5">
-									<?php 
-
-									$link = "";
-									if($pesquisa->link_resultado){
-										$link = $pesquisa->link_resultado;
-										if(substr($link, 0,4)!="http") $link = "https://".$link;
-									}
-									elseif($pesquisa->file_resultado){
-										$link = "resource/uploads/pesquisas/".$pesquisa->file_resultado;
-									}
-
-									if($link) echo "<a target='_blank' href='{$link}'>";
-									echo $pesquisa->getImg('filename',false,$pesquisa->titulo);
-									if($link) echo "</a>"; 
-									?>
-								</div>
-								<?php if($b==3 && $a<$t){echo '</div></div><div class="carousel-item"><div class="row justify-content-center">'; $b=0; } 
-							} ?>
-						</div>
+			<div class="quemSomos_content-boxes">
+				<?php $TextoMissao = new Texto(2); ?>
+				<?php if ($TextoMissao->flstatus==1): ?>
+				<div class="quemSomos_content-box">
+					<div class="quemSomos_content_box-title title">
+						<i class="fa-regular fa-flag"></i>
+						<h3><?=$TextoMissao->label?></h3>
+					</div>
+					<div class="quemSomos_content_box-content content">
+						<p><?=nl2br($TextoMissao->texto)?></p>
 					</div>
 				</div>
-				<?php if (count($pesquisas)>3): ?>
-					<a class="carousel-control-prev" href="#carouselPesquisas" role="button" data-slide="prev">
-						<span class="carousel-control-prev-icon" aria-hidden="true"></span>
-						<span class="sr-only">Previous</span>
-					</a>
-					<a class="carousel-control-next" href="#carouselPesquisas" role="button" data-slide="next">
-						<span class="carousel-control-next-icon" aria-hidden="true"></span>
-						<span class="sr-only">Next</span>
-					</a>
+				<?php endif ?>
+
+				<?php $TextoVisao = new Texto(3); ?>
+				<?php if ($TextoVisao->flstatus==1): ?>
+				<div class="quemSomos_content-box">
+					<div class="quemSomos_content_box-title title">
+						<i class="fa-solid fa-eye"></i>
+						<h3><?=$TextoVisao->label?></h3>
+					</div>
+					<div class="quemSomos_content_box-content content">
+						<p><?=$TextoVisao->texto?></p>
+					</div>
+				</div>
+				<?php endif ?>
+				
+				<?php $TextoValores = new Texto(4); ?>
+				<?php if ($TextoValores->flstatus==1): ?>
+				<div class="quemSomos_content-box">
+					<div class="quemSomos_content_box-title title">
+						<i class="fa-regular fa-star"></i>
+						<h3><?=$TextoValores->label?></h3>
+					</div>
+					<div class="quemSomos_content_box-content content">
+						<p><?=nl2br($TextoValores->texto)?></p>
+					</div>
+				</div>
 				<?php endif ?>
 			</div>
-			
 		</div>
-
-	<?php }else{ ?>
-		<div class="text-warning">Nenhum resultado disponível no momento</div>
-	<?php } ?>
-
-	<?php 
-
-	$pesquisa = new Pesquisa();
-	$pesquisa->tipo = 1;
-	$pesquisa->flstatus = 1;
-	$formularios = DaoSI::getList($pesquisa);
-
-	if(count($formularios)){
-		?>
-
-		<br>
-		<a href="area-restrita" class='btn btn-sm btn-primary'> Responda as pesquisas </a>
-	<?php } ?>
-
-	<!-- Indicadores -->
-	<?php 
-
-	$IndicadorTipo = new IndicadorTipo();
-	$IndicadorTipo->flstatus = 1;
-	$IndicadorTipos = DaoSI::getList($IndicadorTipo,'titulo asc');
-
-	?>
-	<div class="my-2 overflow-hidden"></div>
-	<h2>Indicadores</h2>
-	<div id="indicadores"></div>
-	<div class="carouselIndicadores">
-		<div class="naver">
-			<?php
-			$a=0; foreach ($IndicadorTipos as $key => $indicadorTipo){ 
-				$k = $indicadorTipo->id;
-				$name = $indicadorTipo->titulo;
-				$a++; $active = ($a==1)?'active':''; ?>
-				<a href="#indicadores" class="gotab rollto <?=$active?>" tab=".tab<?=$k?>" container=".carouselIndicadores"><?=$name?></a>
-			<?php } ?>
+	</div>
+</section>
+<section>
+	<div class="section-container dti">
+		<?php $Texto_DTI = new Texto(5); ?>
+		<?php if ($Texto_DTI->flstatus==1): ?>
+		<div class="dti-title title" id="dti">
+			<h1><?= $Texto_DTI->label ?></h1>
 		</div>
-		<br>
-		<?php 
-		$hide = "";
-		$a=0;
-		foreach ($IndicadorTipos as $key => $indicadorTipo)
-		{
-			$k = $indicadorTipo->id;
-			$name = $indicadorTipo->titulo;
-			$a++;
-			$Indicador = new Indicador();
-			$Indicador->tipo = $k;
-			$Indicador->flstatus = 1;
-			$indicadores = DaoSI::getList($Indicador);
-			?>
-			<div id="carouselIndicadores<?=$k?>" class="carousel azul slide tab tab<?=$k?><?=$hide?>" data-ride="carousel">
-				<div class="carousel-inner">
-					<div class="carousel-item active">
-						<div class="row justify-content-center">
-							<?php 
-							$b=$a=0;
-							$t=count($indicadores);
-							$UsuarioSiteLogado = getSession('UsuarioSiteLogado');
-							foreach ($indicadores as $kk => $indicador)
-							{
-								$a++;
-								$b++;
-
-								$link = "";
-								$lock = false;
-								$target = "_blank";
-								if($indicador->link){
-									$link = $indicador->link;
-									if(substr($link, 0,4)!="http") $link = "https://".$link;
-								}
-
-								if(strstr($link, 'app.powerbi.com')){
-								if(!$UsuarioSiteLogado || $UsuarioSiteLogado->perfil != 1){
-									$link = "area-restrita";
-									$target = "_self";
-									$lock = true;
-								}
-								}
-
-								?>
-								<div class="col-12 col-md-4 pb-5">
-									<?php 
-									if($link) echo "<a target='{$target}' href='{$link}'>";
-									echo $indicador->getImg('filename',false,$indicador->titulo);
-									?>
-									
-									<div class="title">
-										<?=$indicador->titulo?>
-										<?php if ($lock): ?>
-											<span data-toggle="tooltip" title="Necessário estar logado como parceiro para ter acesso a este link"><?=Frontend::resource('lock.svg')?></span>
-										<?php endif ?>
-									</div>
-									<div class="subtitle"><?=$indicador->descricao?></div>
-									<?php if($link) echo "</a>";  ?>
-								</div>
-								<?php if($b==3 && $a<$t){echo '</div></div><div class="carousel-item"><div class="row justify-content-center">'; $b=0; } } ?>
-							</div>
+		<div class="dti-content content">
+			<p><?=nl2br($Texto_DTI->texto)?></p>
+			<div class="dti-boxes">
+				<?php
+				for($i = 6; $i <= 14; $i++):
+					$texto_dti_box = new Texto($i);
+					if ($texto_dti_box->flstatus==1):?>
+					<div class="dti-box" id="">
+						<div class="dti_box-title title">
+							<h2><?= $texto_dti_box->label ?></h2>
+						</div>
+						<div class="dti_box-content content">
+							<p class="closed-text"><?= $texto_dti_box->texto ?></p>
 						</div>
 					</div>
-					<?php if ($t>3): ?>
-						<a class="carousel-control-prev" href="#carouselIndicadores<?=$k?>" role="button" data-slide="prev">
-							<span class="carousel-control-prev-icon" aria-hidden="true"></span>
-							<span class="sr-only">Previous</span>
-						</a>
-						<a class="carousel-control-next" href="#carouselIndicadores<?=$k?>" role="button" data-slide="next">
-							<span class="carousel-control-next-icon" aria-hidden="true"></span>
-							<span class="sr-only">Next</span>
-						</a>
-					<?php endif ?>
-				</div>
-				<?php $hide=" hide"; } ?>
-			</div>
-
-
-			<?php 
-		/*
-		<br><br><br>
-		<!-- Dashboard -->
-		<!-- <div id="dashboards"></div>
-		<div style="height: 500px; background: #EEE">
-			<iframe frameborder="0" width="100%" height="100%" src="<?=IFRAME_POWERBI?>"></iframe>
-		</div> -->
-		<br><br>
-		<br><br>
-		*/
-		?>
-
-
-
-		<!-- Aplicativos e Sites -->
-		<div class="my-2 overflow-hidden"></div>
-		<h2>Aplicativos e Sites</h2>
-		<div id="aplicativos"></div>
-
-
-		<div id="carouselAplicativos" class="carousel slide" data-ride="carousel">
-			<div class="carousel-inner">
-				<?php 
-				$banner = new Banner();
-				$banner->tipo = 2;
-				$banner->flstatus = 1;
-				$banners = DaoSI::getList($banner);
-				$a=0;
-				foreach ($banners as $banner)
-				{
-
-					$img1 = $imgm = $banner->getImg('filename',false,$banner->titulo);
-					if($banner->filename_m) $imgm = $banner->getImg('filename_m',false,$banner->titulo);
-
-					$a++;
-					$active = ($a==1)?'active':'';
-
-					?>
-					<div class="carousel-item <?=$active?>">
-						<?php 
-						if($banner->link) echo "<a target='_blank' href='{$banner->link}'>";
-						echo "<span class='w-only'>{$img1}</span>";
-						echo "<span class='m-only'>{$imgm}</span>";
-						if($banner->link) echo "</a>"; 
-						?>
-					</div>
-					<?php 
-				} ?>
-			</div>
-			<?php if (count($banners)): ?>
-				<a class="carousel-control-prev" href="#carouselAplicativos" role="button" data-slide="prev">
-					<span class="carousel-control-prev-icon" aria-hidden="true"></span>
-					<span class="sr-only">Previous</span>
-				</a>
-				<a class="carousel-control-next" href="#carouselAplicativos" role="button" data-slide="next">
-					<span class="carousel-control-next-icon" aria-hidden="true"></span>
-					<span class="sr-only">Next</span>
-				</a>
-			<?php endif ?>
-		</div>
-
-
-		<!-- Parceiros -->
-		<div class="my-2 overflow-hidden"></div>
-		<h2>Parceiros</h2>
-		<div id="parceiros"></div>
-		<div class="parceiros">
-			<?php
-
-			$banner = new Banner();
-			$banner->tipo = 3;
-			$banner->flstatus = 1;
-			$banners = DaoSI::getList($banner);
-
-			foreach ($banners as $banner){
-
-				$img1 = $imgm = $banner->getImg('filename',false,$banner->titulo);
-				if($banner->filename_m) $imgm = $banner->getImg('filename_m',false,$banner->titulo);
-
-				if($banner->link) echo "<a target='_blank' href='{$banner->link}'>";
+				<?php
+					endif; 
+				endfor
 				?>
-				<span class="u">
-					<span class="w-only"><?=$img1?></span>
-					<span class="m-only"><?=$imgm?></span>
-				</span>
-				<?php if($banner->link) echo "</a>";
-			} ?>
+			</div>
 		</div>
-
-		<br>
-		<br>
-		<br>
-		<br>
-		<br>
-
+		<?php endif ?>
 	</div>
+</section>
+<section>
+	<div class="section-container inteligenciaTuristica">
+		<div class="inteligenciaTuristica-title title">
+			<h1 id="inteligenciaTuristica">inteligência turística</h1>
+		</div>
+		<div class="inteligenciaTuristica-content content">
+			<div class="inteligenciaTuristica-boxes">
+				<ul>
+				<?php 
+
+				$IndicadorTipo = new IndicadorTipo();
+				$IndicadorTipo->flstatus = 1;
+				$IndicadorTipos = DaoSI::getList($IndicadorTipo,'titulo asc');
+
+				foreach($IndicadorTipos as $indicador) {
+					if($indicador->titulo=="SISTEMA DE INTELIGÊNCIA TURÍSTICA"){
+						$name = $indicador->titulo;
+						$psqTuristica = new Indicador();
+						$psqTuristica->tipo = $indicador->id;
+						$psqTuristica->flstatus = 1;
+						$psqTuristicaList = DaoSI::getList($psqTuristica);
+
+						foreach($psqTuristicaList as $box){
+							?>
+							<li class="inteligenciaTuristica-box">
+								<a href="<?php echo $box->link ?>" target="_blank" rel="noopener noreferrer">
+									<i class="fa-solid <?php echo $box->icone ?>"></i>
+									<h3 class="title"><?php echo $box->titulo ?></h3>
+								</a>
+							</li>
+							<?php
+						}
+					}
+				}
+				?>
+				</ul>
+			</div>
+		</div>
+	</div>
+</section>
+<section>
+	<div class="section-container pesquisas">
+		<div class="pesquisas-title title">
+			<h1 id="pesquisas">pesquisas</h1>
+		</div>
+		<div class="pesquisas-content content">
+			<div class="pesquisas-container">
+				<div class="pesquisas-barraLateral">
+					<ul class="pesquisas_barraLateral-lista">
+					<?php
+					foreach (array_reverse($IndicadorTipos) as $indicador) {
+						if ($indicador->titulo != "SISTEMA DE INTELIGÊNCIA TURÍSTICA") {
+							echo "<li class='pesquisas_barraLateral_lista-opcao $indicador->id'>$indicador->titulo</li>";
+						}
+					}
+					?>
+					</ul>
+				</div>
+				<div class="pesquisas-boxes">
+					<?php
+					
+					$pesquisa = new Pesquisa();
+					$pesquisa->flstatus = 1;
+					$pesquisas = DaoSI::getList($pesquisa);
+					foreach($pesquisas as $pesquisaBox) {
+						?>
+						<div class="pesquisas-box <?php echo $pesquisaBox->indicador_tipo_id ?>">
+							<div class="pesquisas_box-title title">
+								<div class="pesquisas_box_title-bg">
+									<img src="resource/uploads/pesquisas/<?php echo $pesquisaBox->filename ?>" alt="">
+								</div>
+								<h3><?php echo $pesquisaBox->titulo ?></h3>
+							</div>
+							<div class="pesquisas_box-content content">
+								<span><?php echo $pesquisaBox->descricao ?></span>
+							</div>
+								<?php
+									if($pesquisaBox->link_painel_interativo != null){
+										echo '<a target="_blank" href="'.$pesquisaBox->link_painel_interativo.'">painel interativo</a>';
+									}
+									if($pesquisaBox->link_relatorio != null){
+										echo '<a target="_blank" href="'.$pesquisaBox->link_relatorio.'">relatório</a>';
+									}
+								?>
+						</div>
+						<?php
+					}
+					?>
+				</div>
+			</div>
+			<div class="controller closed2">
+				<span class="prev"><</span>
+				<span class="count"></span>
+				<span class="pos">></span>
+			</div>
+		</div>
+	</div>
+</section>
+<section class="geoinformacao">
+	<iframe src="<?php $endereco_mapa = new Texto(15); echo $endereco_mapa->texto ?>" frameborder="0" id="geoinformacao"></iframe>
+</section>
+<section>
+	<div class="assinantes-container">
+		<div class="assinantes-content">
+			<div class="assinantes_content-text">
+				<span id="assinantes" class="title">cadastro de assinante</span>
+				<span class="title">colabore com o desenvolvimento de um cenário positivo para o turismo em fortaleza</span>
+				<span>
+					R. dos Tabajaras, 397 - Praia de Iracema,<br>
+					Fortaleza - CE<br>
+					CEP - 60060-510<br>
+				</span>
+			</div>
+			<form action="#" method="get" class="assinantes_content-form">
+				<div class="form-campo">
+					<label for="nome">Digite o seu nome completo</label>
+					<input type="nome" name="nome" required>
+				</div>
+				<div class="form-campo">
+					<label for="email">Digite o seu e-mail</label>
+					<input type="email" name="email" required placeholder="example@mail.com">
+				</div>
+				<div class="form-campo">
+					<label for="whatsapp">Digite o seu número de whatsapp</label>
+					<input type="text" name="whatsapp" required placeholder="xx xxxxx-xxxx" pattern="\d{2} \d{5}-\d{4}">
+				</div>
+				<input type="submit" value="enviar">
+			</form>
+		</div>
+	</div>
+</section>
+<section class="section-container" id="parceiros">
+	<div class="parceiros-container">
+		<div class="parceiros-title title">
+			<h1>Parceiros</h1>
+		</div>
+		<div class="parceiros-content">
+			<?=FrontEnd::resource('abav.jpg')?>
+			<?=FrontEnd::resource('abh.jpg')?>
+			<?=FrontEnd::resource('abrasel.jpg')?>
+			<?=FrontEnd::resource('caf.jpg')?>
+			<?=FrontEnd::resource('fortalezaAirport.jpg')?>
+			<?=FrontEnd::resource('ipece.jpg')?>
+			<?=FrontEnd::resource('prefeitura.jpg')?>
+			<?=FrontEnd::resource('socicam.jpg')?>
+			<?=FrontEnd::resource('visiteCeara.jpg')?>
+		</div>
+	</div>
+</section>
+<footer>
+	<div class="footer-container">
+		<div class="social">
+			<a href="https://www.facebook.com/secretariadoturismodefortaleza/?locale=pt_BR"><i class="fa-brands fa-facebook-f"></i></a>
+			<a href="https://www.instagram.com/secretariadoturismodefortaleza/?hl=pt"><i class="fa-brands fa-instagram"></i></a>
+		</div>
+		<div class="icons">
+			<?=FrontEnd::resource('caf.jpg')?>
+			<?=FrontEnd::resource('logo2.svg')?>
+			<?=FrontEnd::resource('prefeitura.jpg')?>
+		</div>
+	</div>
+</footer>

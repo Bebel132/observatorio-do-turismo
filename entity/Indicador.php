@@ -26,11 +26,6 @@ class Indicador extends Entity
 	public $indicador_tipo_id;
 
 	/**
-	* @Column = {"name":"filename" , "type":"varchar" , "size" : "255" , "mask" : "file" , "label":"Imagem"}
-	*/
-	public $filename;
-
-	/**
 	* @Column = {"name":"flstatus" , "type":"integer" , "size" : "" , "label":"Status" , "domain":{"1":"Ativo","2":"Inativo"} }
 	*/
 	public $flstatus;
@@ -39,6 +34,11 @@ class Indicador extends Entity
 	 * @Column = {"name":"timestamp","type":"timestamp","index":"NOT NULL"}
 	 */
 	public $timestamp; 
+
+	/**
+	* @Column = {"name":"icone" , "type":"varchar" , "size" : "50" , "label":"Icone"}
+	*/
+	public $icone;
 
 }
 
