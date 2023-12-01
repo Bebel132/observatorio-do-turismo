@@ -87,15 +87,9 @@
 				self::$CONN = $conecta;
 				return $conecta;
 
-			}catch(PDOexception $e_con)
-			{
-
-				$msg = "ERR0:".$e_con->ttMessage();
-				self::$errorMessage[] = $msg;
-				if(self::$config['db_debug'])
-					echo $msg;
-				return false;
-
+			} catch (PDOException $e) {
+				// O uso correto do método "getMessage"
+				echo "Erro ao conectar: " . $e->getMessage();
 			}
 
 

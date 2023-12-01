@@ -36,9 +36,9 @@ document.querySelector(".fa-bars").addEventListener("click", () => {
 })
 
 //função para fechar o menu lateral quando o usuário apertar em algum item
-document.querySelectorAll(".sideBar_menu-item").forEach(e => {
+document.querySelectorAll(".sidebar_menu-item").forEach(e => {
     e.addEventListener("click", () => {
-        document.querySelector(".header-sideBar").classList.toggle("closed")
+        document.querySelector(".header-sideBar").classList.add("closed")
     })
 })
 
@@ -148,7 +148,6 @@ document.querySelectorAll(".pesquisas_barraLateral_lista-opcao").forEach(e => {
 
 document.querySelector(".pos").addEventListener("click", () => {
     limite = Math.min(limite + 3, limiteMaximo);
-    console.log(limite);
     mostrarPesquisas(secaoAtual, limite);
 });
 

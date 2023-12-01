@@ -484,23 +484,6 @@ section:nth-child(3) {
     color: var(--color-orange);
 }
 
-@media screen and (max-width: 900px) {
-    .pesquisas-boxes {
-        grid-template-columns: 1fr 1fr;
-    }
-}
-
-@media screen and (max-width: 600px) {
-    .pesquisas-boxes {
-        grid-template-columns: 1fr;
-    }
-
-    .pesquisas-container {
-        display: flex;
-        flex-direction: column;
-    }
-}
-
 .controller {
     text-align: center;
     margin: auto;
@@ -514,6 +497,45 @@ section:nth-child(3) {
     margin: 0 1rem;
     cursor: pointer;
     user-select: none;
+}
+
+@media screen and (max-width: 900px) {
+    .pesquisas-boxes {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .pesquisas-boxes a {
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .pesquisas-boxes {
+        grid-template-columns: 1fr;
+    }
+
+    .pesquisas-container {
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .pesquisas-box {
+        height: 22rem;
+        margin-bottom: .5rem;
+    }
+
+    .pesquisas-barraLateral {
+        order: 1;
+    }
+
+    .pesquisas-boxes {
+        order: 3;
+    }
+
+    .controller {
+        order: 2;
+        margin: 1rem 0;
+    }
 }
 
 /* geoinformacao */

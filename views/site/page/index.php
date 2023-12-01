@@ -179,18 +179,18 @@
 					}
 					?>
 				</div>
-			</div>
-			<div class="controller closed2">
-				<span class="prev"><</span>
-				<span class="count"></span>
-				<span class="pos">></span>
+				<div class="controller closed">
+					<span class="prev"><</span>
+					<span class="count"></span>
+					<span class="pos">></span>
+				</div>
 			</div>
 		</div>
 	</div>
 </section>
-<section class="geoinformacao">
+<!-- <section class="geoinformacao">
 	<iframe src="<?php $endereco_mapa = new Texto(15); echo $endereco_mapa->texto ?>" frameborder="0" id="geoinformacao"></iframe>
-</section>
+</section> -->
 <section>
 	<div class="assinantes-container">
 		<div class="assinantes-content">
