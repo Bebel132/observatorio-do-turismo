@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Gelasio:wght@500;700&family=Lato&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;700&display=swap');
 
 * {
     margin: 0;
@@ -6,20 +6,25 @@
 }
 
 :root {
-    --color-gray: #6B7F82;
-    --color-dark-blue: #1D263B;
+    --color-primary: #009b93;
+    --color-secondary: #EA5B0A;
+    --color-tertiary: #f3e40e;
     --color-white: #f5f5f5;
-    --color-cyan: #009b93;
-    --color-orange: #EA5B0A;
 
-    --font-title: 'Gelasio', serif;
-    --font-text: 'Lato', sans-serif;
+    --color-base: #2B4E73;
+    --color-base-dark: #12355B;
+
+    --font-title: 700;
+    --font-text: 300;
+    --font-complement: 100;
 }
 
 html {
   scroll-behavior: smooth;
-  box-shadow: inset 0 0 30px var(--color-dark-blue);
+  box-shadow: inset 0 0 30px var(--color-base-dark);
   font-display: swap;
+  font-family: 'Roboto', sans-serif;
+  font-weight: var(--font-text);
 }
 
 :target {
@@ -37,6 +42,7 @@ body {
 
 a {
     text-decoration: none;
+    color: var(--color-base-dark);
 }
 
 a:hover {
@@ -50,8 +56,8 @@ ul {
 .fa-angle-up {
     border-radius: 100%;
     padding: 1.3rem;
-    box-shadow: 0 0 5px var(--color-dark-blue);
-    background-color: var(--color-orange);
+    box-shadow: 0 0 5px var(--color-base-dark);
+    background-color: var(--color-secondary);
     color: var(--color-white);
     position: fixed;
     bottom: 1rem;
@@ -73,6 +79,28 @@ ul {
     background-color: var(--color-white);
 }
 
+h1 {
+    font-size: 24px;
+    font-weight: var(--font-title);
+}
+
+h2 {
+    font-size: 21px;
+}
+
+h3 {
+    font-size: 18px;
+}
+
+p {
+    font-size: 16px;
+    font-weight: var(--font-text);
+}
+
+span {
+    font-size: 14px;
+    font-weight: var(--font-complement);
+}
 /* HEADER */
 
 .header-topBar {
@@ -86,7 +114,7 @@ ul {
 
 .header-topbar-container {
     background-color: var(--color-white);
-    box-shadow: 2px 0 10px var(--color-dark-blue);
+    box-shadow: 2px 0 10px var(--color-base-dark);
     top: 0;
     position: fixed;
     z-index: 2;
@@ -96,7 +124,7 @@ ul {
 
 .topBar-switch {
     background-color: var(--color-white);
-    color: var(--color-dark-blue);
+    color: var(--color-base-dark);
     transition: .2s;
 }
 
@@ -117,8 +145,8 @@ ul {
     align-items: center;
     justify-content: center;
     font-size: 13px;
-    font-family: var(--font-title);
-    color: var(--color-dark-blue);
+    font-weight: var(--font-title);
+    color: var(--color-base-dark);
     cursor: pointer;
     text-transform: uppercase;
     transition: .1s;
@@ -126,7 +154,7 @@ ul {
 
 .menu-item:hover {
     text-decoration: underline;
-    background-color: var(--color-orange);
+    background-color: var(--color-secondary);
     color: var(--color-white);
 }
 
@@ -159,11 +187,11 @@ ul {
         position: fixed;
         width: 85%;
         text-align: center;
-        box-shadow: 2px 0 10px var(--color-dark-blue);
+        box-shadow: 2px 0 10px var(--color-base-dark);
     }
 
     .header-sideBar .menu {
-        background-color: var(--color-orange);
+        background-color: var(--color-secondary);
         display: flex;
         flex-direction: column;
         justify-content: space-around;
@@ -178,26 +206,12 @@ ul {
     }
 }
 
-/* MAIN */
-
-h3 {
-    font-size: initial;
-}
-
-h1 {
-    font-size: 1.5rem;
-}
-
-h2 {
-    font-size: 1.3rem;
-}
-
 /* quem somos */
 section {
     max-width: 70rem;
     width: 100%;
     background-color: var(--color-white);
-    color: var(--color-dark-blue);
+    color: var(--color-base-dark);
     margin: 3rem auto;
     border-radius: 0 20px;
 }
@@ -216,16 +230,7 @@ section:nth-child(1) {
 .section-container {
     padding: 3rem;
     border-radius: 0 20px;
-    box-shadow: 0 0 10px var(--color-dark-blue);
-}
-
-.title {
-    font-family: var(--font-title);
-    text-transform: uppercase;
-}
-
-.content {
-    font-family: var(--font-text);
+    box-shadow: 0 0 10px var(--color-base-dark);
 }
 
 .quemSomos-title {
@@ -261,15 +266,15 @@ section:nth-child(1) {
 }
 
 .quemSomos_content-box:nth-child(1) .title i {
-    color: var(--color-orange);
+    color: var(--color-secondary);
 }
 
 .quemSomos_content-box:nth-child(2) .title i {
-    color: var(--color-cyan);
+    color: var(--color-primary);
 }
 
 .quemSomos_content-box:nth-child(3) .title i {
-    color: var(--color-dark-blue);
+    color: var(--color-tertiary);
 }
 
 .quemSomos_content_box-content p {
@@ -308,14 +313,14 @@ section:nth-child(1) {
     transition: .2s;
     text-align: justify;
     color: transparent;
-    box-shadow: 0px 16px 30px -30px var(--color-dark-blue);
+    box-shadow: 0px 16px 30px -30px var(--color-base-dark);
 }
 
 .opened {
     padding: .5rem;
     height: auto;
     font-size: 1rem;
-    color: var(--color-dark-blue);
+    color: var(--color-base-dark);
 }
 
 .closed-text {
@@ -338,7 +343,8 @@ section:nth-child(3) {
 .inteligenciaTuristica-title {
     text-align: center;
     margin-bottom: 4rem;
-    text-shadow: 0 0 5px var(--color-dark-blue);
+    text-shadow: 0 0 5px var(--color-base-dark);
+    color: var(--color-white);
 }
 
 .inteligenciaTuristica-boxes ul {
@@ -369,15 +375,15 @@ section:nth-child(3) {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    color: var(--color-cyan);
+    color: var(--color-primary);
     background-color: var(--color-white);
     border-radius: 20px 0 20px 0;
-    box-shadow: 0px 0px 10px var(--color-dark-blue);
+    box-shadow: 0px 0px 10px var(--color-base-dark);
     text-decoration: none;
 }
 
 .inteligenciaTuristica-boxes li:nth-child(odd) a {
-    background-color: var(--color-cyan);
+    background-color: var(--color-primary);
     color: var(--color-white);
     border-radius: 0 20px 0 20px;
 }
@@ -405,6 +411,7 @@ section:nth-child(3) {
 }
 
 .pesquisas-container {
+    position: relative;
     display: grid;
     grid-template-columns: 1fr 4fr;
     gap: 1rem;
@@ -415,7 +422,7 @@ section:nth-child(3) {
 }
 
 .pesquisas-barraLateral {
-    background-color: var(--color-cyan);
+    background-color: var(--color-primary); 
     color: var(--color-white);
 }
 
@@ -428,18 +435,18 @@ section:nth-child(3) {
 }
 
 .pesquisas-barraLateral li:hover {
-    background-color: var(--color-dark-blue);
-    color: var(--color-white);
+    background-color: var(--color-base-dark);
 }
 
 .selecionado {
-    background-color: var(--color-dark-blue);
+    background-color: var(--color-base-dark);
 }
 
 .pesquisas-boxes {
     display: grid;
     gap: 2rem;
     grid-template-columns: 1fr 1fr 1fr;
+    margin-bottom: 4rem;
 }
 
 .pesquisas-box {
@@ -467,8 +474,8 @@ section:nth-child(3) {
 .pesquisas-boxes a {
     z-index: 1;
     display: block;
-    background-color: var(--color-orange);
-    border: 1px solid var(--color-orange);
+    background-color: var(--color-secondary);
+    border: 1px solid var(--color-secondary);
     color: var(--color-white);
     padding: .5rem 0;
     margin: .2rem 0;
@@ -479,29 +486,37 @@ section:nth-child(3) {
     bottom: 0;
 }
 
-.pesquisas_box-content a:hover {
+.pesquisas-boxes a:hover {
     background-color: var(--color-white);
-    color: var(--color-orange);
+    color: var(--color-secondary);
 }
 
 .controller {
     text-align: center;
     margin: auto;
-    margin-top: 3rem;
+    margin-top: 0rem;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 12rem;
+    margin-left: -5rem;
 }
 
 .prev, .pos {
-    padding: .5rem 1rem;
-    background-color: var(--color-orange);
-    color: var(--color-white);
+    padding: 0.7rem 1rem;
+    background-color: var(--color-tertiary);
+    color: var(--color-base-dark);
     margin: 0 1rem;
     cursor: pointer;
     user-select: none;
+    border-radius: 100%;
+    font-weight: 400;
 }
 
 @media screen and (max-width: 900px) {
     .pesquisas-boxes {
         grid-template-columns: 1fr 1fr;
+        margin-bottom: 0;
     }
 
     .pesquisas-boxes a {
@@ -512,6 +527,7 @@ section:nth-child(3) {
 @media screen and (max-width: 600px) {
     .pesquisas-boxes {
         grid-template-columns: 1fr;
+        margin-bottom: 0;
     }
 
     .pesquisas-container {
@@ -534,7 +550,10 @@ section:nth-child(3) {
 
     .controller {
         order: 2;
-        margin: 1rem 0;
+        margin: 1rem auto;
+        position: relative;
+        left: 0;
+        text-align: center;
     }
 }
 
@@ -551,7 +570,7 @@ section:nth-child(3) {
 .geoinformacao iframe {
     width: 100%;
     height: 90vh;
-    box-shadow: 0 0 30px var(--color-dark-blue);
+    box-shadow: 0 0 30px var(--color-base-dark);
 }
 
 /* assinantes */
@@ -597,7 +616,7 @@ section:nth-child(3) {
 
 input[type='submit'] {
     float: right;
-    background-color: var(--color-cyan);
+    background-color: var(--color-primary);
     color: var(--color-white);
     width: 5rem;
     padding: .4rem .2rem;
@@ -608,7 +627,7 @@ input[type='submit'] {
 }
 
 input[type='submit']:hover {
-    background-color: var(--color-orange);
+    background-color: var(--color-secondary);
 }
 
 @media screen and (max-width: 900px) {
@@ -641,7 +660,7 @@ input[type='submit']:hover {
         right: 0;
         margin-top: 14px;
         margin-left: 20px;
-        color: var(--color-dark-blue);
+        color: var(--color-base-dark);
     }
 
     input[type='submit'] {
@@ -692,7 +711,7 @@ footer {
 }
 
 .social i:hover {
-    color: var(--color-dark-blue);
+    color: var(--color-base-dark);
 }
 
 .icons {

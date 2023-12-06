@@ -11,7 +11,7 @@
 		<?php $Texto_QuemSomos = new Texto(1); ?>
 		<?php if ($Texto_QuemSomos->flstatus==1): ?>
 		<div class="quemSomos-title title">
-			<h2 id="quemSomos"><?=$Texto_QuemSomos->label?></h2>
+			<h1 id="quemSomos"><?=$Texto_QuemSomos->label?></h1>
 		</div>
 		<div class="quemSomos-content content">
 			<p><?=nl2br($Texto_QuemSomos->texto)?></p>
@@ -117,7 +117,7 @@
 							<li class="inteligenciaTuristica-box">
 								<a href="<?php echo $box->link ?>" target="_blank" rel="noopener noreferrer">
 									<i class="fa-solid <?php echo $box->icone ?>"></i>
-									<h3 class="title"><?php echo $box->titulo ?></h3>
+									<h3><?php echo $box->titulo ?></h3>
 								</a>
 							</li>
 							<?php
@@ -188,20 +188,20 @@
 		</div>
 	</div>
 </section>
-<!-- <section class="geoinformacao">
+<section class="geoinformacao">
 	<iframe src="<?php $endereco_mapa = new Texto(15); echo $endereco_mapa->texto ?>" frameborder="0" id="geoinformacao"></iframe>
-</section> -->
+</section>
 <section>
 	<div class="assinantes-container">
 		<div class="assinantes-content">
 			<div class="assinantes_content-text">
-				<span id="assinantes" class="title">cadastro de assinante</span>
-				<span class="title">colabore com o desenvolvimento de um cenário positivo para o turismo em fortaleza</span>
-				<span>
+				<p id="assinantes" class="title">cadastro de assinante</p>
+				<p class="title">colabore com o desenvolvimento de um cenário positivo para o turismo em fortaleza</p>
+				<p>
 					R. dos Tabajaras, 397 - Praia de Iracema,<br>
 					Fortaleza - CE<br>
 					CEP - 60060-510<br>
-				</span>
+				</p>
 			</div>
 			<form action="#" method="get" class="assinantes_content-form">
 				<div class="form-campo">
