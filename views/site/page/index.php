@@ -162,6 +162,7 @@
 									<img src="resource/uploads/pesquisas/<?php echo $pesquisaBox->filename ?>" alt="">
 								</div>
 								<h3><?php echo $pesquisaBox->titulo ?></h3>
+								<span><?php echo $pesquisaBox->timestamp ?></span>
 							</div>
 							<div class="pesquisas_box-content content">
 								<span><?php echo $pesquisaBox->descricao ?></span>

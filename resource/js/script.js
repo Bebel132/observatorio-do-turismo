@@ -128,7 +128,7 @@ const pesquisas = Object.values(objetoAgrupado);
 document.querySelector(".pesquisas-boxes").innerHTML = ""
 
 //função para mostrar as pesquisas de acordo com o seu ano
-let limite = 3;
+let limite = 2;
 let limiteMaximo = 0;
 let secaoAtual = '';
 
@@ -141,18 +141,18 @@ document.querySelectorAll(".pesquisas_barraLateral_lista-opcao").forEach(e => {
         limiteMaximo = arr.length;
         secaoAtual = e.classList[1];
 
-        limite = 3;
+        limite = 2;
         mostrarPesquisas(secaoAtual, limite);
     });
 });
 
 document.querySelector(".pos").addEventListener("click", () => {
-    limite = Math.min(limite + 3, limiteMaximo);
+    limite = Math.min(limite + 2, limiteMaximo);
     mostrarPesquisas(secaoAtual, limite);
 });
 
 document.querySelector(".prev").addEventListener("click", () => {
-    limite = Math.max(limite - 3, 3);
+    limite = Math.max(limite - 2, 2);
     mostrarPesquisas(secaoAtual, limite);
 });
 
@@ -166,9 +166,9 @@ function mostrarPesquisas(secao, limite) {
     let arr = getPesquisasPorSecao(secao);
 
     // Calcular o início do loop com base no limite e no tamanho do array
-    let inicio = Math.max(0, limite - 3);
-    if (arr.length % 3 !== 0 && limite === arr.length) {
-        inicio = limite - arr.length % 3;
+    let inicio = Math.max(0, limite - 2);
+    if (arr.length % 2 !== 0 && limite === arr.length) {
+        inicio = limite - arr.length % 2;
     }
 
     for (let i = inicio; i < Math.min(limite, arr.length); i++) {
