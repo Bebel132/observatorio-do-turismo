@@ -518,7 +518,7 @@ section:nth-child(5) {
 }
 
 .pesquisas-box {
-    height: 29rem;
+    height: 30rem;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -608,7 +608,7 @@ section:nth-child(5) {
     }
     
     .pesquisas-box {
-        height: 29rem;
+        height: 28rem;
         margin-bottom: .5rem;
     }
 
