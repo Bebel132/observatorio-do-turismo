@@ -16,6 +16,11 @@ class Texto extends Entity
 	public $texto;
 
 	/**
+	* @Column = {"name":"filename" , "type":"varchar" , "size" : "255" , "mask" : "file" , "label":"Imagem"}
+	*/
+	public $filename;
+
+	/**
 	* @Column = {"name":"flstatus" , "type":"integer" , "size" : "" , "label":"Status" , "domain":{"1":"Ativo","2":"Inativo"} }
 	*/
 	public $flstatus;

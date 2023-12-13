@@ -42,8 +42,6 @@ if(isset($_GET['nome']) && isset($_GET['nome']) && isset($_GET['whatsapp'])){
 	$email = $_GET['email'];
 	$numero = $_GET['whatsapp'];
 
-	echo $numero;
-
 	if (validarEmail($email) && validarNumeroTelefoneBrasileiro($numero)) {
 		$usuario = new UsuarioSite();
 		$usuario->flstatus = 1;

@@ -10,12 +10,6 @@
 	<link rel="icon" href="<?=FrontEnd::resource('logo2.svg',1)?>" />
 	<?= FrontEnd::resource('jquery-3.3.1.min.js'); ?>
 	<script> jq = jQuery.noConflict( true ); </script>
-	<?php
-	// echo FrontEnd::resource('cookie.js');
-	echo FrontEnd::resource('main.js');
-	// echo FrontEnd::resource('reset.css');
-	echo FrontEnd::resource('style-site.css');
-	?>
 
 	<!-- Google tag GA4 (gtag.js) -->
 	<script async src="https://www.googletagmanager.com/gtag/js?id=G-3MB1CV4504"></script>
@@ -27,7 +21,14 @@
 		gtag('config', 'G-3MB1CV4504');
 	</script>
 	<script src="https://kit.fontawesome.com/4b1186e948.js" crossorigin="anonymous"></script>
-	</head>
+
+	<?php
+	// echo FrontEnd::resource('cookie.js');
+	echo FrontEnd::resource('main.js');
+	// echo FrontEnd::resource('reset.css');
+	echo FrontEnd::resource('style-site.css');
+	?>
+</head>
 <body>
 	<a href="<?=FrontEnd::raiz()?>.#inicio"><i class="fa-solid fa-angle-up"></i></a>
     <header id="inicio">
@@ -49,15 +50,15 @@
                         <a href="<?=FrontEnd::raiz()?>.#pesquisas">
                             <li class="menu-item">pesquisas</li>
                         </a>
-						<a href="<?=FrontEnd::raiz()?>.#geoinformacao">
-                            <li class="menu-item">geoinformação turística</li>
+                        <a href="<?=FrontEnd::raiz()?>.#geoinformacao">
+                            <li class="menu-item">geoinformação</li>
+                        </a>
+                        <a href="<?=FrontEnd::raiz()?>.#parceiros">
+                            <li class="menu-item">parceiros</li>
                         </a>
 						<a href="<?=FrontEnd::raiz()?>.#assinantes">
 							<li class="menu-item">assinantes</li>
 						</a>
-                        <a href="<?=FrontEnd::raiz()?>.#parceiros">
-                            <li class="menu-item">parceiros</li>
-                        </a>
                     </ul>
                 </div>
             </div>
@@ -80,15 +81,15 @@
                         <a href="<?=FrontEnd::raiz()?>.#pesquisas">
                             <li class="sidebar_menu-item">pesquisas</li>
                         </a>
-						<a href="<?=FrontEnd::raiz()?>.#geoinformacao">
-                            <li class="sidebar_menu-item">geoinformação turística</li>
+                        <a href="<?=FrontEnd::raiz()?>.#geoinformacao">
+                            <li class="sidebar_menu-item">geoinformação</li>
+                        </a>
+                        <a href="<?=FrontEnd::raiz()?>.#parceiros">
+                            <li class="sidebar_menu-item">parceiros</li>
                         </a>
 						<a href="<?=FrontEnd::raiz()?>.#assinantes">
 							<li class="sidebar_menu-item">assinantes</li>
 						</a>
-                        <a href="<?=FrontEnd::raiz()?>.#parceiros">
-                            <li class="sidebar_menu-item">parceiros</li>
-                        </a>
                     </ul>
                 </div>
             </div>
