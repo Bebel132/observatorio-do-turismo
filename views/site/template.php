@@ -56,9 +56,6 @@
                         <a href="<?=FrontEnd::raiz()?>.#parceiros">
                             <li class="menu-item">parceiros</li>
                         </a>
-						<a href="<?=FrontEnd::raiz()?>.#assinantes">
-							<li class="menu-item">assinantes</li>
-						</a>
                     </ul>
                 </div>
             </div>
@@ -87,9 +84,6 @@
                         <a href="<?=FrontEnd::raiz()?>.#parceiros">
                             <li class="sidebar_menu-item">parceiros</li>
                         </a>
-						<a href="<?=FrontEnd::raiz()?>.#assinantes">
-							<li class="sidebar_menu-item">assinantes</li>
-						</a>
                     </ul>
                 </div>
             </div>
