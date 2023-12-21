@@ -83,7 +83,7 @@
 			<?php
 				$inteligenciaTuristica = new Texto(16);
 			?>
-			<!-- <iframe src="<?php echo $inteligenciaTuristica->texto ?>" frameborder="0"></iframe> -->
+			<iframe src="<?php echo $inteligenciaTuristica->texto ?>" frameborder="0"></iframe>
 		</div>
 	</div>
 </section>
@@ -155,7 +155,7 @@
 			<?php
 				$geoinformacao = new Texto(15);
 			?>
-			<!-- <iframe src="<?php echo $geoinformacao->texto ?>" frameborder="0"></iframe> -->
+			<iframe src="<?php echo $geoinformacao->texto ?>" frameborder="0"></iframe>
 		</div>
 	</div>
 </section> 
