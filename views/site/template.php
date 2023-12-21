@@ -39,22 +39,22 @@
                 <div class="menu-container">
                     <ul class="menu">
                         <a href="<?=FrontEnd::raiz()?>.#quemSomos">
-                            <li class="menu-item">quem somos</li>
+                            <li class="menu-item">Quem Somos</li>
                         </a>
 						<a href="<?=FrontEnd::raiz()?>.#dti">
                             <li class="menu-item">DTI</li>
                         </a>
                         <a href="<?=FrontEnd::raiz()?>.#inteligenciaTuristica">
-                            <li class="menu-item">inteligência turística</li>
+                            <li class="menu-item">Inteligência Turística</li>
                         </a>
                         <a href="<?=FrontEnd::raiz()?>.#pesquisas">
-                            <li class="menu-item">pesquisas</li>
+                            <li class="menu-item">Pesquisas</li>
                         </a>
                         <a href="<?=FrontEnd::raiz()?>.#geoinformacao">
-                            <li class="menu-item">geoinformação</li>
+                            <li class="menu-item">Geoinformação</li>
                         </a>
                         <a href="<?=FrontEnd::raiz()?>.#parceiros">
-                            <li class="menu-item">parceiros</li>
+                            <li class="menu-item">Parceiros</li>
                         </a>
                     </ul>
                 </div>
@@ -66,23 +66,23 @@
                 <!-- MENU MOBILE -->
                 <div class="menu-container">
                     <ul class="menu">
-						<a href="<?=FrontEnd::raiz()?>.#quemSomos">
-                            <li class="sidebar_menu-item">quem somos</li>
+                        <a href="<?=FrontEnd::raiz()?>.#quemSomos">
+                            <li class="sidebar_menu-item">Quem Somos</li>
                         </a>
 						<a href="<?=FrontEnd::raiz()?>.#dti">
                             <li class="sidebar_menu-item">DTI</li>
                         </a>
                         <a href="<?=FrontEnd::raiz()?>.#inteligenciaTuristica">
-                            <li class="sidebar_menu-item">inteligência turística</li>
+                            <li class="sidebar_menu-item">Inteligência Turística</li>
                         </a>
                         <a href="<?=FrontEnd::raiz()?>.#pesquisas">
-                            <li class="sidebar_menu-item">pesquisas</li>
+                            <li class="sidebar_menu-item">Pesquisas</li>
                         </a>
                         <a href="<?=FrontEnd::raiz()?>.#geoinformacao">
-                            <li class="sidebar_menu-item">geoinformação</li>
+                            <li class="sidebar_menu-item">Geoinformação</li>
                         </a>
                         <a href="<?=FrontEnd::raiz()?>.#parceiros">
-                            <li class="sidebar_menu-item">parceiros</li>
+                            <li class="sidebar_menu-item">Parceiros</li>
                         </a>
                     </ul>
                 </div>

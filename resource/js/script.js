@@ -23,7 +23,7 @@ window.addEventListener("scroll", () => {
         document.body.style.backgroundImage = "none"
         document.body.style.boxShadow = "none"
     } else {
-        document.body.style.backgroundImage = "url('resource/imgs/pontevelha.jpg')"
+        document.body.style.backgroundImage = "url('resource/imgs/beiraMar2.jpg')"
         document.body.style.boxShadow = "inset 0 0 30px var(--color-base-dark)"
     }
 })
@@ -39,6 +39,30 @@ document.querySelectorAll(".sidebar_menu-item").forEach(e => {
         document.querySelector(".header-sideBar").classList.add("closed")
     })
 })
+
+const botaoLerMais = document.querySelectorAll('.ler-mais');
+const boxes = document.querySelectorAll('.quemSomos_boxes-content p');
+let truncado = true;
+
+botaoLerMais.forEach((botao, index) => {
+    const texto = boxes[index];
+
+    botao.addEventListener('click', function() {
+        if (truncado) {
+            texto.parentNode.parentNode.style.height = "560px"
+            texto.style.maxHeight = 'none';
+            texto.style.overflow = 'auto';
+            botao.textContent = 'Ler menos';
+        } else {
+            texto.parentNode.parentNode.style.height = "350px"
+            texto.style.maxHeight = '100px';
+            texto.style.overflow = 'hidden';
+            botao.textContent = 'Ler mais';
+        }
+        truncado = !truncado;
+    });
+});
+
 
 //função de abrir e fechar dos textos do dti
 document.querySelectorAll(".dti_box-title").forEach(e => {

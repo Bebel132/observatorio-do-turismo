@@ -15,9 +15,9 @@
     --color-base: #2B4E73;
     --color-base-dark: #12355B;
 
-    --font-title: 700;
-    --font-text: 300;
-    --font-complement: 100;
+    --font-title: 900;
+    --font-text: 500;
+    --font-complement: 300;
 }
 
 html {
@@ -34,12 +34,12 @@ html {
 body {
     box-shadow: inset 0 0 30px var(--color-base-dark);
     font-family: var(--font-text);
-    background: url(../imgs/pontevelha.jpg);
+    background: url(../imgs/beiraMar2.jpg);
     background-color: var(--color-light-gray);
     background-size: cover;
     background-repeat: no-repeat;
     background-attachment: fixed;
-    background-position: right bottom;
+    background-position: center center;
     transition: .2s;
 }
 
@@ -152,7 +152,6 @@ span {
     font-weight: var(--font-title);
     color: var(--color-base-dark);
     cursor: pointer;
-    text-transform: uppercase;
     transition: .1s;
 }
 
@@ -211,19 +210,11 @@ span {
 }
 
 .ponteDosIngleses {
-    max-width: 90rem;
+    max-width: 70rem;
     width: 100%;
     display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    align-items: flex-end;
     margin: 0 auto;
-    padding-top: 10rem;
-}
-
-.ponteDosIngleses img {
-    max-width: 40rem;
-    width: 100%;
+    padding: 10rem 1rem 0 1rem;
 }
 
 .historia {
@@ -327,10 +318,11 @@ section:nth-child(3), section:nth-child(4) {
 }
 
 .quemSomos-box {
-    padding: 1rem;
+    padding: 1rem 1.5rem;
     box-shadow: 0 0 5px var(--color-base);
     border-radius: 20px;
-    max-width: 22rem;
+    max-width: 20rem;
+    height: 350px;
     width: 100%;
     margin: 0 auto;
 }
@@ -366,6 +358,29 @@ section:nth-child(3), section:nth-child(4) {
     }
 }
 
+.quemSomos_boxes-content p {
+    max-height: 100px;
+    overflow: hidden;
+ }
+
+.ler-mais {
+    background-color: var(--color-primary);
+    color: var(--color-white);
+    padding: 8px 16px;
+    border: none;
+    cursor: pointer;
+    text-align: center;
+    display: inline-block;
+    font-size: 16px;
+    margin-top: 10px;
+    border-radius: 4px;
+    transition: .2s;
+ }
+ 
+ .ler-mais:hover {
+    background-color: var(--color-white);
+    color: var(--color-primary);
+ }
 
 /* DTI */
 
@@ -405,13 +420,12 @@ section:nth-child(3), section:nth-child(4) {
     border-radius: 0 0 20px 20px;
 }
 
-.dti_box-title svg {
+.dti-icon {
     background-color: var(--color-primary);
+    width: 3.2rem;
+    padding: 0.5rem;
     border-radius: 100%;
-    width: 3rem;
-    height: 3rem;
-    padding: .5rem;
-    margin-right: 1rem;
+    margin: 0.2rem 0.7rem 0.2rem 0;
 }
 
 .dti_box-title h2 {
@@ -670,6 +684,7 @@ section:nth-child(9) {
     background-image: url(../vetores/assinantesSVG.svg);
     background-size: cover;
     background-repeat: no-repeat;
+    background-position: center top;
 }
 
 .assinantes-content {
@@ -697,7 +712,6 @@ section:nth-child(9) {
 }
 
 .assinantes-form {
-    bottom: 0;
     width: 25rem;
 }
 
